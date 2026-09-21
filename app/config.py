@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     openai_base_url: str | None = None
     openai_model: str = "gpt-5.6-luna"
 
+    opik_project_name: str = "ai-business-research"
     opik_api_key: str | None = None
     opik_workspace: str | None = None
     opik_url_override: str | None = None

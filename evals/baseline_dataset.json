@@ -1,0 +1,102 @@
+[
+  {
+    "category": "concept",
+    "input": "What is a customer support AI agent?",
+    "expected_output": "A system that uses AI to understand customer requests and perform or assist with support tasks."
+  },
+  {
+    "category": "concept",
+    "input": "What is retrieval-augmented generation?",
+    "expected_output": "A technique where relevant external information is retrieved and provided to a language model as context before generating an answer."
+  },
+  {
+    "category": "architecture",
+    "input": "What are the main components of a production RAG system?",
+    "expected_output": "Typically document ingestion, chunking, embeddings, retrieval, optional reranking, generation, evaluation, and observability."
+  },
+  {
+    "category": "comparison",
+    "input": "What is the difference between a chatbot and an AI agent?",
+    "expected_output": "A chatbot primarily responds to user messages, while an agent can use tools, maintain state, and take actions toward a goal."
+  },
+  {
+    "category": "architecture",
+    "input": "Why might a business use hybrid search instead of vector search alone?",
+    "expected_output": "Hybrid search combines semantic similarity with lexical matching, helping retrieve both conceptually related content and documents containing exact terminology."
+  },
+  {
+    "category": "evaluation",
+    "input": "Why should an AI application have an evaluation dataset?",
+    "expected_output": "A fixed evaluation dataset makes it possible to measure quality consistently and compare different versions of the system."
+  },
+  {
+    "category": "production",
+    "input": "Why is observability important for an AI application?",
+    "expected_output": "Observability helps developers understand requests, model calls, latency, failures, costs, and other behavior so problems can be diagnosed and improved."
+  },
+  {
+    "category": "production",
+    "input": "What are common causes of latency in an LLM application?",
+    "expected_output": "Latency can come from network requests, model generation time, retrieval, tool calls, large prompts, and sequential processing."
+  },
+  {
+    "category": "production",
+    "input": "Why should an LLM output be validated?",
+    "expected_output": "LLM outputs are probabilistic, so validation helps ensure they conform to the structure and constraints required by the application."
+  },
+  {
+    "category": "agents",
+    "input": "What is tool calling in an AI agent?",
+    "expected_output": "Tool calling allows a model to request execution of external functions or services to obtain information or perform actions."
+  },
+  {
+    "category": "agents",
+    "input": "When might an AI agent be unnecessary?",
+    "expected_output": "An agent may be unnecessary when the workflow is deterministic and can be implemented more reliably with ordinary application logic."
+  },
+  {
+    "category": "security",
+    "input": "Why should permissions be enforced outside the language model?",
+    "expected_output": "Authorization should be enforced by trusted application logic because an LLM should not be the security boundary."
+  },
+  {
+    "category": "cost",
+    "input": "What factors influence the cost of an LLM application?",
+    "expected_output": "Cost depends on model pricing, input and output token usage, request volume, tool usage, and the number of model calls."
+  },
+  {
+    "category": "rag",
+    "input": "What can cause a RAG system to return irrelevant information?",
+    "expected_output": "Possible causes include poor chunking, weak embeddings, incorrect queries, inadequate retrieval, missing metadata filtering, and ranking problems."
+  },
+  {
+    "category": "rag",
+    "input": "Why is retrieval quality important for a RAG application?",
+    "expected_output": "The generation model can only reliably use information that is retrieved and provided as context, so poor retrieval can lead to incomplete or incorrect answers."
+  },
+  {
+    "category": "business",
+    "input": "What is the value of an AI system that produces research briefs?",
+    "expected_output": "It can reduce the manual effort required to collect, organize, and summarize information for business decisions."
+  },
+  {
+    "category": "business",
+    "input": "What makes an AI research system different from a simple LLM chatbot?",
+    "expected_output": "A research system can combine external information sources, retrieval, tools, evidence, structured outputs, and evaluation instead of relying only on the model's internal knowledge."
+  },
+  {
+    "category": "failure",
+    "input": "What should an AI system do when it does not have enough information to answer a question?",
+    "expected_output": "It should acknowledge the limitation rather than confidently inventing an answer."
+  },
+  {
+    "category": "engineering",
+    "input": "Why should AI systems be built incrementally?",
+    "expected_output": "Incremental development creates measurable baselines and makes it easier to identify which changes improve or degrade the system."
+  },
+  {
+    "category": "architecture",
+    "input": "What is the role of an API in an AI application?",
+    "expected_output": "The API provides a controlled interface through which other applications can send requests to and receive results from the AI system."
+  }
+]

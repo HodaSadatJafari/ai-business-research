@@ -1,0 +1,176 @@
+{
+  "suite_passed": true,
+  "items_passed": 2,
+  "items_total": 2,
+  "pass_rate": 1.0,
+  "experiment_id": "01a0aded-83bd-7e9f-8b0a-edf73016d378",
+  "suite_name": "my-agent-tests",
+  "experiment_name": "empty_plantain_1572",
+  "experiment_url": "https://www.comet.com/opik/ai-business-research/experiments/01a0aded-7ac5-7002-940d-ee8d13242121/compare?experiments=%5B%2201a0aded-83bd-7e9f-8b0a-edf73016d378%22%5D",
+  "total_time_seconds": 8.36,
+  "generated_at": "2026-09-17T05:53:52.538088+00:00",
+  "items": [
+    {
+      "dataset_item_id": "01a0aded-7f58-7067-9d06-4c545c58e93a",
+      "passed": true,
+      "runs_passed": 2,
+      "execution_policy": {
+        "runs_per_item": 2,
+        "pass_threshold": 2
+      },
+      "runs": [
+        {
+          "trial_id": 0,
+          "passed": true,
+          "input": {
+            "question": "How do I create a new project?",
+            "context": "Go to Dashboard and click 'New Project'.",
+            "id": "01a0aded-7f58-7067-9d06-4c545c58e93a"
+          },
+          "output": "To create a new project, go to the Dashboard and click on 'New Project'.",
+          "assertions": [
+            {
+              "name": "The response directly addresses the user's question",
+              "passed": true,
+              "value": true,
+              "scoring_failed": false,
+              "reason": "The output directly instructs how to create a new project by going to the Dashboard and clicking 'New Project', which answers the question.",
+              "metadata": {
+                "confidence": 0.85
+              }
+            },
+            {
+              "name": "The response is concise (3 sentences or fewer)",
+              "passed": true,
+              "value": true,
+              "scoring_failed": false,
+              "reason": "The response is a single sentence, making it concise.",
+              "metadata": {
+                "confidence": 0.85
+              }
+            }
+          ],
+          "trace_id": "01a0aded-906d-7341-b27d-3fe54b4f91b8",
+          "task_execution_time_seconds": 1.421,
+          "scoring_time_seconds": 5.998
+        },
+        {
+          "trial_id": 1,
+          "passed": true,
+          "input": {
+            "question": "How do I create a new project?",
+            "context": "Go to Dashboard and click 'New Project'.",
+            "id": "01a0aded-7f58-7067-9d06-4c545c58e93a"
+          },
+          "output": "To create a new project, go to the Dashboard and click on 'New Project'.",
+          "assertions": [
+            {
+              "name": "The response directly addresses the user's question",
+              "passed": true,
+              "value": true,
+              "scoring_failed": false,
+              "reason": "The output provides a direct instruction on how to create a new project, matching the user's question.",
+              "metadata": {
+                "confidence": 0.84
+              }
+            },
+            {
+              "name": "The response is concise (3 sentences or fewer)",
+              "passed": true,
+              "value": true,
+              "scoring_failed": false,
+              "reason": "The response is a single concise sentence (less than or equal to 3 sentences).",
+              "metadata": {
+                "confidence": 0.84
+              }
+            }
+          ],
+          "trace_id": "01a0aded-9081-7251-829b-df949e3d6238",
+          "task_execution_time_seconds": 2.15,
+          "scoring_time_seconds": 3.416
+        }
+      ]
+    },
+    {
+      "dataset_item_id": "01a0aded-7f59-738c-ac9f-127bfb9a99a2",
+      "passed": true,
+      "runs_passed": 2,
+      "execution_policy": {
+        "runs_per_item": 2,
+        "pass_threshold": 2
+      },
+      "runs": [
+        {
+          "trial_id": 0,
+          "passed": true,
+          "input": {
+            "question": "What are the pricing tiers?",
+            "context": "Free ($0/month), Pro ($29/month), Enterprise (custom).",
+            "id": "01a0aded-7f59-738c-ac9f-127bfb9a99a2"
+          },
+          "output": "The pricing tiers are Free ($0/month), Pro ($29/month), and Enterprise (custom).",
+          "assertions": [
+            {
+              "name": "The response directly addresses the user's question",
+              "passed": true,
+              "value": true,
+              "scoring_failed": false,
+              "reason": "The output lists the pricing tiers directly and matches the user's question.",
+              "metadata": {
+                "confidence": 0.92
+              }
+            },
+            {
+              "name": "The response is concise (3 sentences or fewer)",
+              "passed": true,
+              "value": true,
+              "scoring_failed": false,
+              "reason": "The response is a single sentence, satisfying the concise requirement (3 sentences or fewer).",
+              "metadata": {
+                "confidence": 0.88
+              }
+            }
+          ],
+          "trace_id": "01a0aded-9069-753f-ab0f-a4e79d2cfdd3",
+          "task_execution_time_seconds": 1.391,
+          "scoring_time_seconds": 6.021
+        },
+        {
+          "trial_id": 1,
+          "passed": true,
+          "input": {
+            "question": "What are the pricing tiers?",
+            "context": "Free ($0/month), Pro ($29/month), Enterprise (custom).",
+            "id": "01a0aded-7f59-738c-ac9f-127bfb9a99a2"
+          },
+          "output": "The pricing tiers are Free ($0/month), Pro ($29/month), and Enterprise (custom).",
+          "assertions": [
+            {
+              "name": "The response directly addresses the user's question",
+              "passed": true,
+              "value": true,
+              "scoring_failed": false,
+              "reason": "The response directly lists the pricing tiers as requested in the user query.",
+              "metadata": {
+                "confidence": 0.82
+              }
+            },
+            {
+              "name": "The response is concise (3 sentences or fewer)",
+              "passed": true,
+              "value": true,
+              "scoring_failed": false,
+              "reason": "The response consists of a single sentence, satisfying the concise requirement (3 sentences or fewer).",
+              "metadata": {
+                "confidence": 0.85
+              }
+            }
+          ],
+          "trace_id": "01a0aded-906b-7e61-a5d1-06580ed93644",
+          "task_execution_time_seconds": 1.477,
+          "scoring_time_seconds": 5.111
+        }
+      ]
+    }
+  ]
+}

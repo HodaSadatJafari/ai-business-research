@@ -1,4 +1,5 @@
-from openai import AsyncOpenAI
+from opik import track
+from openai import OpenAI
 
 from app.config import get_settings
 from app.schemas.research import ResearchResponse
@@ -30,22 +31,20 @@ class ResearchService:
         if settings.openai_base_url:
             client_kwargs["base_url"] = settings.openai_base_url
 
-        self.client = AsyncOpenAI(**client_kwargs)
+        self.client = OpenAI(**client_kwargs)
         self.model = settings.openai_model
 
-    async def research(self, question: str) -> ResearchResponse:
+    # @track(name="research", type="general")
+    def research(self, question: str) -> ResearchResponse:
+        return self._generate_research(question)
 
-        response = await self.client.beta.chat.completions.parse(
+    # @track(name="llm_call", type="llm")
+    def _generate_research(self, question: str) -> ResearchResponse:
+        response = self.client.beta.chat.completions.parse(
             model=self.model,
             messages=[
-                {
-                    "role": "system",
-                    "content": SYSTEM_PROMPT,
-                },
-                {
-                    "role": "user",
-                    "content": question,
-                },
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": question},
             ],
             response_format=ResearchResponse,
         )

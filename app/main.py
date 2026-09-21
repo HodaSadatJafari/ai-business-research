@@ -2,8 +2,11 @@ from fastapi import FastAPI
 
 from app.api.routes import router
 from app.config import get_settings
+from app.observability import configure_opik
 
 settings = get_settings()
+
+configure_opik()
 
 app = FastAPI(
     title=settings.app_name,
