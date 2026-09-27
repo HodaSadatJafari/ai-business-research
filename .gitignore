@@ -218,3 +218,5 @@ __marimo__/
 .streamlit/secrets.toml
 
 .vscode
+# Local evaluation output
+week2_answer_results.json

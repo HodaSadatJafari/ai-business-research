@@ -1,0 +1,10 @@
+[
+  {"question": "How much does SignalDesk Team cost?", "required_text": "$480"},
+  {"question": "Which integrations does SignalDesk support?", "required_text": "HelpHarbor"},
+  {"question": "Can SignalDesk analyze phone calls?", "required_text": "does not"},
+  {"question": "What is EchoMap's transcript retention period?", "required_text": "30 days"},
+  {"question": "Which product offers live agent coaching?", "required_text": "EchoMap"},
+  {"question": "What problems did support managers mention in interviews?", "required_text": "product bugs"},
+  {"question": "Does EchoMap import HelpHarbor tickets?", "required_text": "does not"},
+  {"question": "How long does SignalDesk Team keep imported tickets?", "required_text": "90 days"}
+]

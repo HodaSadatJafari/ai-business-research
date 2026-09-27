@@ -1,0 +1,287 @@
+{
+  "cases": [
+    {
+      "question": "How much does SignalDesk Team cost?",
+      "required_text": "$480",
+      "rag": {
+        "response": {
+          "question": "How much does SignalDesk Team cost?",
+          "summary": "SignalDesk Team costs $480 per month for up to 20 support agents.",
+          "findings": [
+            {
+              "claim": "SignalDesk Team costs $480 per month for up to 20 support agents.",
+              "explanation": "The pricing information states the monthly price and agent limit for the Team plan.",
+              "source_ids": [
+                "f4f2964f3f14:1:0"
+              ],
+              "evidence_quote": "SignalDesk Team costs $480 per month for up to 20 support agents."
+            }
+          ],
+          "limitations": [],
+          "sources": [
+            {
+              "source_id": "f4f2964f3f14:1:0",
+              "title": "Aster Analytics",
+              "section": "Pricing",
+              "path": "company/aster.md"
+            }
+          ]
+        },
+        "latency_seconds": 3.718,
+        "required_text_found": true
+      }
+    },
+    {
+      "question": "Which integrations does SignalDesk support?",
+      "required_text": "HelpHarbor",
+      "rag": {
+        "response": {
+          "question": "Which integrations does SignalDesk support?",
+          "summary": "SignalDesk supports importing support tickets from HelpHarbor and MailDock. The available evidence also states that it does not ingest phone transcripts or social media messages.",
+          "findings": [
+            {
+              "claim": "SignalDesk supports integrations with HelpHarbor and MailDock for importing support tickets.",
+              "explanation": "The product features documentation explicitly names both supported ticket sources.",
+              "source_ids": [
+                "8f2e3d592202:8:0"
+              ],
+              "evidence_quote": "SignalDesk imports support tickets from HelpHarbor and MailDock."
+            },
+            {
+              "claim": "SignalDesk does not ingest phone transcripts or social media messages.",
+              "explanation": "The product limits documentation identifies these unsupported input types.",
+              "source_ids": [
+                "8f2e3d592202:9:0"
+              ],
+              "evidence_quote": "It does not ingest phone transcripts or social media messages."
+            }
+          ],
+          "limitations": [],
+          "sources": [
+            {
+              "source_id": "8f2e3d592202:9:0",
+              "title": "SignalDesk Product",
+              "section": "Limits",
+              "path": "product/signaldesk.md"
+            },
+            {
+              "source_id": "8f2e3d592202:8:0",
+              "title": "SignalDesk Product",
+              "section": "Features",
+              "path": "product/signaldesk.md"
+            }
+          ]
+        },
+        "latency_seconds": 3.318,
+        "required_text_found": true
+      }
+    },
+    {
+      "question": "Can SignalDesk analyze phone calls?",
+      "required_text": "does not",
+      "rag": {
+        "response": {
+          "question": "Can SignalDesk analyze phone calls?",
+          "summary": "No, SignalDesk does not ingest phone transcripts, so it cannot analyze phone calls through transcripts. The evidence does not establish whether it analyzes live call audio or recordings.",
+          "findings": [
+            {
+              "claim": "SignalDesk cannot analyze phone calls through phone transcripts.",
+              "explanation": "SignalDesk explicitly does not ingest phone transcripts. However, the evidence does not specify whether it supports analysis of live call audio or recordings.",
+              "source_ids": [
+                "8f2e3d592202:9:0"
+              ],
+              "evidence_quote": "It does not ingest phone transcripts or social media messages."
+            }
+          ],
+          "limitations": [
+            "The evidence addresses phone transcripts but does not explicitly state whether SignalDesk can analyze live phone audio or call recordings."
+          ],
+          "sources": [
+            {
+              "source_id": "8f2e3d592202:9:0",
+              "title": "SignalDesk Product",
+              "section": "Limits",
+              "path": "product/signaldesk.md"
+            }
+          ]
+        },
+        "latency_seconds": 3.715,
+        "required_text_found": true
+      }
+    },
+    {
+      "question": "What is EchoMap's transcript retention period?",
+      "required_text": "30 days",
+      "rag": {
+        "response": {
+          "question": "What is EchoMap's transcript retention period?",
+          "summary": "EchoMap retains transcripts for 30 days under its standard contracts and standard plan. The Enterprise retention policy is not established by the available evidence.",
+          "findings": [
+            {
+              "claim": "EchoMap's standard transcript retention period is 30 days.",
+              "explanation": "The standard plan and standard contracts both specify 30-day retention for transcript data.",
+              "source_ids": [
+                "b5d0ac3f6f26:11:0"
+              ],
+              "evidence_quote": "EchoMap standard contracts retain live chat and phone transcripts for 30 days."
+            },
+            {
+              "claim": "EchoMap's Enterprise transcript retention period is unknown.",
+              "explanation": "The available project corpus does not establish an Enterprise retention policy.",
+              "source_ids": [
+                "b5d0ac3f6f26:11:0"
+              ],
+              "evidence_quote": "The project corpus does not establish EchoMap's Enterprise retention policy."
+            }
+          ],
+          "limitations": [
+            "The evidence specifies the standard retention period but does not provide EchoMap's Enterprise retention period."
+          ],
+          "sources": [
+            {
+              "source_id": "b5d0ac3f6f26:11:0",
+              "title": "Data Handling Notes",
+              "section": "EchoMap",
+              "path": "technical/data_policy.md"
+            }
+          ]
+        },
+        "latency_seconds": 3.35,
+        "required_text_found": true
+      }
+    },
+    {
+      "question": "Which product offers live agent coaching?",
+      "required_text": "EchoMap",
+      "rag": {
+        "response": {
+          "question": "Which product offers live agent coaching?",
+          "summary": "EchoMap offers live agent coaching.",
+          "findings": [
+            {
+              "claim": "EchoMap offers live agent coaching.",
+              "explanation": "Brio Insights describes EchoMap as emphasizing live agent coaching.",
+              "source_ids": [
+                "8959ac9c39b0:2:0"
+              ],
+              "evidence_quote": "EchoMap emphasizes live agent coaching and real-time conversation dashboards, rather than historical ticket analysis."
+            }
+          ],
+          "limitations": [],
+          "sources": [
+            {
+              "source_id": "8959ac9c39b0:2:0",
+              "title": "Brio Insights",
+              "section": "Positioning",
+              "path": "company/brio.md"
+            }
+          ]
+        },
+        "latency_seconds": 2.374,
+        "required_text_found": true
+      }
+    },
+    {
+      "question": "What problems did support managers mention in interviews?",
+      "required_text": "product bugs",
+      "rag": {
+        "response": {
+          "question": "What problems did support managers mention in interviews?",
+          "summary": "Support managers mentioned difficulty identifying recurring product bugs, slow reporting, and difficulty connecting ticket trends to product roadmap decisions.",
+          "findings": [
+            {
+              "claim": "Support managers mentioned three main problems: identifying recurring product bugs, slow reporting, and connecting ticket trends to product roadmap decisions.",
+              "explanation": "In the fictional interviews, 12 managers wanted a clearer way to identify recurring product bugs, 9 mentioned slow reporting, and 7 wanted to connect ticket trends to product roadmap decisions.",
+              "source_ids": [
+                "5390e321c5f0:4:0"
+              ],
+              "evidence_quote": "In a fictional set of 18 interviews with support managers, 12 wanted a clearer way to identify recurring product bugs, 9 mentioned slow reporting, and 7 wanted to connect ticket trends to product roadmap decisions."
+            }
+          ],
+          "limitations": [
+            "The interview counts are illustrative project data and are not a market-wide estimate."
+          ],
+          "sources": [
+            {
+              "source_id": "5390e321c5f0:4:0",
+              "title": "Customer Support Analytics Research",
+              "section": "Interview Findings",
+              "path": "market/customer_needs.md"
+            }
+          ]
+        },
+        "latency_seconds": 4.731,
+        "required_text_found": true
+      }
+    },
+    {
+      "question": "Does EchoMap import HelpHarbor tickets?",
+      "required_text": "does not",
+      "rag": {
+        "response": {
+          "question": "Does EchoMap import HelpHarbor tickets?",
+          "summary": "No. EchoMap does not import HelpHarbor tickets.",
+          "findings": [
+            {
+              "claim": "EchoMap does not import HelpHarbor tickets.",
+              "explanation": "The EchoMap product limits explicitly state that it does not import tickets from HelpHarbor.",
+              "source_ids": [
+                "8e0bfafed316:7:0"
+              ],
+              "evidence_quote": "EchoMap does not import HelpHarbor tickets."
+            }
+          ],
+          "limitations": [],
+          "sources": [
+            {
+              "source_id": "8e0bfafed316:7:0",
+              "title": "EchoMap Product",
+              "section": "Limits",
+              "path": "product/echomap.md"
+            }
+          ]
+        },
+        "latency_seconds": 4.368,
+        "required_text_found": true
+      }
+    },
+    {
+      "question": "How long does SignalDesk Team keep imported tickets?",
+      "required_text": "90 days",
+      "rag": {
+        "response": {
+          "question": "How long does SignalDesk Team keep imported tickets?",
+          "summary": "SignalDesk keeps imported tickets for 90 days on its Team plan. Enterprise customers can configure a shorter retention period.",
+          "findings": [
+            {
+              "claim": "SignalDesk Team keeps imported tickets for 90 days.",
+              "explanation": "The data handling notes specify a 90-day retention period for imported tickets on the Team plan.",
+              "source_ids": [
+                "b5d0ac3f6f26:10:0"
+              ],
+              "evidence_quote": "SignalDesk keeps imported tickets for 90 days on its Team plan."
+            }
+          ],
+          "limitations": [],
+          "sources": [
+            {
+              "source_id": "b5d0ac3f6f26:10:0",
+              "title": "Data Handling Notes",
+              "section": "SignalDesk",
+              "path": "technical/data_policy.md"
+            }
+          ]
+        },
+        "latency_seconds": 2.674,
+        "required_text_found": true
+      }
+    }
+  ],
+  "summary": {
+    "rag": {
+      "required_text_found": 8,
+      "total": 8,
+      "mean_latency_seconds": 3.531
+    }
+  }
+}

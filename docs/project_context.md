@@ -3,8 +3,8 @@
 > Working context for continuing development of the project across sessions.
 
 **Last updated:** September 2026
-**Current phase:** Week 1 completed → Week 2 RAG next
-**Current version:** v0.1 baseline
+**Current phase:** Week 2 complete for the local corpus → Week 3 next
+**Current version:** v0.1 baseline plus Week 2 RAG endpoint
 
 ---
 
@@ -78,11 +78,7 @@ Pydantic Structured Response
 Opik Evaluation
 ```
 
-There is currently **no RAG, web search, or agent layer**.
-
-This is intentional.
-
-The baseline gives future versions something measurable to compare against.
+The v0.1 baseline has no retrieval. An experimental Week 2 RAG endpoint now adds local document retrieval; web search and agents are still planned. See `experiments/002_retrieval.md` for the measured retrieval results and remaining live answer comparison.
 
 ---
 
@@ -134,6 +130,8 @@ ai-business-research/
 ├── uv.lock
 └── README.md
 ```
+
+Week 2 adds `knowledge_base/`, `app/retrieval.py`, `app/services/rag.py`, `evals/run_week2_retrieval.py`, `evals/run_week2_answers.py`, and `experiments/002_retrieval.md`.
 
 The structure can evolve as the system becomes more complex.
 
@@ -858,12 +856,12 @@ The posts should reflect the actual project rather than presenting hypothetical 
 The immediate priority is:
 
 ```text
-1. Week 1 documentation          ✓
-2. Week 1 LinkedIn post          Next
-3. Define Week 2 knowledge base  Next
-4. Build ingestion               Next
-5. Build retrieval               Next
-6. Evaluate RAG                  Next
+1. Week 2 knowledge base         ✓
+2. Local ingestion and retrieval ✓
+3. Retrieval comparison          ✓
+4. Initial live comparison       ✓
+5. Recheck exact quote citations ✓
+6. Start Week 3 tool orchestration Next
 ```
 
 Do not return to minor Week 1 issues unless they block progress.

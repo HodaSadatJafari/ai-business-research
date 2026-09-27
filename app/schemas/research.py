@@ -8,6 +8,15 @@ class ResearchRequest(BaseModel):
 class ResearchFinding(BaseModel):
     claim: str
     explanation: str
+    source_ids: list[str] = Field(default_factory=list)
+    evidence_quote: str | None = None
+
+
+class ResearchSource(BaseModel):
+    source_id: str
+    title: str
+    section: str
+    path: str
 
 
 class ResearchResponse(BaseModel):
@@ -15,3 +24,4 @@ class ResearchResponse(BaseModel):
     summary: str
     findings: list[ResearchFinding]
     limitations: list[str]
+    sources: list[ResearchSource] = Field(default_factory=list)

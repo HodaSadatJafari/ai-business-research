@@ -130,6 +130,30 @@ ai-business-research/
 
 ---
 
+## Week 2 — Local knowledge retrieval
+
+The project now includes a small fictional knowledge base in `knowledge_base/`.
+`POST /api/v1/research/rag` retrieves evidence and returns structured findings
+with source IDs. The retrieval methods are `bm25` (default), `vector`, and
+`hybrid`. The local vector uses hashed word features, not a semantic model.
+
+```bash
+uv run python -m evals.run_week2_retrieval
+uv run pytest -q tests/test_week2_retrieval.py tests/test_week2_rag.py
+```
+
+Set `RETRIEVAL_METHOD`, `RETRIEVAL_K`, and `KNOWLEDGE_BASE_DIR` if needed.
+For a live baseline versus RAG answer comparison, run:
+
+```bash
+uv run python -m evals.run_week2_answers --output week2_answer_results.json
+```
+
+The live comparison calls the configured LLM for each service and question.
+See `experiments/002_retrieval.md` for the measured retrieval result and limits.
+
+---
+
 ## Running Locally
 
 ### 1. Clone the repository

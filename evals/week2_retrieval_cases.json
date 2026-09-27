@@ -1,0 +1,10 @@
+[
+  {"question": "How much does SignalDesk Team cost?", "relevant_sources": ["company/aster.md"]},
+  {"question": "Which integrations does SignalDesk support?", "relevant_sources": ["product/signaldesk.md"]},
+  {"question": "Can SignalDesk analyze phone calls?", "relevant_sources": ["product/signaldesk.md"]},
+  {"question": "What is EchoMap's transcript retention period?", "relevant_sources": ["product/echomap.md", "technical/data_policy.md"]},
+  {"question": "Which product offers live agent coaching?", "relevant_sources": ["company/brio.md", "product/echomap.md"]},
+  {"question": "What problems did support managers mention in interviews?", "relevant_sources": ["market/customer_needs.md"]},
+  {"question": "Does EchoMap import HelpHarbor tickets?", "relevant_sources": ["product/echomap.md"]},
+  {"question": "How long does SignalDesk Team keep imported tickets?", "relevant_sources": ["technical/data_policy.md"]}
+]
