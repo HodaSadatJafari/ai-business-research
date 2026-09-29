@@ -20,6 +20,8 @@ class Settings(BaseSettings):
     knowledge_base_dir: Path = Path(__file__).resolve().parents[1] / "knowledge_base"
     retrieval_k: int = 4
     retrieval_method: str = "bm25"
+    agent_model: str | None = None
+    tavily_api_key: str | None = None
 
     model_config = SettingsConfigDict(
         env_file=".env",

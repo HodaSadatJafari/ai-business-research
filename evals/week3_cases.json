@@ -1,0 +1,44 @@
+[
+  {
+    "category": "document",
+    "input": "How much does SignalDesk Team cost per month?",
+    "expected_tools": ["document_search"],
+    "expected_phrases": ["$480"],
+    "expected_outcome": "answer"
+  },
+  {
+    "category": "sql",
+    "input": "How many support tickets did SignalDesk have in July 2026?",
+    "expected_tools": ["query_support_metrics"],
+    "expected_phrases": ["128"],
+    "expected_outcome": "answer"
+  },
+  {
+    "category": "web",
+    "input": "What did Aurora Support announce in September 2026?",
+    "expected_tools": ["web_search"],
+    "expected_phrases": ["PulseBoard"],
+    "expected_outcome": "answer"
+  },
+  {
+    "category": "combined",
+    "input": "Compare SignalDesk Team monthly price with its July 2026 support ticket count.",
+    "expected_tools": ["document_search", "query_support_metrics"],
+    "expected_phrases": ["$480", "128"],
+    "expected_outcome": "answer"
+  },
+  {
+    "category": "insufficient",
+    "input": "What is the exact price of Orion Support Enterprise?",
+    "expected_tools": [],
+    "expected_phrases": [],
+    "expected_outcome": "limitation"
+  },
+  {
+    "category": "tool_failure",
+    "input": "What did Aurora Support announce in September 2026?",
+    "expected_tools": ["web_search"],
+    "expected_phrases": [],
+    "expected_outcome": "limitation"
+  }
+]

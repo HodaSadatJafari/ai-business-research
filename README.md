@@ -154,6 +154,30 @@ See `experiments/002_retrieval.md` for the measured retrieval result and limits.
 
 ---
 
+## Week 3 — Research agent
+
+`POST /api/v1/research/agent` uses model tool calling to select internal document
+search, Tavily web search, or read-only fictional support metrics in SQLite.
+Each request is limited to two selection rounds, four tool calls, and two web
+searches. Final findings include exact evidence quotes and source types.
+
+Set `TAVILY_API_KEY` in `.env` for live web search. `AGENT_MODEL` optionally
+selects a separate tool-capable model; otherwise the agent uses `OPENAI_MODEL`.
+Without a Tavily key, web questions return a limitation. Use these commands to
+check the implementation and run the Opik comparison:
+
+```bash
+uv run pytest -q
+uv run python -m evals.run_week3
+uv run python -m evals.smoke_tavily
+```
+
+The Opik comparison uses a fixed web fixture and live model calls. The Tavily
+smoke script makes one live search and requires the API key. See
+`experiments/003_agent_tools.md` for the results and limitations.
+
+---
+
 ## Running Locally
 
 ### 1. Clone the repository
@@ -507,13 +531,12 @@ Those questions will drive the development of this project.
 
 # Project Status
 
-Current version:
-
-**v0.1 — LLM Baseline**
-
-Next milestone:
-
-**v0.2 — Retrieval & RAG**
+Current implementation: v0.1 baseline, Week 2 RAG, and Week 3 agent endpoints.
+The agent passed a six-case fixed-fixture Opik comparison. On September 28,
+2026, the user reported a successful local run of
+`uv run python -m evals.smoke_tavily`. The command makes one live Tavily
+search. This is evidence that the live-search path worked on that machine; it
+does not measure broader web-answer quality.
 
 ---
 

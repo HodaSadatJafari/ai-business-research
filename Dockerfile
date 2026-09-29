@@ -10,6 +10,7 @@ RUN uv sync --frozen --no-dev
 
 COPY app ./app
 COPY knowledge_base ./knowledge_base
+COPY data ./data
 
 EXPOSE 8000
 

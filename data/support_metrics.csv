@@ -1,0 +1,7 @@
+row_id,product,month,ticket_count,avg_first_response_hours
+sd-2026-06,SignalDesk,2026-06,142,3.8
+sd-2026-07,SignalDesk,2026-07,128,3.4
+sd-2026-08,SignalDesk,2026-08,110,3.1
+em-2026-06,EchoMap,2026-06,220,2.0
+em-2026-07,EchoMap,2026-07,205,1.8
+em-2026-08,EchoMap,2026-08,190,1.6

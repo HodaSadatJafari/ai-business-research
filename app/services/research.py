@@ -1,4 +1,3 @@
-from opik import track
 from openai import OpenAI
 
 from app.config import get_settings

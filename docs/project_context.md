@@ -2,9 +2,9 @@
 
 > Working context for continuing development of the project across sessions.
 
-**Last updated:** September 2026
-**Current phase:** Week 2 complete for the local corpus → Week 3 next
-**Current version:** v0.1 baseline plus Week 2 RAG endpoint
+**Last updated:** September 28, 2026
+**Current phase:** Week 3 agent implemented and evaluated; user reports successful live Tavily smoke check
+**Current version:** v0.1 baseline, Week 2 RAG, and Week 3 agent endpoints
 
 ---
 
@@ -629,6 +629,13 @@ Cost                  ✓           ✓
 
 # 15. Week 3 — Agent + Tools
 
+Implementation: `POST /api/v1/research/agent` provides LLM-selected document,
+Tavily web, and read-only SQLite metrics tools. The agent has bounded calls,
+source quotes, and Opik traces. See `experiments/003_agent_tools.md` for the
+six-case comparison. On September 28, 2026, the user reported that
+`uv run python -m evals.smoke_tavily` succeeded locally. This is one live
+search, separate from the fixed-fixture evaluation.
+
 Planned capabilities:
 
 ```text
@@ -861,7 +868,8 @@ The immediate priority is:
 3. Retrieval comparison          ✓
 4. Initial live comparison       ✓
 5. Recheck exact quote citations ✓
-6. Start Week 3 tool orchestration Next
+6. Week 3 agent and Opik eval    ✓
+7. Live Tavily smoke check       ✓ User-reported local run (2026-09-28)
 ```
 
 Do not return to minor Week 1 issues unless they block progress.

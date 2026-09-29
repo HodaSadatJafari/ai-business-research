@@ -1,3 +1,5 @@
+from typing import Literal
+
 from pydantic import BaseModel, Field
 
 
@@ -17,6 +19,7 @@ class ResearchSource(BaseModel):
     title: str
     section: str
     path: str
+    source_type: Literal["document", "web", "sql"] = "document"
 
 
 class ResearchResponse(BaseModel):
@@ -25,3 +28,5 @@ class ResearchResponse(BaseModel):
     findings: list[ResearchFinding]
     limitations: list[str]
     sources: list[ResearchSource] = Field(default_factory=list)
+    tools_used: list[str] = Field(default_factory=list)
+    tool_call_count: int = 0

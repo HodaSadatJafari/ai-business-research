@@ -1,0 +1,198 @@
+{
+  "agent-week3": {
+    "experiment_id": "01a0e71d-f1d3-7337-a21b-dd627ea27997",
+    "experiment_url": "https://www.comet.com/opik/hoda/experiments/01a0e208-e834-7611-b94b-ad7360ec0e92/compare?experiments=%5B%2201a0e71d-f1d3-7337-a21b-dd627ea27997%22%5D",
+    "scores": {
+      "tool_selection": 1.0,
+      "fact_and_outcome": 1.0,
+      "citation_and_budget": 1.0
+    },
+    "cases": [
+      {
+        "category": "tool_failure",
+        "scores": {
+          "tool_selection": 1.0,
+          "fact_and_outcome": 1.0,
+          "citation_and_budget": 1.0
+        },
+        "tools_used": [
+          "web_search",
+          "web_search"
+        ],
+        "latency_seconds": 6.419,
+        "summary": "No usable evidence was retrieved.",
+        "limitations": [
+          "web_search failed: RuntimeError.",
+          "web_search failed: RuntimeError."
+        ]
+      },
+      {
+        "category": "insufficient",
+        "scores": {
+          "tool_selection": 1.0,
+          "fact_and_outcome": 1.0,
+          "citation_and_budget": 1.0
+        },
+        "tools_used": [
+          "web_search",
+          "web_search"
+        ],
+        "latency_seconds": 4.627,
+        "summary": "No usable evidence was retrieved.",
+        "limitations": [
+          "No evidence was returned by selected tools."
+        ]
+      },
+      {
+        "category": "combined",
+        "scores": {
+          "tool_selection": 1.0,
+          "fact_and_outcome": 1.0,
+          "citation_and_budget": 1.0
+        },
+        "tools_used": [
+          "document_search",
+          "query_support_metrics"
+        ],
+        "latency_seconds": 10.671,
+        "summary": "SignalDesk Team costs $480 per month. SignalDesk had 128 support tickets in July 2026.",
+        "limitations": []
+      },
+      {
+        "category": "web",
+        "scores": {
+          "tool_selection": 1.0,
+          "fact_and_outcome": 1.0,
+          "citation_and_budget": 1.0
+        },
+        "tools_used": [
+          "web_search"
+        ],
+        "latency_seconds": 8.615,
+        "summary": "Aurora Support announced PulseBoard in September 2026.",
+        "limitations": []
+      },
+      {
+        "category": "sql",
+        "scores": {
+          "tool_selection": 1.0,
+          "fact_and_outcome": 1.0,
+          "citation_and_budget": 1.0
+        },
+        "tools_used": [
+          "query_support_metrics"
+        ],
+        "latency_seconds": 7.477,
+        "summary": "SignalDesk had 128 support tickets in July 2026.",
+        "limitations": []
+      },
+      {
+        "category": "document",
+        "scores": {
+          "tool_selection": 1.0,
+          "fact_and_outcome": 1.0,
+          "citation_and_budget": 1.0
+        },
+        "tools_used": [
+          "document_search"
+        ],
+        "latency_seconds": 8.197,
+        "summary": "SignalDesk Team costs $480 per month.",
+        "limitations": []
+      }
+    ]
+  },
+  "rag-week2": {
+    "experiment_id": "01a0e71d-5e9b-7bf9-b814-31bfa1f53bee",
+    "experiment_url": "https://www.comet.com/opik/hoda/experiments/01a0e208-e834-7611-b94b-ad7360ec0e92/compare?experiments=%5B%2201a0e71d-5e9b-7bf9-b814-31bfa1f53bee%22%5D",
+    "scores": {
+      "tool_selection": 0.167,
+      "fact_and_outcome": 0.167,
+      "citation_and_budget": 1.0
+    },
+    "cases": [
+      {
+        "category": "tool_failure",
+        "scores": {
+          "tool_selection": 0.0,
+          "fact_and_outcome": 0.0,
+          "citation_and_budget": 1.0
+        },
+        "tools_used": [],
+        "latency_seconds": 7.681,
+        "summary": "The supplied evidence is insufficient to determine what Aurora Support announced in September 2026.",
+        "limitations": [
+          "No supplied source mentions Aurora Support or a September 2026 announcement, so the announcement cannot be determined without additional evidence."
+        ]
+      },
+      {
+        "category": "insufficient",
+        "scores": {
+          "tool_selection": 1.0,
+          "fact_and_outcome": 0.0,
+          "citation_and_budget": 1.0
+        },
+        "tools_used": [],
+        "latency_seconds": 4.39,
+        "summary": "The exact price of Orion Support Enterprise cannot be determined from the supplied evidence.",
+        "limitations": [
+          "No supplied source identifies Orion Support Enterprise or provides its price."
+        ]
+      },
+      {
+        "category": "combined",
+        "scores": {
+          "tool_selection": 0.0,
+          "fact_and_outcome": 0.0,
+          "citation_and_budget": 1.0
+        },
+        "tools_used": [],
+        "latency_seconds": 5.072,
+        "summary": "A comparison cannot be completed because SignalDesk Team\u2019s July 2026 support ticket count is not provided; its monthly price is $480.",
+        "limitations": [
+          "No supplied source contains SignalDesk\u2019s July 2026 support ticket count, so the price-to-ticket comparison cannot be calculated."
+        ]
+      },
+      {
+        "category": "web",
+        "scores": {
+          "tool_selection": 0.0,
+          "fact_and_outcome": 0.0,
+          "citation_and_budget": 1.0
+        },
+        "tools_used": [],
+        "latency_seconds": 6.641,
+        "summary": "The supplied evidence is insufficient to determine what Aurora Support announced in September 2026.",
+        "limitations": [
+          "No source provided mentions Aurora Support or a September 2026 announcement, so the announcement cannot be identified without additional evidence."
+        ]
+      },
+      {
+        "category": "sql",
+        "scores": {
+          "tool_selection": 0.0,
+          "fact_and_outcome": 0.0,
+          "citation_and_budget": 1.0
+        },
+        "tools_used": [],
+        "latency_seconds": 5.281,
+        "summary": "The number of support tickets SignalDesk had in July 2026 cannot be determined from the supplied evidence.",
+        "limitations": [
+          "No July 2026 support-ticket count, date-based report, or underlying ticket data was supplied."
+        ]
+      },
+      {
+        "category": "document",
+        "scores": {
+          "tool_selection": 0.0,
+          "fact_and_outcome": 1.0,
+          "citation_and_budget": 1.0
+        },
+        "tools_used": [],
+        "latency_seconds": 3.515,
+        "summary": "SignalDesk Team costs $480 per month.",
+        "limitations": []
+      }
+    ]
+  }
+}
