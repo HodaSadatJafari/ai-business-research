@@ -2,9 +2,9 @@
 
 > Working context for continuing development of the project across sessions.
 
-**Last updated:** September 28, 2026
-**Current phase:** Week 3 agent implemented and evaluated; user reports successful live Tavily smoke check
-**Current version:** v0.1 baseline, Week 2 RAG, and Week 3 agent endpoints
+**Last updated:** September 29, 2026
+**Current phase:** Week 3 committed; Week 4 API reliability slice implemented and measured
+**Current version:** v0.1 baseline, Week 2 RAG, Week 3 agent, and first Week 4 reliability slice
 
 ---
 
@@ -669,7 +669,12 @@ Agent behavior should solve a real orchestration problem.
 
 # 16. Week 4 — Production Engineering
 
-Planned work:
+First slice (September 29, 2026): fixed the synchronous baseline API route
+and added stable 502/503 responses for model-provider failures across the
+baseline, RAG, and agent endpoints. Local before/after measurements and limits
+are in `experiments/004_api_reliability.md`.
+
+Remaining planned work:
 
 * observability
 * evaluation improvements
@@ -870,6 +875,7 @@ The immediate priority is:
 5. Recheck exact quote citations ✓
 6. Week 3 agent and Opik eval    ✓
 7. Live Tavily smoke check       ✓ User-reported local run (2026-09-28)
+8. Week 4 API reliability slice  ✓ Local before/after test (2026-09-29)
 ```
 
 Do not return to minor Week 1 issues unless they block progress.

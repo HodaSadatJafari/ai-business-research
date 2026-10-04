@@ -421,20 +421,17 @@ The focus will be on:
 
 ## Week 4 — Production Engineering
 
-The final stage will focus on making the system measurable and production-oriented.
+The first Week 4 slice (September 29, 2026) improves API reliability: all
+three research endpoints return stable 502/503 responses for model-provider
+errors, and the baseline endpoint correctly handles its synchronous service.
+See `experiments/004_api_reliability.md` for the measured before/after behavior.
 
-Planned work:
+Remaining work:
 
-* Opik tracing
-* Evaluation datasets
-* Automated evaluations
-* Latency measurement
-* Token/cost tracking
-* Error analysis
-* Integration tests
-* CI/CD
-* Security considerations
-* Production deployment
+* API latency and token/cost tracking
+* Error analysis and broader integration tests
+* Bounded retries and timeouts where measurements justify them
+* CI/CD, security considerations, and deployment
 
 ---
 
@@ -531,7 +528,8 @@ Those questions will drive the development of this project.
 
 # Project Status
 
-Current implementation: v0.1 baseline, Week 2 RAG, and Week 3 agent endpoints.
+Current implementation: v0.1 baseline, Week 2 RAG, Week 3 agent endpoints,
+and the first Week 4 API reliability slice.
 The agent passed a six-case fixed-fixture Opik comparison. On September 28,
 2026, the user reported a successful local run of
 `uv run python -m evals.smoke_tavily`. The command makes one live Tavily
