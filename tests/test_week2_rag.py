@@ -1,7 +1,7 @@
 from pathlib import Path
 from types import SimpleNamespace
 
-from app.retrieval import Retriever, load_chunks
+from app.retrieval import Hit, load_chunks
 from app.schemas.research import ResearchFinding, ResearchResponse
 from app.services import rag
 
@@ -20,7 +20,18 @@ class FakeParse:
         )
 
 
-def service(monkeypatch, parsed):
+def fake_retriever(*, source="company/aster.md", section="Pricing"):
+    chunks = load_chunks(ROOT)
+    selected = next(
+        chunk for chunk in chunks if chunk.source == source and chunk.section == section
+    )
+    return SimpleNamespace(
+        chunks=chunks,
+        search=lambda question, *, k, method: [Hit(selected, 1.0)],
+    )
+
+
+def service(monkeypatch, parsed, *, retriever=None):
     monkeypatch.setattr(
         rag,
         "get_settings",
@@ -38,17 +49,16 @@ def service(monkeypatch, parsed):
         beta=SimpleNamespace(chat=SimpleNamespace(completions=fake))
     )
     return rag.RAGResearchService(
-        retriever=Retriever(load_chunks(ROOT)), client=client
+        retriever=retriever or fake_retriever(), client=client
     ), fake
 
 
 def test_rag_exposes_only_retrieved_citations(monkeypatch):
     question = "How much does SignalDesk Team cost?"
-    retriever = Retriever(load_chunks(ROOT))
     expected_id = next(
-        hit.chunk.chunk_id
-        for hit in retriever.search(question, k=2, method="bm25")
-        if hit.chunk.source == "company/aster.md"
+        chunk.chunk_id
+        for chunk in load_chunks(ROOT)
+        if chunk.source == "company/aster.md" and chunk.section == "Pricing"
     )
     parsed = ResearchResponse(
         question=question,
@@ -91,12 +101,10 @@ def test_rag_abstains_when_model_has_no_valid_citations(monkeypatch):
 
 def test_rag_rejects_citation_to_wrong_section(monkeypatch):
     question = "Can SignalDesk analyze phone calls?"
-    retriever = Retriever(load_chunks(ROOT))
     features_id = next(
-        hit.chunk.chunk_id
-        for hit in retriever.search(question, k=4, method="bm25")
-        if hit.chunk.source == "product/signaldesk.md"
-        and hit.chunk.section == "Features"
+        chunk.chunk_id
+        for chunk in load_chunks(ROOT)
+        if chunk.source == "product/signaldesk.md" and chunk.section == "Features"
     )
     parsed = ResearchResponse(
         question=question,

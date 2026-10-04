@@ -1,0 +1,320 @@
+{
+  "bm25": {
+    "count": 11,
+    "mean_document_recall": 0.818,
+    "full_evidence_cases": 8,
+    "cases": [
+      {
+        "case_id": "doc_signaldesk_price",
+        "retrieved_sources": [
+          "technical/data_policy.md",
+          "company/aster.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "doc_signaldesk_integration",
+        "retrieved_sources": [
+          "product/signaldesk.md",
+          "product/echomap.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "doc_signaldesk_retention",
+        "retrieved_sources": [
+          "technical/data_policy.md",
+          "company/aster.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "doc_echomap_coaching",
+        "retrieved_sources": [
+          "company/brio.md",
+          "product/echomap.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "vector_maildock_import",
+        "retrieved_sources": [
+          "market/customer_needs.md",
+          "product/echomap.md"
+        ],
+        "document_recall": 0.0,
+        "full_evidence": false
+      },
+      {
+        "case_id": "hybrid_price_queue",
+        "retrieved_sources": [
+          "product/echomap.md",
+          "company/brio.md"
+        ],
+        "document_recall": 0.5,
+        "full_evidence": false
+      },
+      {
+        "case_id": "hybrid_price_coaching",
+        "retrieved_sources": [
+          "company/brio.md",
+          "product/echomap.md"
+        ],
+        "document_recall": 0.5,
+        "full_evidence": false
+      },
+      {
+        "case_id": "doc_sql_signaldesk",
+        "retrieved_sources": [
+          "technical/data_policy.md",
+          "company/aster.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "doc_sql_echomap",
+        "retrieved_sources": [
+          "technical/data_policy.md",
+          "company/brio.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "doc_web_trends",
+        "retrieved_sources": [
+          "product/signaldesk.md",
+          "product/echomap.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "all_three_signaldesk_aurora",
+        "retrieved_sources": [
+          "technical/data_policy.md",
+          "company/aster.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      }
+    ]
+  },
+  "vector": {
+    "count": 11,
+    "mean_document_recall": 0.909,
+    "full_evidence_cases": 9,
+    "cases": [
+      {
+        "case_id": "doc_signaldesk_price",
+        "retrieved_sources": [
+          "company/aster.md",
+          "technical/data_policy.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "doc_signaldesk_integration",
+        "retrieved_sources": [
+          "product/signaldesk.md",
+          "technical/data_policy.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "doc_signaldesk_retention",
+        "retrieved_sources": [
+          "technical/data_policy.md",
+          "product/signaldesk.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "doc_echomap_coaching",
+        "retrieved_sources": [
+          "company/brio.md",
+          "company/aster.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "vector_maildock_import",
+        "retrieved_sources": [
+          "product/signaldesk.md",
+          "product/echomap.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "hybrid_price_queue",
+        "retrieved_sources": [
+          "company/aster.md",
+          "company/aster.md"
+        ],
+        "document_recall": 0.5,
+        "full_evidence": false
+      },
+      {
+        "case_id": "hybrid_price_coaching",
+        "retrieved_sources": [
+          "company/aster.md",
+          "technical/data_policy.md"
+        ],
+        "document_recall": 0.5,
+        "full_evidence": false
+      },
+      {
+        "case_id": "doc_sql_signaldesk",
+        "retrieved_sources": [
+          "company/aster.md",
+          "technical/data_policy.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "doc_sql_echomap",
+        "retrieved_sources": [
+          "company/brio.md",
+          "product/echomap.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "doc_web_trends",
+        "retrieved_sources": [
+          "product/signaldesk.md",
+          "technical/data_policy.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "all_three_signaldesk_aurora",
+        "retrieved_sources": [
+          "company/aster.md",
+          "technical/data_policy.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      }
+    ]
+  },
+  "hybrid": {
+    "count": 11,
+    "mean_document_recall": 1.0,
+    "full_evidence_cases": 11,
+    "cases": [
+      {
+        "case_id": "doc_signaldesk_price",
+        "retrieved_sources": [
+          "company/aster.md",
+          "technical/data_policy.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "doc_signaldesk_integration",
+        "retrieved_sources": [
+          "product/signaldesk.md",
+          "product/echomap.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "doc_signaldesk_retention",
+        "retrieved_sources": [
+          "technical/data_policy.md",
+          "product/signaldesk.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "doc_echomap_coaching",
+        "retrieved_sources": [
+          "company/brio.md",
+          "product/echomap.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "vector_maildock_import",
+        "retrieved_sources": [
+          "product/echomap.md",
+          "product/signaldesk.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "hybrid_price_queue",
+        "retrieved_sources": [
+          "product/echomap.md",
+          "company/aster.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "hybrid_price_coaching",
+        "retrieved_sources": [
+          "company/brio.md",
+          "company/aster.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "doc_sql_signaldesk",
+        "retrieved_sources": [
+          "company/aster.md",
+          "technical/data_policy.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "doc_sql_echomap",
+        "retrieved_sources": [
+          "technical/data_policy.md",
+          "company/brio.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "doc_web_trends",
+        "retrieved_sources": [
+          "product/signaldesk.md",
+          "company/aster.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      },
+      {
+        "case_id": "all_three_signaldesk_aurora",
+        "retrieved_sources": [
+          "company/aster.md",
+          "technical/data_policy.md"
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true
+      }
+    ]
+  }
+}

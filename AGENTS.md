@@ -5,7 +5,7 @@ Last updated: 2026-10-04.
 ## Purpose and current state
 
 Build an evaluated business research system in small, measured phases. Week 1
-baseline, Week 2 local retrieval and RAG, and Week 3 tool-using agent are
+baseline, Week 2 RAG, and Week 3 tool-using agent are
 implemented. Week 3 was committed as `a817e9b`. Its fixed-fixture Opik
 comparison is in `experiments/results/003_comparison.json`. On 2026-09-28,
 the user reported a successful local `uv run python -m evals.smoke_tavily`
@@ -17,6 +17,14 @@ The first Week 4 slice fixes the baseline API's synchronous route and maps
 model-provider failures to stable, safe 502/503 responses across the three
 research endpoints. Before/after local measurements are in
 `experiments/004_api_reliability.md`.
+
+All active document BM25, vector, and hybrid search now runs in Weaviate.
+The local Compose setup uses Weaviate's Model2Vec vectorizer for embeddings.
+The 17-case six-way Opik comparison and its limits are in
+`experiments/007_weaviate_vectorizer_six_way.md`. Its earlier FastEmbed run
+remains historical in `experiments/006_weaviate_six_way.md`. Use
+`./evals/run_six_way_local.sh --retrieval-only` for a no-LLM retrieval check;
+omit the flag for the full paid Opik evaluation.
 
 ## Next task
 

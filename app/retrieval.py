@@ -1,37 +1,21 @@
-"""Small, reproducible local index for the Week 2 knowledge base."""
+"""Deterministic document chunks vectorized and searched in Weaviate."""
 
 from __future__ import annotations
 
 import hashlib
-import math
-import re
-from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
+from urllib.parse import urlsplit
 
-WORD = re.compile(r"[a-z0-9]+", re.IGNORECASE)
-DIMENSIONS = 512
+import weaviate
+from weaviate.auth import Auth
+from weaviate.classes.config import Configure, DataType, Property
+from weaviate.classes.data import DataObject
+from weaviate.classes.query import HybridFusion, MetadataQuery
 
+from app.config import get_settings
 
-def tokens(text: str) -> list[str]:
-    return WORD.findall(text.lower())
-
-
-def vectorize(text: str) -> dict[int, float]:
-    """Hash word and adjacent-word features into a local dense-search vector."""
-    words = tokens(text)
-    features = words + [f"{a}_{b}" for a, b in zip(words, words[1:], strict=False)]
-    counts: Counter[int] = Counter()
-    for feature in features:
-        bucket = (
-            int.from_bytes(
-                hashlib.blake2b(feature.encode(), digest_size=4).digest(), "big"
-            )
-            % DIMENSIONS
-        )
-        counts[bucket] += 1
-    norm = math.sqrt(sum(value * value for value in counts.values()))
-    return {bucket: value / norm for bucket, value in counts.items()} if norm else {}
+HYBRID_ALPHA = 0.5
 
 
 @dataclass(frozen=True)
@@ -100,58 +84,190 @@ def load_chunks(
     return chunks
 
 
-class Retriever:
-    def __init__(self, chunks: list[Chunk]):
-        self.chunks = chunks
-        self.vectors = [vectorize(chunk.text) for chunk in chunks]
-        self.term_counts = [Counter(tokens(chunk.text)) for chunk in chunks]
-        self.lengths = [sum(counts.values()) for counts in self.term_counts]
-        self.avg_length = sum(self.lengths) / len(chunks) if chunks else 0
-        self.document_frequency = Counter(
-            term for counts in self.term_counts for term in counts
+def name_for_corpus(chunks: list[Chunk], model2vec_image_tag: str) -> str:
+    """Name an immutable index from its corpus and inference image tag."""
+    identity = f"weaviate-text2vec-model2vec:{model2vec_image_tag}"
+    digest = hashlib.sha256(identity.encode())
+    for chunk in chunks:
+        for field in (
+            chunk.chunk_id,
+            chunk.document_id,
+            chunk.source,
+            chunk.title,
+            chunk.section,
+            chunk.text,
+        ):
+            digest.update(b"\0")
+            digest.update(field.encode())
+    return f"ResearchChunks{digest.hexdigest()[:12]}"
+
+
+collection_name = name_for_corpus
+
+
+def connect_weaviate():
+    """Connect to local Weaviate over HTTP or authenticated Weaviate Cloud."""
+    settings = get_settings()
+    raw = settings.weaviate_url
+    url = raw if "://" in raw else f"https://{raw}"
+    parsed = urlsplit(url)
+    if not parsed.hostname:
+        raise ValueError("WEAVIATE_URL must contain a host")
+    credentials = (
+        Auth.api_key(settings.weaviate_api_key) if settings.weaviate_api_key else None
+    )
+    if parsed.scheme == "https":
+        if credentials is None:
+            raise ValueError("WEAVIATE_API_KEY is required for Weaviate Cloud")
+        return weaviate.connect_to_weaviate_cloud(
+            cluster_url=url, auth_credentials=credentials
         )
+    if parsed.scheme == "http":
+        return weaviate.connect_to_local(
+            host=parsed.hostname,
+            port=parsed.port or 8080,
+            grpc_port=settings.weaviate_grpc_port,
+            auth_credentials=credentials,
+        )
+    raise ValueError("WEAVIATE_URL must use http or https")
+
+
+class Retriever:
+    """A Weaviate-backed document index with three native search modes."""
+
+    def __init__(
+        self,
+        chunks: list[Chunk],
+        *,
+        client=None,
+        collection_name: str | None = None,
+    ):
+        if not chunks:
+            raise ValueError("No knowledge base document chunks to index")
+        settings = get_settings()
+        self.chunks = chunks
+        self.collection_name = collection_name or name_for_corpus(
+            chunks, settings.model2vec_image_tag
+        )
+        self._owns_client = client is None
+        self.client = client or connect_weaviate()
+        try:
+            self.collection = self._ensure_collection()
+        except BaseException:
+            if self._owns_client:
+                self.client.close()
+            raise
+
+    def _ensure_collection(self):
+        created = False
+        try:
+            existing = self.client.collections.exists(self.collection_name)
+            if existing:
+                collection = self.client.collections.get(self.collection_name)
+            else:
+                collection = self.client.collections.create(
+                    name=self.collection_name,
+                    vector_config=Configure.Vectors.text2vec_model2vec(
+                        source_properties=["text"], vectorize_collection_name=False
+                    ),
+                    properties=[
+                        Property(
+                            name=name, data_type=DataType.TEXT, index_searchable=False
+                        )
+                        for name in (
+                            "chunk_id",
+                            "document_id",
+                            "source",
+                            "title",
+                            "section",
+                        )
+                    ]
+                    + [Property(name="text", data_type=DataType.TEXT)],
+                )
+                created = True
+                objects = [
+                    DataObject(properties=chunk.__dict__) for chunk in self.chunks
+                ]
+                result = collection.data.insert_many(objects)
+                if getattr(result, "has_errors", False) or getattr(
+                    result, "errors", None
+                ):
+                    raise RuntimeError(
+                        f"Weaviate import failed for collection {self.collection_name}"
+                    )
+            count = collection.aggregate.over_all(total_count=True).total_count
+            if count != len(self.chunks):
+                raise ValueError(
+                    f"Weaviate collection {self.collection_name} is incomplete: "
+                    f"expected {len(self.chunks)} chunks, found {count}"
+                )
+            if existing:
+                stored = collection.query.fetch_objects(
+                    limit=len(self.chunks),
+                    return_properties=list(Chunk.__dataclass_fields__),
+                ).objects
+                actual = {
+                    item.properties["chunk_id"]: item.properties for item in stored
+                }
+                expected = {chunk.chunk_id: chunk.__dict__ for chunk in self.chunks}
+                if actual != expected:
+                    raise ValueError(
+                        f"Weaviate collection {self.collection_name} "
+                        "has different content"
+                    )
+            return collection
+        except BaseException as exc:
+            if created:
+                try:
+                    self.client.collections.delete(self.collection_name)
+                except Exception as cleanup_error:
+                    exc.add_note(
+                        f"Failed to remove incomplete collection: {cleanup_error}"
+                    )
+            raise
 
     def search(self, query: str, *, k: int = 4, method: str = "hybrid") -> list[Hit]:
         if method not in {"vector", "bm25", "hybrid"}:
             raise ValueError(f"Unknown retrieval method: {method}")
-        if not self.chunks or not tokens(query) or k <= 0:
+        if not query.strip() or k <= 0:
             return []
-        query_terms = set(tokens(query))
-        if not query_terms.intersection(self.document_frequency):
-            return []
-        query_vector = vectorize(query)
-        vector_scores = [
-            sum(
-                weight * vector.get(bucket, 0)
-                for bucket, weight in query_vector.items()
+        if method == "bm25":
+            response = self.collection.query.bm25(
+                query=query,
+                query_properties=["text"],
+                limit=k,
+                return_metadata=MetadataQuery(score=True),
             )
-            for vector in self.vectors
-        ]
-        bm25_scores = []
-        for counts, length in zip(self.term_counts, self.lengths, strict=True):
-            score = 0.0
-            for term in query_terms:
-                frequency = counts[term]
-                if not frequency:
-                    continue
-                df = self.document_frequency[term]
-                idf = math.log(1 + (len(self.chunks) - df + 0.5) / (df + 0.5))
-                score += (
-                    idf
-                    * frequency
-                    * 2.2
-                    / (frequency + 1.2 * (0.25 + 0.75 * length / self.avg_length))
-                )
-            bm25_scores.append(score)
-        if method == "hybrid":
-            # Reciprocal rank fusion avoids comparing incompatible raw score scales.
-            scores = [0.0] * len(self.chunks)
-            for ranking in (vector_scores, bm25_scores):
-                ranked = sorted(range(len(ranking)), key=lambda i: (-ranking[i], i))
-                for rank, index in enumerate(ranked, start=1):
-                    if ranking[index] > 0:
-                        scores[index] += 1 / (60 + rank)
+        elif method == "vector":
+            response = self.collection.query.near_text(
+                query=query,
+                limit=k,
+                return_metadata=MetadataQuery(distance=True),
+            )
         else:
-            scores = vector_scores if method == "vector" else bm25_scores
-        ranked = sorted(range(len(scores)), key=lambda i: (-scores[i], i))
-        return [Hit(self.chunks[i], scores[i]) for i in ranked if scores[i] > 0][:k]
+            response = self.collection.query.hybrid(
+                query=query,
+                alpha=HYBRID_ALPHA,
+                fusion_type=HybridFusion.RELATIVE_SCORE,
+                query_properties=["text"],
+                limit=k,
+                return_metadata=MetadataQuery(score=True),
+            )
+        hits = []
+        for item in response.objects:
+            chunk = Chunk(
+                **{
+                    field: item.properties[field]
+                    for field in Chunk.__dataclass_fields__
+                }
+            )
+            score = getattr(item.metadata, "score", None)
+            if score is None:
+                distance = getattr(item.metadata, "distance", None)
+                score = -float(distance) if distance is not None else 0.0
+            hits.append(Hit(chunk=chunk, score=float(score)))
+        return hits
+
+    def close(self) -> None:
+        if self._owns_client:
+            self.client.close()

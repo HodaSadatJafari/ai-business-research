@@ -1,0 +1,10 @@
+{
+  "aurora_pulseboard": {
+    "source_id": "web:aurora-pulseboard",
+    "title": "Aurora Support announcement (fixture)",
+    "section": "Announcement",
+    "path": "https://example.com/aurora-pulseboard",
+    "text": "On 2026-09-01, Aurora Support announced PulseBoard, a real-time support analytics dashboard.",
+    "source_type": "web"
+  }
+}

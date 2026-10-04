@@ -220,3 +220,4 @@ __marimo__/
 .vscode
 # Local evaluation output
 week2_answer_results.json
+:memory:.ses

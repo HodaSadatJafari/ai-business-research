@@ -20,6 +20,10 @@ class Settings(BaseSettings):
     knowledge_base_dir: Path = Path(__file__).resolve().parents[1] / "knowledge_base"
     retrieval_k: int = 4
     retrieval_method: str = "bm25"
+    model2vec_image_tag: str = "minishlab-potion-base-8M"
+    weaviate_url: str = "http://localhost:18080"
+    weaviate_api_key: str | None = None
+    weaviate_grpc_port: int = 15051
     agent_model: str | None = None
     tavily_api_key: str | None = None
 

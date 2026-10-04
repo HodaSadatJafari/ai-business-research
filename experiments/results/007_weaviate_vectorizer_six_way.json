@@ -1,0 +1,3484 @@
+{
+  "config": {
+    "dataset_name": "business-research-weaviate-six-way-ef9a02f4a5",
+    "dataset_id": "01a10627-6356-7032-830c-901dbc6453b9",
+    "dataset_version": "v1",
+    "source_hash": "ef9a02f4a5004aaa77b447507530eb9a841a4f766ba2af59d3e51f900e292ca5",
+    "prompt_hash": "2ba9bf59d89e",
+    "answer_model": "gpt-5.6-luna",
+    "embedding_model": "minishlab/potion-base-8M",
+    "embedding_execution": "weaviate_text2vec_model2vec",
+    "weaviate_collection": "ResearchChunks1d2b30f77e28",
+    "weaviate_server_version": "1.34.0",
+    "weaviate_url": "http://127.0.0.1:18080",
+    "hybrid_alpha": 0.5,
+    "retrieval_k": 2,
+    "web_mode": "fixed_fixture",
+    "embedding_index_setup_seconds": 1.674,
+    "embedding_provider_tokens": 0
+  },
+  "retrieval_preflight": {
+    "bm25": {
+      "count": 11,
+      "mean_document_recall": 0.818,
+      "full_evidence_cases": 8,
+      "mean_document_fact_recall": 0.727,
+      "full_fact_evidence_cases": 7,
+      "cases": [
+        {
+          "case_id": "doc_signaldesk_price",
+          "retrieved_sources": [
+            "technical/data_policy.md",
+            "company/aster.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "b5d0ac3f6f26:10:0",
+              "source": "technical/data_policy.md",
+              "section": "SignalDesk"
+            },
+            {
+              "chunk_id": "f4f2964f3f14:1:0",
+              "source": "company/aster.md",
+              "section": "Pricing"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "doc_signaldesk_integration",
+          "retrieved_sources": [
+            "product/signaldesk.md",
+            "product/echomap.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "8f2e3d592202:8:0",
+              "source": "product/signaldesk.md",
+              "section": "Features"
+            },
+            {
+              "chunk_id": "8e0bfafed316:7:0",
+              "source": "product/echomap.md",
+              "section": "Limits"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "doc_signaldesk_retention",
+          "retrieved_sources": [
+            "technical/data_policy.md",
+            "company/aster.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "b5d0ac3f6f26:10:0",
+              "source": "technical/data_policy.md",
+              "section": "SignalDesk"
+            },
+            {
+              "chunk_id": "f4f2964f3f14:1:0",
+              "source": "company/aster.md",
+              "section": "Pricing"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "doc_echomap_coaching",
+          "retrieved_sources": [
+            "company/brio.md",
+            "product/echomap.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "8959ac9c39b0:2:0",
+              "source": "company/brio.md",
+              "section": "Positioning"
+            },
+            {
+              "chunk_id": "8e0bfafed316:6:0",
+              "source": "product/echomap.md",
+              "section": "Features"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "vector_maildock_import",
+          "retrieved_sources": [
+            "market/customer_needs.md",
+            "product/echomap.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "5390e321c5f0:4:0",
+              "source": "market/customer_needs.md",
+              "section": "Interview Findings"
+            },
+            {
+              "chunk_id": "8e0bfafed316:7:0",
+              "source": "product/echomap.md",
+              "section": "Limits"
+            }
+          ],
+          "document_recall": 0.0,
+          "full_evidence": false,
+          "document_fact_recall": 0.0,
+          "full_fact_evidence": false
+        },
+        {
+          "case_id": "hybrid_price_queue",
+          "retrieved_sources": [
+            "product/echomap.md",
+            "company/brio.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "8e0bfafed316:6:0",
+              "source": "product/echomap.md",
+              "section": "Features"
+            },
+            {
+              "chunk_id": "8959ac9c39b0:2:0",
+              "source": "company/brio.md",
+              "section": "Positioning"
+            }
+          ],
+          "document_recall": 0.5,
+          "full_evidence": false,
+          "document_fact_recall": 0.5,
+          "full_fact_evidence": false
+        },
+        {
+          "case_id": "hybrid_price_coaching",
+          "retrieved_sources": [
+            "company/brio.md",
+            "product/echomap.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "8959ac9c39b0:2:0",
+              "source": "company/brio.md",
+              "section": "Positioning"
+            },
+            {
+              "chunk_id": "8e0bfafed316:6:0",
+              "source": "product/echomap.md",
+              "section": "Features"
+            }
+          ],
+          "document_recall": 0.5,
+          "full_evidence": false,
+          "document_fact_recall": 0.5,
+          "full_fact_evidence": false
+        },
+        {
+          "case_id": "doc_sql_signaldesk",
+          "retrieved_sources": [
+            "technical/data_policy.md",
+            "company/aster.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "b5d0ac3f6f26:10:0",
+              "source": "technical/data_policy.md",
+              "section": "SignalDesk"
+            },
+            {
+              "chunk_id": "f4f2964f3f14:1:0",
+              "source": "company/aster.md",
+              "section": "Pricing"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "doc_sql_echomap",
+          "retrieved_sources": [
+            "technical/data_policy.md",
+            "company/brio.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "b5d0ac3f6f26:11:0",
+              "source": "technical/data_policy.md",
+              "section": "EchoMap"
+            },
+            {
+              "chunk_id": "8959ac9c39b0:2:0",
+              "source": "company/brio.md",
+              "section": "Positioning"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 0.0,
+          "full_fact_evidence": false
+        },
+        {
+          "case_id": "doc_web_trends",
+          "retrieved_sources": [
+            "product/signaldesk.md",
+            "product/echomap.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "8f2e3d592202:8:0",
+              "source": "product/signaldesk.md",
+              "section": "Features"
+            },
+            {
+              "chunk_id": "8e0bfafed316:7:0",
+              "source": "product/echomap.md",
+              "section": "Limits"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "all_three_signaldesk_aurora",
+          "retrieved_sources": [
+            "technical/data_policy.md",
+            "company/aster.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "b5d0ac3f6f26:10:0",
+              "source": "technical/data_policy.md",
+              "section": "SignalDesk"
+            },
+            {
+              "chunk_id": "f4f2964f3f14:1:0",
+              "source": "company/aster.md",
+              "section": "Pricing"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        }
+      ]
+    },
+    "vector": {
+      "count": 11,
+      "mean_document_recall": 0.955,
+      "full_evidence_cases": 10,
+      "mean_document_fact_recall": 0.909,
+      "full_fact_evidence_cases": 9,
+      "cases": [
+        {
+          "case_id": "doc_signaldesk_price",
+          "retrieved_sources": [
+            "company/aster.md",
+            "company/aster.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "f4f2964f3f14:1:0",
+              "source": "company/aster.md",
+              "section": "Pricing"
+            },
+            {
+              "chunk_id": "f4f2964f3f14:0:0",
+              "source": "company/aster.md",
+              "section": "Positioning"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "doc_signaldesk_integration",
+          "retrieved_sources": [
+            "product/signaldesk.md",
+            "product/echomap.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "8f2e3d592202:8:0",
+              "source": "product/signaldesk.md",
+              "section": "Features"
+            },
+            {
+              "chunk_id": "8e0bfafed316:7:0",
+              "source": "product/echomap.md",
+              "section": "Limits"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "doc_signaldesk_retention",
+          "retrieved_sources": [
+            "technical/data_policy.md",
+            "product/signaldesk.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "b5d0ac3f6f26:10:0",
+              "source": "technical/data_policy.md",
+              "section": "SignalDesk"
+            },
+            {
+              "chunk_id": "8f2e3d592202:8:0",
+              "source": "product/signaldesk.md",
+              "section": "Features"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "doc_echomap_coaching",
+          "retrieved_sources": [
+            "company/brio.md",
+            "product/echomap.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "8959ac9c39b0:2:0",
+              "source": "company/brio.md",
+              "section": "Positioning"
+            },
+            {
+              "chunk_id": "8e0bfafed316:6:0",
+              "source": "product/echomap.md",
+              "section": "Features"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "vector_maildock_import",
+          "retrieved_sources": [
+            "product/signaldesk.md",
+            "technical/data_policy.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "8f2e3d592202:8:0",
+              "source": "product/signaldesk.md",
+              "section": "Features"
+            },
+            {
+              "chunk_id": "b5d0ac3f6f26:10:0",
+              "source": "technical/data_policy.md",
+              "section": "SignalDesk"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "hybrid_price_queue",
+          "retrieved_sources": [
+            "company/aster.md",
+            "product/echomap.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "f4f2964f3f14:0:0",
+              "source": "company/aster.md",
+              "section": "Positioning"
+            },
+            {
+              "chunk_id": "8e0bfafed316:6:0",
+              "source": "product/echomap.md",
+              "section": "Features"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 0.5,
+          "full_fact_evidence": false
+        },
+        {
+          "case_id": "hybrid_price_coaching",
+          "retrieved_sources": [
+            "company/aster.md",
+            "company/aster.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "f4f2964f3f14:1:0",
+              "source": "company/aster.md",
+              "section": "Pricing"
+            },
+            {
+              "chunk_id": "f4f2964f3f14:0:0",
+              "source": "company/aster.md",
+              "section": "Positioning"
+            }
+          ],
+          "document_recall": 0.5,
+          "full_evidence": false,
+          "document_fact_recall": 0.5,
+          "full_fact_evidence": false
+        },
+        {
+          "case_id": "doc_sql_signaldesk",
+          "retrieved_sources": [
+            "company/aster.md",
+            "company/aster.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "f4f2964f3f14:1:0",
+              "source": "company/aster.md",
+              "section": "Pricing"
+            },
+            {
+              "chunk_id": "f4f2964f3f14:0:0",
+              "source": "company/aster.md",
+              "section": "Positioning"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "doc_sql_echomap",
+          "retrieved_sources": [
+            "company/brio.md",
+            "technical/data_policy.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "8959ac9c39b0:3:0",
+              "source": "company/brio.md",
+              "section": "Pricing"
+            },
+            {
+              "chunk_id": "b5d0ac3f6f26:11:0",
+              "source": "technical/data_policy.md",
+              "section": "EchoMap"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "doc_web_trends",
+          "retrieved_sources": [
+            "product/signaldesk.md",
+            "company/aster.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "8f2e3d592202:8:0",
+              "source": "product/signaldesk.md",
+              "section": "Features"
+            },
+            {
+              "chunk_id": "f4f2964f3f14:0:0",
+              "source": "company/aster.md",
+              "section": "Positioning"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "all_three_signaldesk_aurora",
+          "retrieved_sources": [
+            "company/aster.md",
+            "company/aster.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "f4f2964f3f14:1:0",
+              "source": "company/aster.md",
+              "section": "Pricing"
+            },
+            {
+              "chunk_id": "f4f2964f3f14:0:0",
+              "source": "company/aster.md",
+              "section": "Positioning"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        }
+      ]
+    },
+    "hybrid": {
+      "count": 11,
+      "mean_document_recall": 1.0,
+      "full_evidence_cases": 11,
+      "mean_document_fact_recall": 0.864,
+      "full_fact_evidence_cases": 9,
+      "cases": [
+        {
+          "case_id": "doc_signaldesk_price",
+          "retrieved_sources": [
+            "company/aster.md",
+            "technical/data_policy.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "f4f2964f3f14:1:0",
+              "source": "company/aster.md",
+              "section": "Pricing"
+            },
+            {
+              "chunk_id": "b5d0ac3f6f26:10:0",
+              "source": "technical/data_policy.md",
+              "section": "SignalDesk"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "doc_signaldesk_integration",
+          "retrieved_sources": [
+            "product/signaldesk.md",
+            "product/echomap.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "8f2e3d592202:8:0",
+              "source": "product/signaldesk.md",
+              "section": "Features"
+            },
+            {
+              "chunk_id": "8e0bfafed316:7:0",
+              "source": "product/echomap.md",
+              "section": "Limits"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "doc_signaldesk_retention",
+          "retrieved_sources": [
+            "technical/data_policy.md",
+            "company/aster.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "b5d0ac3f6f26:10:0",
+              "source": "technical/data_policy.md",
+              "section": "SignalDesk"
+            },
+            {
+              "chunk_id": "f4f2964f3f14:1:0",
+              "source": "company/aster.md",
+              "section": "Pricing"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "doc_echomap_coaching",
+          "retrieved_sources": [
+            "company/brio.md",
+            "product/echomap.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "8959ac9c39b0:2:0",
+              "source": "company/brio.md",
+              "section": "Positioning"
+            },
+            {
+              "chunk_id": "8e0bfafed316:6:0",
+              "source": "product/echomap.md",
+              "section": "Features"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "vector_maildock_import",
+          "retrieved_sources": [
+            "market/customer_needs.md",
+            "product/signaldesk.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "5390e321c5f0:4:0",
+              "source": "market/customer_needs.md",
+              "section": "Interview Findings"
+            },
+            {
+              "chunk_id": "8f2e3d592202:8:0",
+              "source": "product/signaldesk.md",
+              "section": "Features"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "hybrid_price_queue",
+          "retrieved_sources": [
+            "product/echomap.md",
+            "company/aster.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "8e0bfafed316:6:0",
+              "source": "product/echomap.md",
+              "section": "Features"
+            },
+            {
+              "chunk_id": "f4f2964f3f14:0:0",
+              "source": "company/aster.md",
+              "section": "Positioning"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 0.5,
+          "full_fact_evidence": false
+        },
+        {
+          "case_id": "hybrid_price_coaching",
+          "retrieved_sources": [
+            "company/brio.md",
+            "company/aster.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "8959ac9c39b0:2:0",
+              "source": "company/brio.md",
+              "section": "Positioning"
+            },
+            {
+              "chunk_id": "f4f2964f3f14:1:0",
+              "source": "company/aster.md",
+              "section": "Pricing"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "doc_sql_signaldesk",
+          "retrieved_sources": [
+            "company/aster.md",
+            "technical/data_policy.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "f4f2964f3f14:1:0",
+              "source": "company/aster.md",
+              "section": "Pricing"
+            },
+            {
+              "chunk_id": "b5d0ac3f6f26:10:0",
+              "source": "technical/data_policy.md",
+              "section": "SignalDesk"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "doc_sql_echomap",
+          "retrieved_sources": [
+            "technical/data_policy.md",
+            "company/brio.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "b5d0ac3f6f26:11:0",
+              "source": "technical/data_policy.md",
+              "section": "EchoMap"
+            },
+            {
+              "chunk_id": "8959ac9c39b0:2:0",
+              "source": "company/brio.md",
+              "section": "Positioning"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 0.0,
+          "full_fact_evidence": false
+        },
+        {
+          "case_id": "doc_web_trends",
+          "retrieved_sources": [
+            "product/signaldesk.md",
+            "company/aster.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "8f2e3d592202:8:0",
+              "source": "product/signaldesk.md",
+              "section": "Features"
+            },
+            {
+              "chunk_id": "f4f2964f3f14:0:0",
+              "source": "company/aster.md",
+              "section": "Positioning"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        },
+        {
+          "case_id": "all_three_signaldesk_aurora",
+          "retrieved_sources": [
+            "company/aster.md",
+            "technical/data_policy.md"
+          ],
+          "retrieved_chunks": [
+            {
+              "chunk_id": "f4f2964f3f14:1:0",
+              "source": "company/aster.md",
+              "section": "Pricing"
+            },
+            {
+              "chunk_id": "b5d0ac3f6f26:10:0",
+              "source": "technical/data_policy.md",
+              "section": "SignalDesk"
+            }
+          ],
+          "document_recall": 1.0,
+          "full_evidence": true,
+          "document_fact_recall": 1.0,
+          "full_fact_evidence": true
+        }
+      ]
+    }
+  },
+  "experiments": {
+    "pure_llm": {
+      "experiment_id": "01a10682-295e-7fc2-951c-04b378c32ed1",
+      "experiment_url": "https://www.comet.com/opik/hoda/experiments/01a10627-6356-7032-830c-901dbc6453b9/compare?experiments=%5B%2201a10682-295e-7fc2-951c-04b378c32ed1%22%5D",
+      "summary": {
+        "overall": {
+          "fact_coverage": 0.059,
+          "task_success": 0.059,
+          "grounded_fact_coverage": 0.059,
+          "citation_integrity": 1.0,
+          "count": 17,
+          "mean_latency_seconds": 3.42,
+          "prompt_tokens": 8256,
+          "completion_tokens": 1819,
+          "mean_document_recall": 0.0
+        },
+        "by_category": {
+          "document": {
+            "task_success": 0.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "count": 4,
+            "mean_latency_seconds": 2.042,
+            "prompt_tokens": 1924,
+            "completion_tokens": 394,
+            "mean_document_recall": 0.0
+          },
+          "document+sql": {
+            "fact_coverage": 0.0,
+            "task_success": 0.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.0,
+            "count": 2,
+            "mean_latency_seconds": 1.724,
+            "prompt_tokens": 976,
+            "completion_tokens": 245,
+            "mean_document_recall": 0.0
+          },
+          "document+web": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0,
+            "count": 1,
+            "mean_latency_seconds": 2.209,
+            "prompt_tokens": 486,
+            "completion_tokens": 117,
+            "mean_document_recall": 0.0
+          },
+          "document+web+sql": {
+            "fact_coverage": 0.0,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 1.811,
+            "prompt_tokens": 497,
+            "completion_tokens": 141,
+            "mean_document_recall": 0.0
+          },
+          "document_hybrid_diagnostic": {
+            "grounded_fact_coverage": 0.0,
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "task_success": 0.0,
+            "count": 2,
+            "mean_latency_seconds": 7.331,
+            "prompt_tokens": 982,
+            "completion_tokens": 254,
+            "mean_document_recall": 0.0
+          },
+          "document_vector_diagnostic": {
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0,
+            "count": 1,
+            "mean_latency_seconds": 10.295,
+            "prompt_tokens": 480,
+            "completion_tokens": 106,
+            "mean_document_recall": 0.0
+          },
+          "insufficient": {
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0,
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 2.48,
+            "prompt_tokens": 482,
+            "completion_tokens": 66,
+            "mean_document_recall": null
+          },
+          "sql": {
+            "grounded_fact_coverage": 0.0,
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "task_success": 0.0,
+            "count": 2,
+            "mean_latency_seconds": 2.428,
+            "prompt_tokens": 973,
+            "completion_tokens": 155,
+            "mean_document_recall": null
+          },
+          "web": {
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0,
+            "count": 2,
+            "mean_latency_seconds": 3.103,
+            "prompt_tokens": 965,
+            "completion_tokens": 218,
+            "mean_document_recall": null
+          },
+          "web+sql": {
+            "citation_integrity": 1.0,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "fact_coverage": 0.0,
+            "count": 1,
+            "mean_latency_seconds": 4.003,
+            "prompt_tokens": 491,
+            "completion_tokens": 123,
+            "mean_document_recall": null
+          }
+        }
+      },
+      "cases": [
+        {
+          "case_id": "all_three_signaldesk_aurora",
+          "category": "document+web+sql",
+          "scores": {
+            "fact_coverage": 0.0,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 1.811,
+          "prompt_tokens": 497,
+          "completion_tokens": 141,
+          "document_recall": 0.0,
+          "summary": "The supplied evidence does not establish any of the requested facts.",
+          "limitations": [
+            "No evidence was supplied, so SignalDesk Team's monthly price, Aurora Support's September announcement, and SignalDesk's July 2026 ticket count cannot be determined."
+          ],
+          "trace_id": "01a10682-3a4d-71c8-94bf-10229b82b70c"
+        },
+        {
+          "case_id": "doc_echomap_coaching",
+          "category": "document",
+          "scores": {
+            "task_success": 0.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0,
+            "grounded_fact_coverage": 0.0
+          },
+          "latency_seconds": 3.062,
+          "prompt_tokens": 479,
+          "completion_tokens": 103,
+          "document_recall": 0.0,
+          "summary": "The available evidence does not identify a product that emphasizes live agent coaching.",
+          "limitations": [
+            "No source evidence was supplied, so the product cannot be determined."
+          ],
+          "trace_id": "01a10682-f431-73f3-9640-e64174e25fca"
+        },
+        {
+          "case_id": "doc_signaldesk_integration",
+          "category": "document",
+          "scores": {
+            "grounded_fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "task_success": 0.0,
+            "fact_coverage": 0.0
+          },
+          "latency_seconds": 1.355,
+          "prompt_tokens": 481,
+          "completion_tokens": 106,
+          "document_recall": 0.0,
+          "summary": "The supplied evidence does not establish which ticket system SignalDesk can import from.",
+          "limitations": [
+            "No evidence was supplied, so the ticket system cannot be determined."
+          ],
+          "trace_id": "01a10683-07fd-722d-9b95-2290b3372394"
+        },
+        {
+          "case_id": "doc_signaldesk_price",
+          "category": "document",
+          "scores": {
+            "grounded_fact_coverage": 0.0,
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "task_success": 0.0
+          },
+          "latency_seconds": 1.762,
+          "prompt_tokens": 482,
+          "completion_tokens": 71,
+          "document_recall": 0.0,
+          "summary": "The monthly cost of SignalDesk Team cannot be determined from the supplied evidence.",
+          "limitations": [
+            "No evidence was supplied establishing the monthly price of SignalDesk Team."
+          ],
+          "trace_id": "01a10683-0d50-7ae3-8699-c9a435005159"
+        },
+        {
+          "case_id": "doc_signaldesk_retention",
+          "category": "document",
+          "scores": {
+            "task_success": 0.0,
+            "fact_coverage": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 1.991,
+          "prompt_tokens": 482,
+          "completion_tokens": 114,
+          "document_recall": 0.0,
+          "summary": "The retention period for imported tickets in SignalDesk Team cannot be established from the supplied evidence.",
+          "limitations": [
+            "No evidence was supplied about SignalDesk Team\u2019s retention period for imported tickets."
+          ],
+          "trace_id": "01a10683-0030-719c-9691-8bb7126a428e"
+        },
+        {
+          "case_id": "doc_sql_echomap",
+          "category": "document+sql",
+          "scores": {
+            "fact_coverage": 0.0,
+            "task_success": 0.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.0
+          },
+          "latency_seconds": 1.501,
+          "prompt_tokens": 488,
+          "completion_tokens": 128,
+          "document_recall": 0.0,
+          "summary": "The supplied evidence does not establish EchoMap's starting monthly price or its August 2026 ticket count.",
+          "limitations": [
+            "No evidence was supplied, so neither the starting monthly price nor the August 2026 ticket count can be determined."
+          ],
+          "trace_id": "01a10682-59bf-7777-97e0-72eb8e060d99"
+        },
+        {
+          "case_id": "doc_sql_signaldesk",
+          "category": "document+sql",
+          "scores": {
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0
+          },
+          "latency_seconds": 1.947,
+          "prompt_tokens": 488,
+          "completion_tokens": 117,
+          "document_recall": 0.0,
+          "summary": "The comparison cannot be determined from the supplied evidence.",
+          "limitations": [
+            "No evidence was supplied for SignalDesk Team's monthly price or its July 2026 ticket count."
+          ],
+          "trace_id": "01a10682-5fa3-7b1e-b35b-db48cb655a99"
+        },
+        {
+          "case_id": "doc_web_trends",
+          "category": "document+web",
+          "scores": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0
+          },
+          "latency_seconds": 2.209,
+          "prompt_tokens": 486,
+          "completion_tokens": 117,
+          "document_recall": 0.0,
+          "summary": "The supplied evidence does not contain information about SignalDesk trends or an Aurora Support announcement.",
+          "limitations": [
+            "No source material was supplied, so the trends shown by SignalDesk and the announcement made by Aurora Support cannot be established."
+          ],
+          "trace_id": "01a10682-5114-7354-98f0-c8aeea02fda7"
+        },
+        {
+          "case_id": "hybrid_price_coaching",
+          "category": "document_hybrid_diagnostic",
+          "scores": {
+            "grounded_fact_coverage": 0.0,
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "task_success": 0.0
+          },
+          "latency_seconds": 13.027,
+          "prompt_tokens": 489,
+          "completion_tokens": 129,
+          "document_recall": 0.0,
+          "summary": "The supplied evidence does not establish the monthly price of SignalDesk Team or which product emphasizes live agent coaching.",
+          "limitations": [
+            "No evidence was supplied, so the SignalDesk Team monthly price and the product emphasizing live agent coaching cannot be determined."
+          ],
+          "trace_id": "01a10682-929e-7893-9f97-8e311818b409"
+        },
+        {
+          "case_id": "hybrid_price_queue",
+          "category": "document_hybrid_diagnostic",
+          "scores": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0
+          },
+          "latency_seconds": 1.635,
+          "prompt_tokens": 493,
+          "completion_tokens": 125,
+          "document_recall": 0.0,
+          "summary": "The supplied evidence does not establish SignalDesk Team's monthly price or identify the EchoMap dashboard that monitors the queue in real time.",
+          "limitations": [
+            "No source evidence was supplied, so these details cannot be verified."
+          ],
+          "trace_id": "01a10682-c589-7ddd-a995-d6dbf5049e6a"
+        },
+        {
+          "case_id": "insufficient_orion_price",
+          "category": "insufficient",
+          "scores": {
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0,
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 2.48,
+          "prompt_tokens": 482,
+          "completion_tokens": 66,
+          "document_recall": null,
+          "summary": "The exact price cannot be determined from the supplied evidence.",
+          "limitations": [
+            "No evidence was supplied establishing the price of Orion Support Enterprise."
+          ],
+          "trace_id": "01a10682-3090-7e12-a545-2729faef0ace"
+        },
+        {
+          "case_id": "sql_echomap_august_response",
+          "category": "sql",
+          "scores": {
+            "grounded_fact_coverage": 0.0,
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "task_success": 0.0
+          },
+          "latency_seconds": 3.335,
+          "prompt_tokens": 487,
+          "completion_tokens": 82,
+          "document_recall": null,
+          "summary": "The supplied evidence does not establish EchoMap's average first response time in August 2026.",
+          "limitations": [
+            "No evidence was supplied, so the average first response time cannot be determined."
+          ],
+          "trace_id": "01a10682-6746-7a40-88e9-2f6259389f7a"
+        },
+        {
+          "case_id": "sql_signaldesk_july_tickets",
+          "category": "sql",
+          "scores": {
+            "grounded_fact_coverage": 0.0,
+            "fact_coverage": 0.0,
+            "task_success": 0.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 1.52,
+          "prompt_tokens": 486,
+          "completion_tokens": 73,
+          "document_recall": null,
+          "summary": "The number of support tickets SignalDesk had in July 2026 cannot be determined from the supplied evidence.",
+          "limitations": [
+            "No evidence was supplied."
+          ],
+          "trace_id": "01a10682-7456-7023-b48a-0424392a7dde"
+        },
+        {
+          "case_id": "vector_maildock_import",
+          "category": "document_vector_diagnostic",
+          "scores": {
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0
+          },
+          "latency_seconds": 10.295,
+          "prompt_tokens": 480,
+          "completion_tokens": 106,
+          "document_recall": 0.0,
+          "summary": "The supplied evidence does not identify which product imports tickets from MailDock.",
+          "limitations": [
+            "No evidence was supplied, so the product cannot be determined."
+          ],
+          "trace_id": "01a10682-cbf3-7c20-948c-4d7a3f486eb7"
+        },
+        {
+          "case_id": "web_aurora_date",
+          "category": "web",
+          "scores": {
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0
+          },
+          "latency_seconds": 3.956,
+          "prompt_tokens": 482,
+          "completion_tokens": 101,
+          "document_recall": null,
+          "summary": "The announcement date cannot be determined from the supplied evidence.",
+          "limitations": [
+            "No evidence was supplied, and the announcement date cannot be established with certainty from the available information."
+          ],
+          "trace_id": "01a10682-7a4e-7e72-a1f0-5162029e6a87"
+        },
+        {
+          "case_id": "web_aurora_product",
+          "category": "web",
+          "scores": {
+            "fact_coverage": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 2.249,
+          "prompt_tokens": 483,
+          "completion_tokens": 117,
+          "document_recall": null,
+          "summary": "The supplied evidence does not establish what Aurora Support announced in September 2026.",
+          "limitations": [
+            "No evidence was supplied, and the announcement cannot be determined reliably from the available information."
+          ],
+          "trace_id": "01a10682-89cb-7c86-b193-0b6fef3dcb98"
+        },
+        {
+          "case_id": "web_sql_aurora_signaldesk",
+          "category": "web+sql",
+          "scores": {
+            "citation_integrity": 1.0,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "fact_coverage": 0.0
+          },
+          "latency_seconds": 4.003,
+          "prompt_tokens": 491,
+          "completion_tokens": 123,
+          "document_recall": null,
+          "summary": "The supplied evidence does not establish what Aurora Support announced or how many July 2026 tickets SignalDesk had.",
+          "limitations": [
+            "No evidence was supplied, so neither the announcement nor the ticket count can be determined."
+          ],
+          "trace_id": "01a10682-4169-7384-9f18-a76f074a7119"
+        }
+      ]
+    },
+    "bm25": {
+      "experiment_id": "01a10683-2c2e-70a4-8425-9267721b4568",
+      "experiment_url": "https://www.comet.com/opik/hoda/experiments/01a10627-6356-7032-830c-901dbc6453b9/compare?experiments=%5B%2201a10683-2c2e-70a4-8425-9267721b4568%22%5D",
+      "summary": {
+        "overall": {
+          "grounded_fact_coverage": 0.431,
+          "task_success": 0.294,
+          "fact_coverage": 0.431,
+          "citation_integrity": 1.0,
+          "count": 17,
+          "mean_latency_seconds": 2.621,
+          "prompt_tokens": 9972,
+          "completion_tokens": 3940,
+          "mean_document_recall": 0.818
+        },
+        "by_category": {
+          "document": {
+            "grounded_fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "task_success": 1.0,
+            "fact_coverage": 1.0,
+            "count": 4,
+            "mean_latency_seconds": 2.667,
+            "prompt_tokens": 2309,
+            "completion_tokens": 833,
+            "mean_document_recall": 1.0
+          },
+          "document+sql": {
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.25,
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.25,
+            "count": 2,
+            "mean_latency_seconds": 2.319,
+            "prompt_tokens": 1161,
+            "completion_tokens": 474,
+            "mean_document_recall": 1.0
+          },
+          "document+web": {
+            "grounded_fact_coverage": 0.5,
+            "citation_integrity": 1.0,
+            "task_success": 0.0,
+            "fact_coverage": 0.5,
+            "count": 1,
+            "mean_latency_seconds": 2.401,
+            "prompt_tokens": 590,
+            "completion_tokens": 294,
+            "mean_document_recall": 1.0
+          },
+          "document+web+sql": {
+            "grounded_fact_coverage": 0.333,
+            "task_success": 0.0,
+            "fact_coverage": 0.333,
+            "citation_integrity": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 2.722,
+            "prompt_tokens": 593,
+            "completion_tokens": 302,
+            "mean_document_recall": 1.0
+          },
+          "document_hybrid_diagnostic": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.5,
+            "grounded_fact_coverage": 0.5,
+            "task_success": 0.0,
+            "count": 2,
+            "mean_latency_seconds": 3.447,
+            "prompt_tokens": 1160,
+            "completion_tokens": 575,
+            "mean_document_recall": 0.5
+          },
+          "document_vector_diagnostic": {
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0,
+            "fact_coverage": 0.0,
+            "count": 1,
+            "mean_latency_seconds": 2.291,
+            "prompt_tokens": 598,
+            "completion_tokens": 226,
+            "mean_document_recall": 0.0
+          },
+          "insufficient": {
+            "fact_coverage": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "task_success": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 1.821,
+            "prompt_tokens": 575,
+            "completion_tokens": 142,
+            "mean_document_recall": null
+          },
+          "sql": {
+            "task_success": 0.0,
+            "fact_coverage": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "count": 2,
+            "mean_latency_seconds": 2.579,
+            "prompt_tokens": 1186,
+            "completion_tokens": 391,
+            "mean_document_recall": null
+          },
+          "web": {
+            "fact_coverage": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0,
+            "citation_integrity": 1.0,
+            "count": 2,
+            "mean_latency_seconds": 2.614,
+            "prompt_tokens": 1185,
+            "completion_tokens": 462,
+            "mean_document_recall": null
+          },
+          "web+sql": {
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0,
+            "count": 1,
+            "mean_latency_seconds": 2.738,
+            "prompt_tokens": 615,
+            "completion_tokens": 241,
+            "mean_document_recall": null
+          }
+        }
+      },
+      "cases": [
+        {
+          "case_id": "all_three_signaldesk_aurora",
+          "category": "document+web+sql",
+          "scores": {
+            "grounded_fact_coverage": 0.333333333,
+            "task_success": 0.0,
+            "fact_coverage": 0.333333333,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 2.722,
+          "prompt_tokens": 593,
+          "completion_tokens": 302,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month. The evidence does not provide Aurora Support's September announcement or SignalDesk's July 2026 ticket count.",
+          "limitations": [
+            "No supplied evidence establishes Aurora Support's September announcement.",
+            "No supplied evidence establishes SignalDesk's July 2026 ticket count."
+          ],
+          "trace_id": "01a10683-372f-7f25-b965-07017cb00590"
+        },
+        {
+          "case_id": "doc_echomap_coaching",
+          "category": "document",
+          "scores": {
+            "grounded_fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "task_success": 1.0,
+            "fact_coverage": 1.0
+          },
+          "latency_seconds": 4.155,
+          "prompt_tokens": 568,
+          "completion_tokens": 229,
+          "document_recall": 1.0,
+          "summary": "EchoMap emphasizes live agent coaching.",
+          "limitations": [],
+          "trace_id": "01a10683-b4e8-7295-bec1-d83613ae53b2"
+        },
+        {
+          "case_id": "doc_signaldesk_integration",
+          "category": "document",
+          "scores": {
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0,
+            "fact_coverage": 1.0
+          },
+          "latency_seconds": 1.831,
+          "prompt_tokens": 585,
+          "completion_tokens": 215,
+          "document_recall": 1.0,
+          "summary": "SignalDesk can import support tickets from HelpHarbor and MailDock.",
+          "limitations": [],
+          "trace_id": "01a10683-cec9-7738-8a75-8ac1ee885891"
+        },
+        {
+          "case_id": "doc_signaldesk_price",
+          "category": "document",
+          "scores": {
+            "task_success": 1.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0,
+            "grounded_fact_coverage": 1.0
+          },
+          "latency_seconds": 2.23,
+          "prompt_tokens": 578,
+          "completion_tokens": 186,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month for up to 20 support agents.",
+          "limitations": [],
+          "trace_id": "01a10683-d5f9-7c0f-be3d-0b56bdd6115c"
+        },
+        {
+          "case_id": "doc_signaldesk_retention",
+          "category": "document",
+          "scores": {
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0
+          },
+          "latency_seconds": 2.452,
+          "prompt_tokens": 578,
+          "completion_tokens": 203,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team keeps imported tickets for 90 days.",
+          "limitations": [],
+          "trace_id": "01a10683-c52e-7a39-bf04-b7841bfc585d"
+        },
+        {
+          "case_id": "doc_sql_echomap",
+          "category": "document+sql",
+          "scores": {
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0
+          },
+          "latency_seconds": 2.457,
+          "prompt_tokens": 577,
+          "completion_tokens": 232,
+          "document_recall": 1.0,
+          "summary": "The supplied evidence does not establish EchoMap's starting monthly price or its August 2026 ticket count.",
+          "limitations": [
+            "No supplied source provides EchoMap's starting monthly price.",
+            "No supplied source provides EchoMap's August 2026 ticket count."
+          ],
+          "trace_id": "01a10683-5600-7b3d-a552-23f61661add6"
+        },
+        {
+          "case_id": "doc_sql_signaldesk",
+          "category": "document+sql",
+          "scores": {
+            "grounded_fact_coverage": 0.5,
+            "citation_integrity": 1.0,
+            "task_success": 0.0,
+            "fact_coverage": 0.5
+          },
+          "latency_seconds": 2.182,
+          "prompt_tokens": 584,
+          "completion_tokens": 242,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month, but the supplied evidence does not include its July 2026 ticket count, so a comparison cannot be made.",
+          "limitations": [
+            "No supplied source reports SignalDesk's July 2026 ticket count, so the monthly price cannot be compared with that count."
+          ],
+          "trace_id": "01a10683-5fa2-76a1-aa20-25e3a36518af"
+        },
+        {
+          "case_id": "doc_web_trends",
+          "category": "document+web",
+          "scores": {
+            "grounded_fact_coverage": 0.5,
+            "citation_integrity": 1.0,
+            "task_success": 0.0,
+            "fact_coverage": 0.5
+          },
+          "latency_seconds": 2.401,
+          "prompt_tokens": 590,
+          "completion_tokens": 294,
+          "document_recall": 1.0,
+          "summary": "SignalDesk shows weekly trend charts based on support tickets grouped by topic, with individual tickets available for review. The supplied evidence does not state what Aurora Support announced.",
+          "limitations": [
+            "The supplied evidence does not mention Aurora Support or state what it announced.",
+            "The evidence describes SignalDesk's trend-chart functionality but does not identify the specific trends or their direction. "
+          ],
+          "trace_id": "01a10683-4c97-7dca-b1d2-5947e8beb46f"
+        },
+        {
+          "case_id": "hybrid_price_coaching",
+          "category": "document_hybrid_diagnostic",
+          "scores": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.5,
+            "grounded_fact_coverage": 0.5,
+            "task_success": 0.0
+          },
+          "latency_seconds": 2.944,
+          "prompt_tokens": 578,
+          "completion_tokens": 275,
+          "document_recall": 0.5,
+          "summary": "The supplied evidence identifies EchoMap as emphasizing live agent coaching, but does not provide the monthly price for SignalDesk Team.",
+          "limitations": [
+            "The supplied evidence does not state how much SignalDesk Team costs per month."
+          ],
+          "trace_id": "01a10683-90df-7bd2-a9d2-66b12964fb9f"
+        },
+        {
+          "case_id": "hybrid_price_queue",
+          "category": "document_hybrid_diagnostic",
+          "scores": {
+            "citation_integrity": 1.0,
+            "task_success": 0.0,
+            "fact_coverage": 0.5,
+            "grounded_fact_coverage": 0.5
+          },
+          "latency_seconds": 3.95,
+          "prompt_tokens": 582,
+          "completion_tokens": 300,
+          "document_recall": 0.5,
+          "summary": "The supplied evidence identifies EchoMap's real-time queue dashboard, but does not provide SignalDesk Team's monthly price.",
+          "limitations": [
+            "The supplied evidence does not state SignalDesk Team's monthly price.",
+            "The evidence does not provide a more specific name for the EchoMap dashboard beyond \u201creal-time queue dashboard.\u201d"
+          ],
+          "trace_id": "01a10683-9c6a-739d-aa37-3e79a5069829"
+        },
+        {
+          "case_id": "insufficient_orion_price",
+          "category": "insufficient",
+          "scores": {
+            "fact_coverage": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "task_success": 1.0
+          },
+          "latency_seconds": 1.821,
+          "prompt_tokens": 575,
+          "completion_tokens": 142,
+          "document_recall": null,
+          "summary": "The exact price of Orion Support Enterprise cannot be determined from the supplied evidence.",
+          "limitations": [
+            "Neither supplied source mentions Orion Support Enterprise or provides its price. E1 discusses Aster Analytics, and E2 discusses EchoMap."
+          ],
+          "trace_id": "01a10683-3006-7c20-999d-c3b927630302"
+        },
+        {
+          "case_id": "sql_echomap_august_response",
+          "category": "sql",
+          "scores": {
+            "task_success": 0.0,
+            "fact_coverage": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 1.729,
+          "prompt_tokens": 576,
+          "completion_tokens": 200,
+          "document_recall": null,
+          "summary": "The supplied evidence does not report EchoMap's average first response time in August 2026.",
+          "limitations": [
+            "Neither supplied source contains a first response time metric or August 2026 performance data."
+          ],
+          "trace_id": "01a10683-682d-7ef5-be1a-73cf371c7e56"
+        },
+        {
+          "case_id": "sql_signaldesk_july_tickets",
+          "category": "sql",
+          "scores": {
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0
+          },
+          "latency_seconds": 3.429,
+          "prompt_tokens": 610,
+          "completion_tokens": 191,
+          "document_recall": null,
+          "summary": "The supplied evidence does not state how many support tickets SignalDesk had in July 2026.",
+          "limitations": [
+            "The evidence describes SignalDesk's ticket-import and analytics capabilities but provides no July 2026 ticket count."
+          ],
+          "trace_id": "01a10683-6ef6-783b-83c8-697c10ac81a4"
+        },
+        {
+          "case_id": "vector_maildock_import",
+          "category": "document_vector_diagnostic",
+          "scores": {
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0,
+            "fact_coverage": 0.0
+          },
+          "latency_seconds": 2.291,
+          "prompt_tokens": 598,
+          "completion_tokens": 226,
+          "document_recall": 0.0,
+          "summary": "The supplied evidence does not identify a product that imports tickets from MailDock.",
+          "limitations": [
+            "Neither supplied source mentions MailDock or establishes which product imports its tickets."
+          ],
+          "trace_id": "01a10683-abe0-7dc8-827f-d5f95122323f"
+        },
+        {
+          "case_id": "web_aurora_date",
+          "category": "web",
+          "scores": {
+            "fact_coverage": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 2.82,
+          "prompt_tokens": 592,
+          "completion_tokens": 183,
+          "document_recall": null,
+          "summary": "The supplied evidence does not establish the date Aurora Support announced PulseBoard.",
+          "limitations": [
+            "Neither supplied source mentions Aurora Support, PulseBoard, or an announcement date."
+          ],
+          "trace_id": "01a10683-7c62-72c9-88e4-cc076ce456a2"
+        },
+        {
+          "case_id": "web_aurora_product",
+          "category": "web",
+          "scores": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0
+          },
+          "latency_seconds": 2.407,
+          "prompt_tokens": 593,
+          "completion_tokens": 279,
+          "document_recall": null,
+          "summary": "The supplied evidence does not establish what Aurora Support announced in September 2026.",
+          "limitations": [
+            "No supplied source mentions Aurora Support or an announcement in September 2026.",
+            "The available evidence concerns Aster Analytics and Brio Insights, so it cannot support an answer about Aurora Support."
+          ],
+          "trace_id": "01a10683-8770-7f38-888a-f29c81f316b7"
+        },
+        {
+          "case_id": "web_sql_aurora_signaldesk",
+          "category": "web+sql",
+          "scores": {
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0
+          },
+          "latency_seconds": 2.738,
+          "prompt_tokens": 615,
+          "completion_tokens": 241,
+          "document_recall": null,
+          "summary": "The supplied evidence does not establish what Aurora Support announced or how many July 2026 tickets SignalDesk had.",
+          "limitations": [
+            "No supplied source mentions Aurora Support or an announcement by it.",
+            "No supplied source gives a July 2026 ticket count for SignalDesk."
+          ],
+          "trace_id": "01a10683-41db-7cd3-afdf-e88c149aa67b"
+        }
+      ]
+    },
+    "semantic_vector": {
+      "experiment_id": "01a10683-f45d-733d-9dd8-c31395077cde",
+      "experiment_url": "https://www.comet.com/opik/hoda/experiments/01a10627-6356-7032-830c-901dbc6453b9/compare?experiments=%5B%2201a10683-f45d-733d-9dd8-c31395077cde%22%5D",
+      "summary": {
+        "overall": {
+          "task_success": 0.353,
+          "fact_coverage": 0.52,
+          "citation_integrity": 1.0,
+          "grounded_fact_coverage": 0.52,
+          "count": 17,
+          "mean_latency_seconds": 2.601,
+          "prompt_tokens": 10044,
+          "completion_tokens": 3696,
+          "mean_document_recall": 0.955
+        },
+        "by_category": {
+          "document": {
+            "task_success": 1.0,
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "count": 4,
+            "mean_latency_seconds": 2.7,
+            "prompt_tokens": 2337,
+            "completion_tokens": 666,
+            "mean_document_recall": 1.0
+          },
+          "document+sql": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.5,
+            "grounded_fact_coverage": 0.5,
+            "task_success": 0.0,
+            "count": 2,
+            "mean_latency_seconds": 2.797,
+            "prompt_tokens": 1173,
+            "completion_tokens": 488,
+            "mean_document_recall": 1.0
+          },
+          "document+web": {
+            "fact_coverage": 0.5,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.5,
+            "citation_integrity": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 3.492,
+            "prompt_tokens": 610,
+            "completion_tokens": 389,
+            "mean_document_recall": 1.0
+          },
+          "document+web+sql": {
+            "task_success": 0.0,
+            "fact_coverage": 0.333,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.333,
+            "count": 1,
+            "mean_latency_seconds": 2.572,
+            "prompt_tokens": 610,
+            "completion_tokens": 280,
+            "mean_document_recall": 1.0
+          },
+          "document_hybrid_diagnostic": {
+            "fact_coverage": 0.5,
+            "citation_integrity": 1.0,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.5,
+            "count": 2,
+            "mean_latency_seconds": 2.33,
+            "prompt_tokens": 1203,
+            "completion_tokens": 570,
+            "mean_document_recall": 0.75
+          },
+          "document_vector_diagnostic": {
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 1.492,
+            "prompt_tokens": 587,
+            "completion_tokens": 167,
+            "mean_document_recall": 1.0
+          },
+          "insufficient": {
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "fact_coverage": 1.0,
+            "task_success": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 2.425,
+            "prompt_tokens": 575,
+            "completion_tokens": 215,
+            "mean_document_recall": null
+          },
+          "sql": {
+            "fact_coverage": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0,
+            "citation_integrity": 1.0,
+            "count": 2,
+            "mean_latency_seconds": 1.746,
+            "prompt_tokens": 1186,
+            "completion_tokens": 284,
+            "mean_document_recall": null
+          },
+          "web": {
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "count": 2,
+            "mean_latency_seconds": 3.705,
+            "prompt_tokens": 1148,
+            "completion_tokens": 392,
+            "mean_document_recall": null
+          },
+          "web+sql": {
+            "grounded_fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0,
+            "task_success": 0.0,
+            "count": 1,
+            "mean_latency_seconds": 2.283,
+            "prompt_tokens": 615,
+            "completion_tokens": 245,
+            "mean_document_recall": null
+          }
+        }
+      },
+      "cases": [
+        {
+          "case_id": "all_three_signaldesk_aurora",
+          "category": "document+web+sql",
+          "scores": {
+            "task_success": 0.0,
+            "fact_coverage": 0.333333333,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.333333333
+          },
+          "latency_seconds": 2.572,
+          "prompt_tokens": 610,
+          "completion_tokens": 280,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month. The supplied evidence does not establish Aurora Support's September announcement or SignalDesk's July 2026 ticket count.",
+          "limitations": [
+            "No supplied evidence establishes Aurora Support's September announcement.",
+            "No supplied evidence establishes SignalDesk's July 2026 ticket count."
+          ],
+          "trace_id": "01a10684-0130-7238-9313-e7842fb86a6a"
+        },
+        {
+          "case_id": "doc_echomap_coaching",
+          "category": "document",
+          "scores": {
+            "task_success": 1.0,
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0
+          },
+          "latency_seconds": 2.513,
+          "prompt_tokens": 568,
+          "completion_tokens": 136,
+          "document_recall": 1.0,
+          "summary": "EchoMap emphasizes live agent coaching.",
+          "limitations": [],
+          "trace_id": "01a10684-7ab7-7205-b1f1-4978f71cdfd0"
+        },
+        {
+          "case_id": "doc_signaldesk_integration",
+          "category": "document",
+          "scores": {
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0
+          },
+          "latency_seconds": 1.604,
+          "prompt_tokens": 585,
+          "completion_tokens": 188,
+          "document_recall": 1.0,
+          "summary": "SignalDesk can import support tickets from HelpHarbor and MailDock.",
+          "limitations": [],
+          "trace_id": "01a10684-9140-77ec-a73f-6cc794d6ce6e"
+        },
+        {
+          "case_id": "doc_signaldesk_price",
+          "category": "document",
+          "scores": {
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0,
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 3.441,
+          "prompt_tokens": 595,
+          "completion_tokens": 144,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month for up to 20 support agents.",
+          "limitations": [],
+          "trace_id": "01a10684-978d-7382-83c6-644fefa9a58a"
+        },
+        {
+          "case_id": "doc_signaldesk_retention",
+          "category": "document",
+          "scores": {
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0
+          },
+          "latency_seconds": 3.241,
+          "prompt_tokens": 589,
+          "completion_tokens": 198,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team keeps imported tickets for 90 days.",
+          "limitations": [],
+          "trace_id": "01a10684-8490-73bf-96a6-b274fa9c3e72"
+        },
+        {
+          "case_id": "doc_sql_echomap",
+          "category": "document+sql",
+          "scores": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.5,
+            "grounded_fact_coverage": 0.5,
+            "task_success": 0.0
+          },
+          "latency_seconds": 2.63,
+          "prompt_tokens": 572,
+          "completion_tokens": 248,
+          "document_recall": 1.0,
+          "summary": "EchoMap starts at $1,200 per month. The August 2026 ticket count is not established by the supplied evidence.",
+          "limitations": [
+            "The supplied evidence does not provide EchoMap's August 2026 ticket count."
+          ],
+          "trace_id": "01a10684-21ec-7714-bb0a-af72f24471b1"
+        },
+        {
+          "case_id": "doc_sql_signaldesk",
+          "category": "document+sql",
+          "scores": {
+            "grounded_fact_coverage": 0.5,
+            "fact_coverage": 0.5,
+            "task_success": 0.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 2.964,
+          "prompt_tokens": 601,
+          "completion_tokens": 240,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month, but the July 2026 ticket count is not provided, so a comparison cannot be made.",
+          "limitations": [
+            "No supplied evidence establishes SignalDesk's July 2026 ticket count, so the price cannot be quantitatively compared with that count."
+          ],
+          "trace_id": "01a10684-2c3a-725a-bee6-639c27a0dbb8"
+        },
+        {
+          "case_id": "doc_web_trends",
+          "category": "document+web",
+          "scores": {
+            "fact_coverage": 0.5,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.5,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 3.492,
+          "prompt_tokens": 610,
+          "completion_tokens": 389,
+          "document_recall": 1.0,
+          "summary": "The evidence shows that SignalDesk groups support tickets by topic and displays weekly trend charts, but it does not specify the trends themselves. No evidence describes an announcement by Aurora Support.",
+          "limitations": [
+            "The supplied evidence does not identify the specific trends SignalDesk shows.",
+            "The supplied evidence contains no information about what Aurora Support announced."
+          ],
+          "trace_id": "01a10684-143d-76aa-a0cf-b330bf2e5b8d"
+        },
+        {
+          "case_id": "hybrid_price_coaching",
+          "category": "document_hybrid_diagnostic",
+          "scores": {
+            "fact_coverage": 0.5,
+            "citation_integrity": 1.0,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.5
+          },
+          "latency_seconds": 2.127,
+          "prompt_tokens": 602,
+          "completion_tokens": 294,
+          "document_recall": 0.5,
+          "summary": "SignalDesk Team costs $480 per month for up to 20 support agents. The supplied evidence does not identify a product that emphasizes live agent coaching.",
+          "limitations": [
+            "The supplied evidence does not establish which product emphasizes live agent coaching."
+          ],
+          "trace_id": "01a10684-6293-7abf-9806-c1d81246759a"
+        },
+        {
+          "case_id": "hybrid_price_queue",
+          "category": "document_hybrid_diagnostic",
+          "scores": {
+            "task_success": 0.0,
+            "fact_coverage": 0.5,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.5
+          },
+          "latency_seconds": 2.533,
+          "prompt_tokens": 601,
+          "completion_tokens": 276,
+          "document_recall": 1.0,
+          "summary": "The supplied evidence identifies EchoMap's real-time queue dashboard but does not state SignalDesk Team's monthly price.",
+          "limitations": [
+            "The supplied evidence does not provide SignalDesk Team's monthly price.",
+            "The evidence does not give a specific name for the EchoMap dashboard beyond describing it as a real-time queue dashboard."
+          ],
+          "trace_id": "01a10684-6aed-70b2-997f-f3546e5886eb"
+        },
+        {
+          "case_id": "insufficient_orion_price",
+          "category": "insufficient",
+          "scores": {
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "fact_coverage": 1.0,
+            "task_success": 1.0
+          },
+          "latency_seconds": 2.425,
+          "prompt_tokens": 575,
+          "completion_tokens": 215,
+          "document_recall": null,
+          "summary": "The exact price of Orion Support Enterprise cannot be determined from the supplied evidence.",
+          "limitations": [
+            "The supplied evidence discusses Aster Analytics and EchoMap, but does not provide pricing information for Orion Support Enterprise."
+          ],
+          "trace_id": "01a10683-f7ac-7dc5-965c-e925089a9191"
+        },
+        {
+          "case_id": "sql_echomap_august_response",
+          "category": "sql",
+          "scores": {
+            "fact_coverage": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 1.511,
+          "prompt_tokens": 576,
+          "completion_tokens": 146,
+          "document_recall": null,
+          "summary": "The supplied evidence does not establish EchoMap's average first response time in August 2026.",
+          "limitations": [
+            "Neither supplied source provides an average first response time or August 2026 performance data for EchoMap."
+          ],
+          "trace_id": "01a10684-37d3-7f3d-8511-a99ba5f5caf8"
+        },
+        {
+          "case_id": "sql_signaldesk_july_tickets",
+          "category": "sql",
+          "scores": {
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 1.981,
+          "prompt_tokens": 610,
+          "completion_tokens": 138,
+          "document_recall": null,
+          "summary": "The supplied evidence does not state how many support tickets SignalDesk had in July 2026.",
+          "limitations": [
+            "Neither supplied source provides a July 2026 support-ticket count."
+          ],
+          "trace_id": "01a10684-3dc4-729f-ad44-e0f8a05ae9a2"
+        },
+        {
+          "case_id": "vector_maildock_import",
+          "category": "document_vector_diagnostic",
+          "scores": {
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0
+          },
+          "latency_seconds": 1.492,
+          "prompt_tokens": 587,
+          "completion_tokens": 167,
+          "document_recall": 1.0,
+          "summary": "SignalDesk imports tickets from MailDock.",
+          "limitations": [],
+          "trace_id": "01a10684-74da-7c56-b414-0dbd21283f6d"
+        },
+        {
+          "case_id": "web_aurora_date",
+          "category": "web",
+          "scores": {
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 5.641,
+          "prompt_tokens": 571,
+          "completion_tokens": 225,
+          "document_recall": null,
+          "summary": "The supplied evidence does not establish a date on which Aurora Support announced PulseBoard.",
+          "limitations": [
+            "Neither supplied source mentions Aurora Support, PulseBoard, or an announcement date."
+          ],
+          "trace_id": "01a10684-458c-7c17-9f64-d06634bf8f22"
+        },
+        {
+          "case_id": "web_aurora_product",
+          "category": "web",
+          "scores": {
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0
+          },
+          "latency_seconds": 1.77,
+          "prompt_tokens": 577,
+          "completion_tokens": 167,
+          "document_recall": null,
+          "summary": "The supplied evidence does not establish what Aurora Support announced in September 2026.",
+          "limitations": [
+            "No supplied source mentions Aurora Support or an announcement from September 2026."
+          ],
+          "trace_id": "01a10684-5b9d-7547-8d72-e2b3971e59a5"
+        },
+        {
+          "case_id": "web_sql_aurora_signaldesk",
+          "category": "web+sql",
+          "scores": {
+            "grounded_fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0,
+            "task_success": 0.0
+          },
+          "latency_seconds": 2.283,
+          "prompt_tokens": 615,
+          "completion_tokens": 245,
+          "document_recall": null,
+          "summary": "The supplied evidence does not establish what Aurora Support announced or how many July 2026 tickets SignalDesk had.",
+          "limitations": [
+            "No supplied source mentions Aurora Support or an announcement.",
+            "No supplied source provides a July 2026 ticket count for SignalDesk."
+          ],
+          "trace_id": "01a10684-0b47-79bf-a80f-7e13b14b7ed7"
+        }
+      ]
+    },
+    "hybrid": {
+      "experiment_id": "01a10684-ba29-7a85-945e-c395dc3cacc6",
+      "experiment_url": "https://www.comet.com/opik/hoda/experiments/01a10627-6356-7032-830c-901dbc6453b9/compare?experiments=%5B%2201a10684-ba29-7a85-945e-c395dc3cacc6%22%5D",
+      "summary": {
+        "overall": {
+          "fact_coverage": 0.52,
+          "citation_integrity": 1.0,
+          "grounded_fact_coverage": 0.52,
+          "task_success": 0.412,
+          "count": 17,
+          "mean_latency_seconds": 4.369,
+          "prompt_tokens": 10034,
+          "completion_tokens": 4155,
+          "mean_document_recall": 1.0
+        },
+        "by_category": {
+          "document": {
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "count": 4,
+            "mean_latency_seconds": 6.112,
+            "prompt_tokens": 2309,
+            "completion_tokens": 878,
+            "mean_document_recall": 1.0
+          },
+          "document+sql": {
+            "fact_coverage": 0.25,
+            "grounded_fact_coverage": 0.25,
+            "task_success": 0.0,
+            "citation_integrity": 1.0,
+            "count": 2,
+            "mean_latency_seconds": 2.308,
+            "prompt_tokens": 1161,
+            "completion_tokens": 553,
+            "mean_document_recall": 1.0
+          },
+          "document+web": {
+            "task_success": 0.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.5,
+            "grounded_fact_coverage": 0.5,
+            "count": 1,
+            "mean_latency_seconds": 3.028,
+            "prompt_tokens": 610,
+            "completion_tokens": 365,
+            "mean_document_recall": 1.0
+          },
+          "document+web+sql": {
+            "fact_coverage": 0.333,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.333,
+            "task_success": 0.0,
+            "count": 1,
+            "mean_latency_seconds": 5.589,
+            "prompt_tokens": 593,
+            "completion_tokens": 329,
+            "mean_document_recall": 1.0
+          },
+          "document_hybrid_diagnostic": {
+            "task_success": 0.5,
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.75,
+            "grounded_fact_coverage": 0.75,
+            "count": 2,
+            "mean_latency_seconds": 2.521,
+            "prompt_tokens": 1184,
+            "completion_tokens": 584,
+            "mean_document_recall": 1.0
+          },
+          "document_vector_diagnostic": {
+            "grounded_fact_coverage": 1.0,
+            "fact_coverage": 1.0,
+            "task_success": 1.0,
+            "citation_integrity": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 1.821,
+            "prompt_tokens": 613,
+            "completion_tokens": 182,
+            "mean_document_recall": 1.0
+          },
+          "insufficient": {
+            "fact_coverage": 1.0,
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 2.592,
+            "prompt_tokens": 575,
+            "completion_tokens": 260,
+            "mean_document_recall": null
+          },
+          "sql": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "count": 2,
+            "mean_latency_seconds": 9.895,
+            "prompt_tokens": 1186,
+            "completion_tokens": 336,
+            "mean_document_recall": null
+          },
+          "web": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "count": 2,
+            "mean_latency_seconds": 2.369,
+            "prompt_tokens": 1188,
+            "completion_tokens": 429,
+            "mean_document_recall": null
+          },
+          "web+sql": {
+            "grounded_fact_coverage": 0.0,
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "task_success": 0.0,
+            "count": 1,
+            "mean_latency_seconds": 2.618,
+            "prompt_tokens": 615,
+            "completion_tokens": 239,
+            "mean_document_recall": null
+          }
+        }
+      },
+      "cases": [
+        {
+          "case_id": "all_three_signaldesk_aurora",
+          "category": "document+web+sql",
+          "scores": {
+            "fact_coverage": 0.333333333,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.333333333,
+            "task_success": 0.0
+          },
+          "latency_seconds": 5.589,
+          "prompt_tokens": 593,
+          "completion_tokens": 329,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month for up to 20 support agents. The supplied evidence does not establish Aurora Support's September announcement or SignalDesk's July 2026 ticket count.",
+          "limitations": [
+            "No supplied evidence states Aurora Support's September announcement.",
+            "No supplied evidence states SignalDesk's July 2026 ticket count."
+          ],
+          "trace_id": "01a10684-c736-7ce7-a9a0-03d256fabf48"
+        },
+        {
+          "case_id": "doc_echomap_coaching",
+          "category": "document",
+          "scores": {
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0
+          },
+          "latency_seconds": 13.275,
+          "prompt_tokens": 568,
+          "completion_tokens": 233,
+          "document_recall": 1.0,
+          "summary": "EchoMap emphasizes live agent coaching.",
+          "limitations": [],
+          "trace_id": "01a10685-801a-7d04-a020-d5b65f52bab7"
+        },
+        {
+          "case_id": "doc_signaldesk_integration",
+          "category": "document",
+          "scores": {
+            "fact_coverage": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 2.533,
+          "prompt_tokens": 585,
+          "completion_tokens": 295,
+          "document_recall": 1.0,
+          "summary": "SignalDesk can import support tickets from HelpHarbor and MailDock.",
+          "limitations": [],
+          "trace_id": "01a10685-cb14-744b-b2f9-c0b18a159d87"
+        },
+        {
+          "case_id": "doc_signaldesk_price",
+          "category": "document",
+          "scores": {
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 2.734,
+          "prompt_tokens": 578,
+          "completion_tokens": 150,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month for up to 20 support agents.",
+          "limitations": [],
+          "trace_id": "01a10685-d500-7ff6-85c2-7340bbefd69d"
+        },
+        {
+          "case_id": "doc_signaldesk_retention",
+          "category": "document",
+          "scores": {
+            "task_success": 1.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "fact_coverage": 1.0
+          },
+          "latency_seconds": 5.904,
+          "prompt_tokens": 578,
+          "completion_tokens": 200,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team keeps imported tickets for 90 days.",
+          "limitations": [],
+          "trace_id": "01a10685-b3fc-77f2-a1fd-33fdc7f994f8"
+        },
+        {
+          "case_id": "doc_sql_echomap",
+          "category": "document+sql",
+          "scores": {
+            "fact_coverage": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "task_success": 0.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 2.745,
+          "prompt_tokens": 577,
+          "completion_tokens": 278,
+          "document_recall": 1.0,
+          "summary": "The supplied evidence does not establish EchoMap's starting monthly price or its August 2026 ticket count.",
+          "limitations": [
+            "No supplied source provides EchoMap's starting monthly price.",
+            "No supplied source provides EchoMap's August 2026 ticket count."
+          ],
+          "trace_id": "01a10684-f32f-79ae-b1b5-b687dc18be2c"
+        },
+        {
+          "case_id": "doc_sql_signaldesk",
+          "category": "document+sql",
+          "scores": {
+            "task_success": 0.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.5,
+            "fact_coverage": 0.5
+          },
+          "latency_seconds": 1.87,
+          "prompt_tokens": 584,
+          "completion_tokens": 275,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month, but the July 2026 ticket count is not provided, so a comparison cannot be made.",
+          "limitations": [
+            "The supplied evidence does not include SignalDesk's July 2026 ticket count, so the monthly price cannot be quantitatively compared with that count."
+          ],
+          "trace_id": "01a10684-fdef-7ee9-a7f9-d39789a490e5"
+        },
+        {
+          "case_id": "doc_web_trends",
+          "category": "document+web",
+          "scores": {
+            "task_success": 0.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.5,
+            "grounded_fact_coverage": 0.5
+          },
+          "latency_seconds": 3.028,
+          "prompt_tokens": 610,
+          "completion_tokens": 365,
+          "document_recall": 1.0,
+          "summary": "SignalDesk groups support tickets by topic and displays weekly trend charts, but the evidence does not specify the actual trend topics or directions. No evidence was supplied about an announcement by Aurora Support.",
+          "limitations": [
+            "The evidence does not identify which specific trends SignalDesk shows or whether they are increasing or decreasing.",
+            "No supplied evidence establishes what Aurora Support announced."
+          ],
+          "trace_id": "01a10684-e754-79c0-a46b-b26f1571ab1a"
+        },
+        {
+          "case_id": "hybrid_price_coaching",
+          "category": "document_hybrid_diagnostic",
+          "scores": {
+            "task_success": 1.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0,
+            "grounded_fact_coverage": 1.0
+          },
+          "latency_seconds": 2.301,
+          "prompt_tokens": 583,
+          "completion_tokens": 286,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month for up to 20 support agents. EchoMap emphasizes live agent coaching.",
+          "limitations": [],
+          "trace_id": "01a10685-6533-7f67-ba92-f914d3454332"
+        },
+        {
+          "case_id": "hybrid_price_queue",
+          "category": "document_hybrid_diagnostic",
+          "scores": {
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.5,
+            "fact_coverage": 0.5,
+            "task_success": 0.0
+          },
+          "latency_seconds": 2.74,
+          "prompt_tokens": 601,
+          "completion_tokens": 298,
+          "document_recall": 1.0,
+          "summary": "The supplied evidence does not state SignalDesk Team's monthly price. It identifies EchoMap's real-time queue dashboard as the dashboard that monitors the queue.",
+          "limitations": [
+            "The supplied evidence does not provide SignalDesk Team's monthly price.",
+            "The evidence describes the dashboard generically as a \"real-time queue dashboard\" and does not provide a more specific dashboard name."
+          ],
+          "trace_id": "01a10685-6e37-7efe-8cad-dc7513e5acd2"
+        },
+        {
+          "case_id": "insufficient_orion_price",
+          "category": "insufficient",
+          "scores": {
+            "fact_coverage": 1.0,
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 2.592,
+          "prompt_tokens": 575,
+          "completion_tokens": 260,
+          "document_recall": null,
+          "summary": "The exact price of Orion Support Enterprise cannot be established from the supplied evidence.",
+          "limitations": [
+            "The supplied sources describe Aster Analytics and EchoMap, not Orion Support Enterprise, and do not state its price."
+          ],
+          "trace_id": "01a10684-bd0b-7893-a4f9-9fcf2859d926"
+        },
+        {
+          "case_id": "sql_echomap_august_response",
+          "category": "sql",
+          "scores": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0
+          },
+          "latency_seconds": 2.001,
+          "prompt_tokens": 576,
+          "completion_tokens": 196,
+          "document_recall": null,
+          "summary": "The supplied evidence does not report EchoMap's average first response time in August 2026.",
+          "limitations": [
+            "Neither supplied source contains a first response time metric or August 2026 performance data."
+          ],
+          "trace_id": "01a10685-0544-77a6-9d55-77dfde41a5fe"
+        },
+        {
+          "case_id": "sql_signaldesk_july_tickets",
+          "category": "sql",
+          "scores": {
+            "citation_integrity": 1.0,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "fact_coverage": 0.0
+          },
+          "latency_seconds": 17.788,
+          "prompt_tokens": 610,
+          "completion_tokens": 140,
+          "document_recall": null,
+          "summary": "The supplied evidence does not provide a support-ticket count for July 2026.",
+          "limitations": [
+            "Neither supplied source reports the number of support tickets SignalDesk had in July 2026."
+          ],
+          "trace_id": "01a10685-0d1f-70f4-ac1d-ea366e9942c3"
+        },
+        {
+          "case_id": "vector_maildock_import",
+          "category": "document_vector_diagnostic",
+          "scores": {
+            "grounded_fact_coverage": 1.0,
+            "fact_coverage": 1.0,
+            "task_success": 1.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 1.821,
+          "prompt_tokens": 613,
+          "completion_tokens": 182,
+          "document_recall": 1.0,
+          "summary": "SignalDesk imports tickets from MailDock.",
+          "limitations": [],
+          "trace_id": "01a10685-78f5-7c4c-94d7-608d012ef9aa"
+        },
+        {
+          "case_id": "web_aurora_date",
+          "category": "web",
+          "scores": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0
+          },
+          "latency_seconds": 2.576,
+          "prompt_tokens": 592,
+          "completion_tokens": 189,
+          "document_recall": null,
+          "summary": "The supplied evidence does not establish the date on which Aurora Support announced PulseBoard.",
+          "limitations": [
+            "Neither supplied source mentions Aurora Support, PulseBoard, or an announcement date."
+          ],
+          "trace_id": "01a10685-52a1-77cb-9b94-b51930a9ea94"
+        },
+        {
+          "case_id": "web_aurora_product",
+          "category": "web",
+          "scores": {
+            "task_success": 0.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0,
+            "grounded_fact_coverage": 0.0
+          },
+          "latency_seconds": 2.162,
+          "prompt_tokens": 596,
+          "completion_tokens": 240,
+          "document_recall": null,
+          "summary": "The supplied evidence does not establish what Aurora Support announced in September 2026.",
+          "limitations": [
+            "The evidence concerns Aster Analytics and SignalDesk, not Aurora Support or an announcement in September 2026."
+          ],
+          "trace_id": "01a10685-5cba-77da-8d05-3b4e0a201a41"
+        },
+        {
+          "case_id": "web_sql_aurora_signaldesk",
+          "category": "web+sql",
+          "scores": {
+            "grounded_fact_coverage": 0.0,
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "task_success": 0.0
+          },
+          "latency_seconds": 2.618,
+          "prompt_tokens": 615,
+          "completion_tokens": 239,
+          "document_recall": null,
+          "summary": "The supplied evidence does not establish what Aurora Support announced or how many July 2026 tickets SignalDesk had.",
+          "limitations": [
+            "No supplied source mentions Aurora Support or an announcement.",
+            "No supplied source gives a July 2026 ticket count for SignalDesk."
+          ],
+          "trace_id": "01a10684-dd13-7aff-8c95-2af36961e198"
+        }
+      ]
+    },
+    "hybrid_web": {
+      "experiment_id": "01a10685-f27a-7556-a968-fab21b38d474",
+      "experiment_url": "https://www.comet.com/opik/hoda/experiments/01a10627-6356-7032-830c-901dbc6453b9/compare?experiments=%5B%2201a10685-f27a-7556-a968-fab21b38d474%22%5D",
+      "summary": {
+        "overall": {
+          "citation_integrity": 1.0,
+          "fact_coverage": 0.716,
+          "grounded_fact_coverage": 0.716,
+          "task_success": 0.588,
+          "count": 17,
+          "mean_latency_seconds": 2.649,
+          "prompt_tokens": 10269,
+          "completion_tokens": 4085,
+          "mean_document_recall": 1.0
+        },
+        "by_category": {
+          "document": {
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0,
+            "count": 4,
+            "mean_latency_seconds": 2.079,
+            "prompt_tokens": 2309,
+            "completion_tokens": 744,
+            "mean_document_recall": 1.0
+          },
+          "document+sql": {
+            "task_success": 0.0,
+            "fact_coverage": 0.25,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.25,
+            "count": 2,
+            "mean_latency_seconds": 3.504,
+            "prompt_tokens": 1161,
+            "completion_tokens": 473,
+            "mean_document_recall": 1.0
+          },
+          "document+web": {
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 2.837,
+            "prompt_tokens": 657,
+            "completion_tokens": 453,
+            "mean_document_recall": 1.0
+          },
+          "document+web+sql": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.667,
+            "grounded_fact_coverage": 0.667,
+            "task_success": 0.0,
+            "count": 1,
+            "mean_latency_seconds": 3.472,
+            "prompt_tokens": 640,
+            "completion_tokens": 404,
+            "mean_document_recall": 1.0
+          },
+          "document_hybrid_diagnostic": {
+            "citation_integrity": 1.0,
+            "task_success": 0.5,
+            "fact_coverage": 0.75,
+            "grounded_fact_coverage": 0.75,
+            "count": 2,
+            "mean_latency_seconds": 3.119,
+            "prompt_tokens": 1184,
+            "completion_tokens": 595,
+            "mean_document_recall": 1.0
+          },
+          "document_vector_diagnostic": {
+            "task_success": 1.0,
+            "fact_coverage": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 1.978,
+            "prompt_tokens": 613,
+            "completion_tokens": 174,
+            "mean_document_recall": 1.0
+          },
+          "insufficient": {
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "fact_coverage": 1.0,
+            "task_success": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 1.506,
+            "prompt_tokens": 575,
+            "completion_tokens": 144,
+            "mean_document_recall": null
+          },
+          "sql": {
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0,
+            "count": 2,
+            "mean_latency_seconds": 2.139,
+            "prompt_tokens": 1186,
+            "completion_tokens": 405,
+            "mean_document_recall": null
+          },
+          "web": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0,
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "count": 2,
+            "mean_latency_seconds": 3.306,
+            "prompt_tokens": 1282,
+            "completion_tokens": 421,
+            "mean_document_recall": null
+          },
+          "web+sql": {
+            "fact_coverage": 0.5,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.5,
+            "task_success": 0.0,
+            "count": 1,
+            "mean_latency_seconds": 2.79,
+            "prompt_tokens": 662,
+            "completion_tokens": 272,
+            "mean_document_recall": null
+          }
+        }
+      },
+      "cases": [
+        {
+          "case_id": "all_three_signaldesk_aurora",
+          "category": "document+web+sql",
+          "scores": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.666666667,
+            "grounded_fact_coverage": 0.666666667,
+            "task_success": 0.0
+          },
+          "latency_seconds": 3.472,
+          "prompt_tokens": 640,
+          "completion_tokens": 404,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month, and Aurora Support announced PulseBoard on 2026-09-01. The supplied evidence does not provide SignalDesk's July 2026 ticket count.",
+          "limitations": [
+            "The supplied evidence does not state SignalDesk's July 2026 ticket count."
+          ],
+          "trace_id": "01a10685-fbb6-7087-8589-29a2436d0197"
+        },
+        {
+          "case_id": "doc_echomap_coaching",
+          "category": "document",
+          "scores": {
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0
+          },
+          "latency_seconds": 2.469,
+          "prompt_tokens": 568,
+          "completion_tokens": 201,
+          "document_recall": 1.0,
+          "summary": "EchoMap emphasizes live agent coaching.",
+          "limitations": [],
+          "trace_id": "01a10686-85a4-7aaa-ae7e-d6935f8f169c"
+        },
+        {
+          "case_id": "doc_signaldesk_integration",
+          "category": "document",
+          "scores": {
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0
+          },
+          "latency_seconds": 1.777,
+          "prompt_tokens": 585,
+          "completion_tokens": 194,
+          "document_recall": 1.0,
+          "summary": "SignalDesk can import support tickets from HelpHarbor and MailDock.",
+          "limitations": [],
+          "trace_id": "01a10686-991f-7287-9f46-a79c7cec6510"
+        },
+        {
+          "case_id": "doc_signaldesk_price",
+          "category": "document",
+          "scores": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0,
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0
+          },
+          "latency_seconds": 1.565,
+          "prompt_tokens": 578,
+          "completion_tokens": 150,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month for up to 20 support agents.",
+          "limitations": [],
+          "trace_id": "01a10686-a016-775a-928b-deb014a15023"
+        },
+        {
+          "case_id": "doc_signaldesk_retention",
+          "category": "document",
+          "scores": {
+            "grounded_fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0,
+            "task_success": 1.0
+          },
+          "latency_seconds": 2.503,
+          "prompt_tokens": 578,
+          "completion_tokens": 199,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team keeps imported tickets for 90 days.",
+          "limitations": [],
+          "trace_id": "01a10686-8f52-7750-a7c8-d139f93cf318"
+        },
+        {
+          "case_id": "doc_sql_echomap",
+          "category": "document+sql",
+          "scores": {
+            "task_success": 0.0,
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.0
+          },
+          "latency_seconds": 1.873,
+          "prompt_tokens": 577,
+          "completion_tokens": 210,
+          "document_recall": 1.0,
+          "summary": "The supplied evidence does not establish EchoMap's starting monthly price or its August 2026 ticket count.",
+          "limitations": [
+            "No supplied source provides EchoMap's starting monthly price.",
+            "No supplied source provides EchoMap's August 2026 ticket count."
+          ],
+          "trace_id": "01a10686-1f5a-7563-a3b6-74de1f9958cd"
+        },
+        {
+          "case_id": "doc_sql_signaldesk",
+          "category": "document+sql",
+          "scores": {
+            "fact_coverage": 0.5,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.5,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 5.134,
+          "prompt_tokens": 584,
+          "completion_tokens": 263,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month, but the July 2026 ticket count is not provided, so a comparison cannot be made.",
+          "limitations": [
+            "No evidence provides SignalDesk Team's July 2026 ticket count, so the monthly price cannot be quantitatively compared with that count."
+          ],
+          "trace_id": "01a10686-26b3-722a-b6d6-c46e584a0ec1"
+        },
+        {
+          "case_id": "doc_web_trends",
+          "category": "document+web",
+          "scores": {
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0
+          },
+          "latency_seconds": 2.837,
+          "prompt_tokens": 657,
+          "completion_tokens": 453,
+          "document_recall": 1.0,
+          "summary": "SignalDesk shows weekly trends in support tickets grouped by topic. Aurora Support announced PulseBoard, a real-time support analytics dashboard, on 2026-09-01.",
+          "limitations": [
+            "The evidence does not specify the individual topic trends or their direction over time."
+          ],
+          "trace_id": "01a10686-143b-723b-be41-dfeee57bb646"
+        },
+        {
+          "case_id": "hybrid_price_coaching",
+          "category": "document_hybrid_diagnostic",
+          "scores": {
+            "citation_integrity": 1.0,
+            "task_success": 1.0,
+            "fact_coverage": 1.0,
+            "grounded_fact_coverage": 1.0
+          },
+          "latency_seconds": 3.17,
+          "prompt_tokens": 583,
+          "completion_tokens": 293,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month for up to 20 support agents. EchoMap emphasizes live agent coaching.",
+          "limitations": [],
+          "trace_id": "01a10686-6574-7ade-a4f6-36505bf3d773"
+        },
+        {
+          "case_id": "hybrid_price_queue",
+          "category": "document_hybrid_diagnostic",
+          "scores": {
+            "fact_coverage": 0.5,
+            "citation_integrity": 1.0,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.5
+          },
+          "latency_seconds": 3.068,
+          "prompt_tokens": 601,
+          "completion_tokens": 302,
+          "document_recall": 1.0,
+          "summary": "The supplied evidence does not state SignalDesk Team's monthly price. It states that EchoMap includes a real-time queue dashboard.",
+          "limitations": [
+            "The monthly price for SignalDesk Team is not provided in the supplied evidence.",
+            "The supplied evidence does not provide a more specific product name for the EchoMap real-time queue dashboard."
+          ],
+          "trace_id": "01a10686-71df-7aad-9cc6-b7167eca7d40"
+        },
+        {
+          "case_id": "insufficient_orion_price",
+          "category": "insufficient",
+          "scores": {
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "fact_coverage": 1.0,
+            "task_success": 1.0
+          },
+          "latency_seconds": 1.506,
+          "prompt_tokens": 575,
+          "completion_tokens": 144,
+          "document_recall": null,
+          "summary": "The exact price of Orion Support Enterprise cannot be determined from the supplied evidence.",
+          "limitations": [
+            "Neither supplied source mentions Orion Support Enterprise or provides its price. E1 discusses Aster Analytics pricing, and E2 discusses EchoMap limits."
+          ],
+          "trace_id": "01a10685-f5c9-7d89-8d05-b6f56560d66a"
+        },
+        {
+          "case_id": "sql_echomap_august_response",
+          "category": "sql",
+          "scores": {
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 0.0
+          },
+          "latency_seconds": 2.242,
+          "prompt_tokens": 576,
+          "completion_tokens": 213,
+          "document_recall": null,
+          "summary": "The supplied evidence does not state EchoMap's average first response time in August 2026.",
+          "limitations": [
+            "No supplied source provides EchoMap's average first response time for August 2026."
+          ],
+          "trace_id": "01a10686-3acc-7f58-8c33-4c918fdd3f32"
+        },
+        {
+          "case_id": "sql_signaldesk_july_tickets",
+          "category": "sql",
+          "scores": {
+            "fact_coverage": 0.0,
+            "citation_integrity": 1.0,
+            "task_success": 0.0,
+            "grounded_fact_coverage": 0.0
+          },
+          "latency_seconds": 2.037,
+          "prompt_tokens": 610,
+          "completion_tokens": 192,
+          "document_recall": null,
+          "summary": "The supplied evidence does not state how many support tickets SignalDesk had in July 2026.",
+          "limitations": [
+            "The evidence describes SignalDesk\u2019s ticket-import and analytics features but provides no July 2026 ticket count."
+          ],
+          "trace_id": "01a10686-4396-76b0-bf4f-9e567c438d99"
+        },
+        {
+          "case_id": "vector_maildock_import",
+          "category": "document_vector_diagnostic",
+          "scores": {
+            "task_success": 1.0,
+            "fact_coverage": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 1.978,
+          "prompt_tokens": 613,
+          "completion_tokens": 174,
+          "document_recall": 1.0,
+          "summary": "SignalDesk imports tickets from MailDock.",
+          "limitations": [],
+          "trace_id": "01a10686-7de3-7d03-9e96-385fccb20fbd"
+        },
+        {
+          "case_id": "web_aurora_date",
+          "category": "web",
+          "scores": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0,
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0
+          },
+          "latency_seconds": 4.788,
+          "prompt_tokens": 639,
+          "completion_tokens": 214,
+          "document_recall": null,
+          "summary": "Aurora Support announced PulseBoard on 2026-09-01.",
+          "limitations": [],
+          "trace_id": "01a10686-4b95-7b04-9137-6631a15e619a"
+        },
+        {
+          "case_id": "web_aurora_product",
+          "category": "web",
+          "scores": {
+            "grounded_fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0,
+            "task_success": 1.0
+          },
+          "latency_seconds": 1.823,
+          "prompt_tokens": 643,
+          "completion_tokens": 207,
+          "document_recall": null,
+          "summary": "Aurora Support announced PulseBoard, a real-time support analytics dashboard, on 2026-09-01.",
+          "limitations": [],
+          "trace_id": "01a10686-5e4d-722a-807f-d12d84661c57"
+        },
+        {
+          "case_id": "web_sql_aurora_signaldesk",
+          "category": "web+sql",
+          "scores": {
+            "fact_coverage": 0.5,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.5,
+            "task_success": 0.0
+          },
+          "latency_seconds": 2.79,
+          "prompt_tokens": 662,
+          "completion_tokens": 272,
+          "document_recall": null,
+          "summary": "Aurora Support announced PulseBoard, a real-time support analytics dashboard. The supplied evidence does not state how many July 2026 tickets SignalDesk had.",
+          "limitations": [
+            "The supplied evidence does not provide the number of July 2026 tickets SignalDesk had."
+          ],
+          "trace_id": "01a10686-094c-7a7a-9908-88f402f812b1"
+        }
+      ]
+    },
+    "hybrid_web_sql": {
+      "experiment_id": "01a10686-bb4e-7cf6-855a-fce527dba5fa",
+      "experiment_url": "https://www.comet.com/opik/hoda/experiments/01a10627-6356-7032-830c-901dbc6453b9/compare?experiments=%5B%2201a10686-bb4e-7cf6-855a-fce527dba5fa%22%5D",
+      "summary": {
+        "overall": {
+          "citation_integrity": 1.0,
+          "fact_coverage": 0.941,
+          "grounded_fact_coverage": 0.941,
+          "task_success": 0.882,
+          "count": 17,
+          "mean_latency_seconds": 3.363,
+          "prompt_tokens": 10587,
+          "completion_tokens": 4450,
+          "mean_document_recall": 1.0
+        },
+        "by_category": {
+          "document": {
+            "grounded_fact_coverage": 1.0,
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "task_success": 1.0,
+            "count": 4,
+            "mean_latency_seconds": 5.271,
+            "prompt_tokens": 2309,
+            "completion_tokens": 774,
+            "mean_document_recall": 1.0
+          },
+          "document+sql": {
+            "grounded_fact_coverage": 0.75,
+            "fact_coverage": 0.75,
+            "citation_integrity": 1.0,
+            "task_success": 0.5,
+            "count": 2,
+            "mean_latency_seconds": 3.17,
+            "prompt_tokens": 1267,
+            "completion_tokens": 650,
+            "mean_document_recall": 1.0
+          },
+          "document+web": {
+            "citation_integrity": 1.0,
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "fact_coverage": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 3.054,
+            "prompt_tokens": 657,
+            "completion_tokens": 507,
+            "mean_document_recall": 1.0
+          },
+          "document+web+sql": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 2.59,
+            "prompt_tokens": 693,
+            "completion_tokens": 445,
+            "mean_document_recall": 1.0
+          },
+          "document_hybrid_diagnostic": {
+            "fact_coverage": 0.75,
+            "task_success": 0.5,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 0.75,
+            "count": 2,
+            "mean_latency_seconds": 4.432,
+            "prompt_tokens": 1184,
+            "completion_tokens": 617,
+            "mean_document_recall": 1.0
+          },
+          "document_vector_diagnostic": {
+            "citation_integrity": 1.0,
+            "task_success": 1.0,
+            "fact_coverage": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 1.796,
+            "prompt_tokens": 613,
+            "completion_tokens": 174,
+            "mean_document_recall": 1.0
+          },
+          "insufficient": {
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 1.783,
+            "prompt_tokens": 575,
+            "completion_tokens": 135,
+            "mean_document_recall": null
+          },
+          "sql": {
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0,
+            "count": 2,
+            "mean_latency_seconds": 1.965,
+            "prompt_tokens": 1292,
+            "completion_tokens": 367,
+            "mean_document_recall": null
+          },
+          "web": {
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0,
+            "count": 2,
+            "mean_latency_seconds": 2.378,
+            "prompt_tokens": 1282,
+            "completion_tokens": 431,
+            "mean_document_recall": null
+          },
+          "web+sql": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0,
+            "count": 1,
+            "mean_latency_seconds": 2.969,
+            "prompt_tokens": 715,
+            "completion_tokens": 350,
+            "mean_document_recall": null
+          }
+        }
+      },
+      "cases": [
+        {
+          "case_id": "all_three_signaldesk_aurora",
+          "category": "document+web+sql",
+          "scores": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0
+          },
+          "latency_seconds": 2.59,
+          "prompt_tokens": 693,
+          "completion_tokens": 445,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month, Aurora Support announced PulseBoard on 2026-09-01, and SignalDesk had 128 support tickets in 2026-07.",
+          "limitations": [],
+          "trace_id": "01a10686-c4d9-72b0-a075-e416161897a5"
+        },
+        {
+          "case_id": "doc_echomap_coaching",
+          "category": "document",
+          "scores": {
+            "grounded_fact_coverage": 1.0,
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "task_success": 1.0
+          },
+          "latency_seconds": 14.109,
+          "prompt_tokens": 568,
+          "completion_tokens": 185,
+          "document_recall": 1.0,
+          "summary": "EchoMap emphasizes live agent coaching.",
+          "limitations": [],
+          "trace_id": "01a10687-4b40-7cc8-8aa5-e3e73340dff1"
+        },
+        {
+          "case_id": "doc_signaldesk_integration",
+          "category": "document",
+          "scores": {
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0
+          },
+          "latency_seconds": 2.552,
+          "prompt_tokens": 585,
+          "completion_tokens": 291,
+          "document_recall": 1.0,
+          "summary": "SignalDesk can import support tickets from HelpHarbor and MailDock.",
+          "limitations": [],
+          "trace_id": "01a10687-8e63-772a-9950-51ca4319bcb5"
+        },
+        {
+          "case_id": "doc_signaldesk_price",
+          "category": "document",
+          "scores": {
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0,
+            "fact_coverage": 1.0
+          },
+          "latency_seconds": 1.353,
+          "prompt_tokens": 578,
+          "completion_tokens": 152,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month for up to 20 support agents.",
+          "limitations": [],
+          "trace_id": "01a10687-9861-7985-9611-a8164a0b1104"
+        },
+        {
+          "case_id": "doc_signaldesk_retention",
+          "category": "document",
+          "scores": {
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0,
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 3.069,
+          "prompt_tokens": 578,
+          "completion_tokens": 146,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team keeps imported tickets for 90 days.",
+          "limitations": [],
+          "trace_id": "01a10687-8260-7caf-a8ca-77057418cb02"
+        },
+        {
+          "case_id": "doc_sql_echomap",
+          "category": "document+sql",
+          "scores": {
+            "grounded_fact_coverage": 0.5,
+            "fact_coverage": 0.5,
+            "citation_integrity": 1.0,
+            "task_success": 0.0
+          },
+          "latency_seconds": 3.019,
+          "prompt_tokens": 630,
+          "completion_tokens": 269,
+          "document_recall": 1.0,
+          "summary": "EchoMap had 190 support tickets in August 2026. Its starting monthly price is not established by the supplied evidence.",
+          "limitations": [
+            "The supplied evidence does not state EchoMap's starting monthly price."
+          ],
+          "trace_id": "01a10686-e695-745f-87a1-c779cea463b7"
+        },
+        {
+          "case_id": "doc_sql_signaldesk",
+          "category": "document+sql",
+          "scores": {
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0,
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 3.321,
+          "prompt_tokens": 637,
+          "completion_tokens": 381,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month, while SignalDesk recorded 128 support tickets in July 2026.",
+          "limitations": [
+            "The evidence provides a price and a ticket count but does not establish a meaningful cost-per-ticket comparison or whether the ticket count is limited to Team-plan customers."
+          ],
+          "trace_id": "01a10686-f267-7e69-8593-d7914fdc0ca4"
+        },
+        {
+          "case_id": "doc_web_trends",
+          "category": "document+web",
+          "scores": {
+            "citation_integrity": 1.0,
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "fact_coverage": 1.0
+          },
+          "latency_seconds": 3.054,
+          "prompt_tokens": 657,
+          "completion_tokens": 507,
+          "document_recall": 1.0,
+          "summary": "SignalDesk shows weekly trends in support tickets grouped by topic, helping identify recurring customer problems. Aurora Support announced PulseBoard, a real-time support analytics dashboard, on 2026-09-01.",
+          "limitations": [
+            "The evidence does not specify the individual support topics, trend directions, or numerical values shown by SignalDesk."
+          ],
+          "trace_id": "01a10686-daa0-7677-8eed-ea3210d59eaa"
+        },
+        {
+          "case_id": "hybrid_price_coaching",
+          "category": "document_hybrid_diagnostic",
+          "scores": {
+            "fact_coverage": 1.0,
+            "task_success": 1.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0
+          },
+          "latency_seconds": 3.199,
+          "prompt_tokens": 583,
+          "completion_tokens": 303,
+          "document_recall": 1.0,
+          "summary": "SignalDesk Team costs $480 per month for up to 20 support agents, and EchoMap emphasizes live agent coaching.",
+          "limitations": [],
+          "trace_id": "01a10687-217b-784b-a4b5-30f809b86573"
+        },
+        {
+          "case_id": "hybrid_price_queue",
+          "category": "document_hybrid_diagnostic",
+          "scores": {
+            "grounded_fact_coverage": 0.5,
+            "fact_coverage": 0.5,
+            "task_success": 0.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 5.665,
+          "prompt_tokens": 601,
+          "completion_tokens": 314,
+          "document_recall": 1.0,
+          "summary": "The supplied evidence identifies EchoMap's real-time queue dashboard, but does not provide SignalDesk Team's monthly price.",
+          "limitations": [
+            "The monthly price for SignalDesk Team is not stated in the supplied evidence.",
+            "The evidence does not establish whether the dashboard has a more specific product name than \u201creal-time queue dashboard.\u201d"
+          ],
+          "trace_id": "01a10687-2e02-7bd0-bf31-048167436904"
+        },
+        {
+          "case_id": "insufficient_orion_price",
+          "category": "insufficient",
+          "scores": {
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0
+          },
+          "latency_seconds": 1.783,
+          "prompt_tokens": 575,
+          "completion_tokens": 135,
+          "document_recall": null,
+          "summary": "The exact price of Orion Support Enterprise cannot be determined from the supplied evidence.",
+          "limitations": [
+            "The supplied sources discuss Aster Analytics and EchoMap, not Orion Support Enterprise, and provide no price for it."
+          ],
+          "trace_id": "01a10686-bdd7-7a8e-822d-fcd50a553816"
+        },
+        {
+          "case_id": "sql_echomap_august_response",
+          "category": "sql",
+          "scores": {
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0
+          },
+          "latency_seconds": 1.76,
+          "prompt_tokens": 629,
+          "completion_tokens": 192,
+          "document_recall": null,
+          "summary": "EchoMap's average first response time in August 2026 was 1.6 hours.",
+          "limitations": [],
+          "trace_id": "01a10686-ff6b-755f-9ba4-76f8fd8359b6"
+        },
+        {
+          "case_id": "sql_signaldesk_july_tickets",
+          "category": "sql",
+          "scores": {
+            "citation_integrity": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "fact_coverage": 1.0,
+            "task_success": 1.0
+          },
+          "latency_seconds": 2.169,
+          "prompt_tokens": 663,
+          "completion_tokens": 175,
+          "document_recall": null,
+          "summary": "SignalDesk had 128 support tickets in July 2026.",
+          "limitations": [],
+          "trace_id": "01a10687-0653-7a83-bfb9-4ff3d14ee098"
+        },
+        {
+          "case_id": "vector_maildock_import",
+          "category": "document_vector_diagnostic",
+          "scores": {
+            "citation_integrity": 1.0,
+            "task_success": 1.0,
+            "fact_coverage": 1.0,
+            "grounded_fact_coverage": 1.0
+          },
+          "latency_seconds": 1.796,
+          "prompt_tokens": 613,
+          "completion_tokens": 174,
+          "document_recall": 1.0,
+          "summary": "SignalDesk imports tickets from MailDock.",
+          "limitations": [],
+          "trace_id": "01a10687-4431-72db-966c-e9c95d1bd953"
+        },
+        {
+          "case_id": "web_aurora_date",
+          "category": "web",
+          "scores": {
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0
+          },
+          "latency_seconds": 2.418,
+          "prompt_tokens": 639,
+          "completion_tokens": 202,
+          "document_recall": null,
+          "summary": "Aurora Support announced PulseBoard on 2026-09-01.",
+          "limitations": [],
+          "trace_id": "01a10687-0ed7-7c25-bdb7-ba131a9caadb"
+        },
+        {
+          "case_id": "web_aurora_product",
+          "category": "web",
+          "scores": {
+            "task_success": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "fact_coverage": 1.0,
+            "citation_integrity": 1.0
+          },
+          "latency_seconds": 2.339,
+          "prompt_tokens": 643,
+          "completion_tokens": 229,
+          "document_recall": null,
+          "summary": "Aurora Support announced PulseBoard, a real-time support analytics dashboard, on 2026-09-01.",
+          "limitations": [],
+          "trace_id": "01a10687-1854-7dac-b5fb-5eb97211d6b9"
+        },
+        {
+          "case_id": "web_sql_aurora_signaldesk",
+          "category": "web+sql",
+          "scores": {
+            "citation_integrity": 1.0,
+            "fact_coverage": 1.0,
+            "grounded_fact_coverage": 1.0,
+            "task_success": 1.0
+          },
+          "latency_seconds": 2.969,
+          "prompt_tokens": 715,
+          "completion_tokens": 350,
+          "document_recall": null,
+          "summary": "Aurora Support announced PulseBoard, a real-time support analytics dashboard. SignalDesk had 128 support tickets in July 2026.",
+          "limitations": [],
+          "trace_id": "01a10686-cefe-7fa3-8ba7-b8b40d8186db"
+        }
+      ]
+    }
+  },
+  "compare_url": "https://www.comet.com/opik/hoda/experiments/01a10627-6356-7032-830c-901dbc6453b9/compare?experiments=%5B%2201a10682-295e-7fc2-951c-04b378c32ed1%22%2C%20%2201a10683-2c2e-70a4-8425-9267721b4568%22%2C%20%2201a10683-f45d-733d-9dd8-c31395077cde%22%2C%20%2201a10684-ba29-7a85-945e-c395dc3cacc6%22%2C%20%2201a10685-f27a-7556-a968-fab21b38d474%22%2C%20%2201a10686-bb4e-7cf6-855a-fce527dba5fa%22%5D",
+  "retrieval_audit_note": "Fact-level fields were added by a retrieval-only rerun after the Opik answer experiments; the retrieved source lists matched the original preflight."
+}

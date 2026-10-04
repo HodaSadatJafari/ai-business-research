@@ -1,0 +1,788 @@
+{
+  "bm25": {
+    "count": 11,
+    "mean_document_recall": 0.818,
+    "full_evidence_cases": 8,
+    "mean_document_fact_recall": 0.727,
+    "full_fact_evidence_cases": 7,
+    "cases": [
+      {
+        "case_id": "doc_signaldesk_price",
+        "retrieved_sources": [
+          "technical/data_policy.md",
+          "company/aster.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "b5d0ac3f6f26:10:0",
+            "source": "technical/data_policy.md",
+            "section": "SignalDesk"
+          },
+          {
+            "chunk_id": "f4f2964f3f14:1:0",
+            "source": "company/aster.md",
+            "section": "Pricing"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "doc_signaldesk_integration",
+        "retrieved_sources": [
+          "product/signaldesk.md",
+          "product/echomap.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "8f2e3d592202:8:0",
+            "source": "product/signaldesk.md",
+            "section": "Features"
+          },
+          {
+            "chunk_id": "8e0bfafed316:7:0",
+            "source": "product/echomap.md",
+            "section": "Limits"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "doc_signaldesk_retention",
+        "retrieved_sources": [
+          "technical/data_policy.md",
+          "company/aster.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "b5d0ac3f6f26:10:0",
+            "source": "technical/data_policy.md",
+            "section": "SignalDesk"
+          },
+          {
+            "chunk_id": "f4f2964f3f14:1:0",
+            "source": "company/aster.md",
+            "section": "Pricing"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "doc_echomap_coaching",
+        "retrieved_sources": [
+          "company/brio.md",
+          "product/echomap.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "8959ac9c39b0:2:0",
+            "source": "company/brio.md",
+            "section": "Positioning"
+          },
+          {
+            "chunk_id": "8e0bfafed316:6:0",
+            "source": "product/echomap.md",
+            "section": "Features"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "vector_maildock_import",
+        "retrieved_sources": [
+          "market/customer_needs.md",
+          "product/echomap.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "5390e321c5f0:4:0",
+            "source": "market/customer_needs.md",
+            "section": "Interview Findings"
+          },
+          {
+            "chunk_id": "8e0bfafed316:7:0",
+            "source": "product/echomap.md",
+            "section": "Limits"
+          }
+        ],
+        "document_recall": 0.0,
+        "full_evidence": false,
+        "document_fact_recall": 0.0,
+        "full_fact_evidence": false
+      },
+      {
+        "case_id": "hybrid_price_queue",
+        "retrieved_sources": [
+          "product/echomap.md",
+          "company/brio.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "8e0bfafed316:6:0",
+            "source": "product/echomap.md",
+            "section": "Features"
+          },
+          {
+            "chunk_id": "8959ac9c39b0:2:0",
+            "source": "company/brio.md",
+            "section": "Positioning"
+          }
+        ],
+        "document_recall": 0.5,
+        "full_evidence": false,
+        "document_fact_recall": 0.5,
+        "full_fact_evidence": false
+      },
+      {
+        "case_id": "hybrid_price_coaching",
+        "retrieved_sources": [
+          "company/brio.md",
+          "product/echomap.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "8959ac9c39b0:2:0",
+            "source": "company/brio.md",
+            "section": "Positioning"
+          },
+          {
+            "chunk_id": "8e0bfafed316:6:0",
+            "source": "product/echomap.md",
+            "section": "Features"
+          }
+        ],
+        "document_recall": 0.5,
+        "full_evidence": false,
+        "document_fact_recall": 0.5,
+        "full_fact_evidence": false
+      },
+      {
+        "case_id": "doc_sql_signaldesk",
+        "retrieved_sources": [
+          "technical/data_policy.md",
+          "company/aster.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "b5d0ac3f6f26:10:0",
+            "source": "technical/data_policy.md",
+            "section": "SignalDesk"
+          },
+          {
+            "chunk_id": "f4f2964f3f14:1:0",
+            "source": "company/aster.md",
+            "section": "Pricing"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "doc_sql_echomap",
+        "retrieved_sources": [
+          "technical/data_policy.md",
+          "company/brio.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "b5d0ac3f6f26:11:0",
+            "source": "technical/data_policy.md",
+            "section": "EchoMap"
+          },
+          {
+            "chunk_id": "8959ac9c39b0:2:0",
+            "source": "company/brio.md",
+            "section": "Positioning"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 0.0,
+        "full_fact_evidence": false
+      },
+      {
+        "case_id": "doc_web_trends",
+        "retrieved_sources": [
+          "product/signaldesk.md",
+          "product/echomap.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "8f2e3d592202:8:0",
+            "source": "product/signaldesk.md",
+            "section": "Features"
+          },
+          {
+            "chunk_id": "8e0bfafed316:7:0",
+            "source": "product/echomap.md",
+            "section": "Limits"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "all_three_signaldesk_aurora",
+        "retrieved_sources": [
+          "technical/data_policy.md",
+          "company/aster.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "b5d0ac3f6f26:10:0",
+            "source": "technical/data_policy.md",
+            "section": "SignalDesk"
+          },
+          {
+            "chunk_id": "f4f2964f3f14:1:0",
+            "source": "company/aster.md",
+            "section": "Pricing"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      }
+    ]
+  },
+  "vector": {
+    "count": 11,
+    "mean_document_recall": 0.955,
+    "full_evidence_cases": 10,
+    "mean_document_fact_recall": 0.909,
+    "full_fact_evidence_cases": 9,
+    "cases": [
+      {
+        "case_id": "doc_signaldesk_price",
+        "retrieved_sources": [
+          "company/aster.md",
+          "company/aster.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "f4f2964f3f14:1:0",
+            "source": "company/aster.md",
+            "section": "Pricing"
+          },
+          {
+            "chunk_id": "f4f2964f3f14:0:0",
+            "source": "company/aster.md",
+            "section": "Positioning"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "doc_signaldesk_integration",
+        "retrieved_sources": [
+          "product/signaldesk.md",
+          "product/echomap.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "8f2e3d592202:8:0",
+            "source": "product/signaldesk.md",
+            "section": "Features"
+          },
+          {
+            "chunk_id": "8e0bfafed316:7:0",
+            "source": "product/echomap.md",
+            "section": "Limits"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "doc_signaldesk_retention",
+        "retrieved_sources": [
+          "technical/data_policy.md",
+          "product/signaldesk.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "b5d0ac3f6f26:10:0",
+            "source": "technical/data_policy.md",
+            "section": "SignalDesk"
+          },
+          {
+            "chunk_id": "8f2e3d592202:8:0",
+            "source": "product/signaldesk.md",
+            "section": "Features"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "doc_echomap_coaching",
+        "retrieved_sources": [
+          "company/brio.md",
+          "product/echomap.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "8959ac9c39b0:2:0",
+            "source": "company/brio.md",
+            "section": "Positioning"
+          },
+          {
+            "chunk_id": "8e0bfafed316:6:0",
+            "source": "product/echomap.md",
+            "section": "Features"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "vector_maildock_import",
+        "retrieved_sources": [
+          "product/signaldesk.md",
+          "technical/data_policy.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "8f2e3d592202:8:0",
+            "source": "product/signaldesk.md",
+            "section": "Features"
+          },
+          {
+            "chunk_id": "b5d0ac3f6f26:10:0",
+            "source": "technical/data_policy.md",
+            "section": "SignalDesk"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "hybrid_price_queue",
+        "retrieved_sources": [
+          "company/aster.md",
+          "product/echomap.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "f4f2964f3f14:0:0",
+            "source": "company/aster.md",
+            "section": "Positioning"
+          },
+          {
+            "chunk_id": "8e0bfafed316:6:0",
+            "source": "product/echomap.md",
+            "section": "Features"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 0.5,
+        "full_fact_evidence": false
+      },
+      {
+        "case_id": "hybrid_price_coaching",
+        "retrieved_sources": [
+          "company/aster.md",
+          "company/aster.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "f4f2964f3f14:1:0",
+            "source": "company/aster.md",
+            "section": "Pricing"
+          },
+          {
+            "chunk_id": "f4f2964f3f14:0:0",
+            "source": "company/aster.md",
+            "section": "Positioning"
+          }
+        ],
+        "document_recall": 0.5,
+        "full_evidence": false,
+        "document_fact_recall": 0.5,
+        "full_fact_evidence": false
+      },
+      {
+        "case_id": "doc_sql_signaldesk",
+        "retrieved_sources": [
+          "company/aster.md",
+          "company/aster.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "f4f2964f3f14:1:0",
+            "source": "company/aster.md",
+            "section": "Pricing"
+          },
+          {
+            "chunk_id": "f4f2964f3f14:0:0",
+            "source": "company/aster.md",
+            "section": "Positioning"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "doc_sql_echomap",
+        "retrieved_sources": [
+          "company/brio.md",
+          "technical/data_policy.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "8959ac9c39b0:3:0",
+            "source": "company/brio.md",
+            "section": "Pricing"
+          },
+          {
+            "chunk_id": "b5d0ac3f6f26:11:0",
+            "source": "technical/data_policy.md",
+            "section": "EchoMap"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "doc_web_trends",
+        "retrieved_sources": [
+          "product/signaldesk.md",
+          "company/aster.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "8f2e3d592202:8:0",
+            "source": "product/signaldesk.md",
+            "section": "Features"
+          },
+          {
+            "chunk_id": "f4f2964f3f14:0:0",
+            "source": "company/aster.md",
+            "section": "Positioning"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "all_three_signaldesk_aurora",
+        "retrieved_sources": [
+          "company/aster.md",
+          "company/aster.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "f4f2964f3f14:1:0",
+            "source": "company/aster.md",
+            "section": "Pricing"
+          },
+          {
+            "chunk_id": "f4f2964f3f14:0:0",
+            "source": "company/aster.md",
+            "section": "Positioning"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      }
+    ]
+  },
+  "hybrid": {
+    "count": 11,
+    "mean_document_recall": 1.0,
+    "full_evidence_cases": 11,
+    "mean_document_fact_recall": 0.864,
+    "full_fact_evidence_cases": 9,
+    "cases": [
+      {
+        "case_id": "doc_signaldesk_price",
+        "retrieved_sources": [
+          "company/aster.md",
+          "technical/data_policy.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "f4f2964f3f14:1:0",
+            "source": "company/aster.md",
+            "section": "Pricing"
+          },
+          {
+            "chunk_id": "b5d0ac3f6f26:10:0",
+            "source": "technical/data_policy.md",
+            "section": "SignalDesk"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "doc_signaldesk_integration",
+        "retrieved_sources": [
+          "product/signaldesk.md",
+          "product/echomap.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "8f2e3d592202:8:0",
+            "source": "product/signaldesk.md",
+            "section": "Features"
+          },
+          {
+            "chunk_id": "8e0bfafed316:7:0",
+            "source": "product/echomap.md",
+            "section": "Limits"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "doc_signaldesk_retention",
+        "retrieved_sources": [
+          "technical/data_policy.md",
+          "company/aster.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "b5d0ac3f6f26:10:0",
+            "source": "technical/data_policy.md",
+            "section": "SignalDesk"
+          },
+          {
+            "chunk_id": "f4f2964f3f14:1:0",
+            "source": "company/aster.md",
+            "section": "Pricing"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "doc_echomap_coaching",
+        "retrieved_sources": [
+          "company/brio.md",
+          "product/echomap.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "8959ac9c39b0:2:0",
+            "source": "company/brio.md",
+            "section": "Positioning"
+          },
+          {
+            "chunk_id": "8e0bfafed316:6:0",
+            "source": "product/echomap.md",
+            "section": "Features"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "vector_maildock_import",
+        "retrieved_sources": [
+          "market/customer_needs.md",
+          "product/signaldesk.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "5390e321c5f0:4:0",
+            "source": "market/customer_needs.md",
+            "section": "Interview Findings"
+          },
+          {
+            "chunk_id": "8f2e3d592202:8:0",
+            "source": "product/signaldesk.md",
+            "section": "Features"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "hybrid_price_queue",
+        "retrieved_sources": [
+          "product/echomap.md",
+          "company/aster.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "8e0bfafed316:6:0",
+            "source": "product/echomap.md",
+            "section": "Features"
+          },
+          {
+            "chunk_id": "f4f2964f3f14:0:0",
+            "source": "company/aster.md",
+            "section": "Positioning"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 0.5,
+        "full_fact_evidence": false
+      },
+      {
+        "case_id": "hybrid_price_coaching",
+        "retrieved_sources": [
+          "company/brio.md",
+          "company/aster.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "8959ac9c39b0:2:0",
+            "source": "company/brio.md",
+            "section": "Positioning"
+          },
+          {
+            "chunk_id": "f4f2964f3f14:1:0",
+            "source": "company/aster.md",
+            "section": "Pricing"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "doc_sql_signaldesk",
+        "retrieved_sources": [
+          "company/aster.md",
+          "technical/data_policy.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "f4f2964f3f14:1:0",
+            "source": "company/aster.md",
+            "section": "Pricing"
+          },
+          {
+            "chunk_id": "b5d0ac3f6f26:10:0",
+            "source": "technical/data_policy.md",
+            "section": "SignalDesk"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "doc_sql_echomap",
+        "retrieved_sources": [
+          "technical/data_policy.md",
+          "company/brio.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "b5d0ac3f6f26:11:0",
+            "source": "technical/data_policy.md",
+            "section": "EchoMap"
+          },
+          {
+            "chunk_id": "8959ac9c39b0:2:0",
+            "source": "company/brio.md",
+            "section": "Positioning"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 0.0,
+        "full_fact_evidence": false
+      },
+      {
+        "case_id": "doc_web_trends",
+        "retrieved_sources": [
+          "product/signaldesk.md",
+          "company/aster.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "8f2e3d592202:8:0",
+            "source": "product/signaldesk.md",
+            "section": "Features"
+          },
+          {
+            "chunk_id": "f4f2964f3f14:0:0",
+            "source": "company/aster.md",
+            "section": "Positioning"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      },
+      {
+        "case_id": "all_three_signaldesk_aurora",
+        "retrieved_sources": [
+          "company/aster.md",
+          "technical/data_policy.md"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "f4f2964f3f14:1:0",
+            "source": "company/aster.md",
+            "section": "Pricing"
+          },
+          {
+            "chunk_id": "b5d0ac3f6f26:10:0",
+            "source": "technical/data_policy.md",
+            "section": "SignalDesk"
+          }
+        ],
+        "document_recall": 1.0,
+        "full_evidence": true,
+        "document_fact_recall": 1.0,
+        "full_fact_evidence": true
+      }
+    ]
+  }
+}

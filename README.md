@@ -56,7 +56,7 @@ Structured Pydantic Response
 
 Implemented:
 
-* Python 3.12
+* Python 3.13+
 * FastAPI
 * OpenAI-compatible LLM client
 * Pydantic structured outputs
@@ -80,6 +80,8 @@ Implemented:
 | Pydantic              | Data validation and structured LLM outputs |
 | OpenAI-compatible API | LLM interface                              |
 | Opik                  | LLM observability and evaluation           |
+| Weaviate              | BM25, vector, and hybrid document search   |
+| Model2Vec             | Local embeddings through Weaviate          |
 | pytest                | Testing                                    |
 | Ruff                  | Linting and formatting                     |
 | uv                    | Python package and environment management  |
@@ -91,38 +93,17 @@ Implemented:
 
 ```text
 ai-business-research/
-│
-├── app/
-│   ├── __init__.py
-│   ├── main.py
-│   ├── config.py
-│   │
-│   ├── api/
-│   │   ├── __init__.py
-│   │   └── routes.py
-│   │
-│   ├── schemas/
-│   │   ├── __init__.py
-│   │   └── research.py
-│   │
-│   └── services/
-│       ├── __init__.py
-│       └── research.py
-│
+├── app/                    # API, research services, evidence tools, retrieval
+├── knowledge_base/         # Fictional business documents
+├── data/                   # Fictional support metrics
+├── evals/                  # Evaluation cases and Opik runners
+├── experiments/            # Measurement reports and result JSON
 ├── tests/
-│   ├── test_health.py
-│   └── test_research.py
-│
-├── experiments/
-│   └── 001_baseline.md
-│
 ├── docs/
-│   └── architecture.md
-│
 ├── .env.example
 ├── .gitignore
 ├── Dockerfile
-├── docker-compose.yml
+├── compose.weaviate.yaml
 ├── pyproject.toml
 ├── uv.lock
 └── README.md
@@ -130,12 +111,30 @@ ai-business-research/
 
 ---
 
-## Week 2 — Local knowledge retrieval
+## Week 2 — Knowledge retrieval
 
 The project now includes a small fictional knowledge base in `knowledge_base/`.
 `POST /api/v1/research/rag` retrieves evidence and returns structured findings
 with source IDs. The retrieval methods are `bm25` (default), `vector`, and
-`hybrid`. The local vector uses hashed word features, not a semantic model.
+`hybrid`. All three search modes run in Weaviate. The local Weaviate
+`text2vec-model2vec` module generates Potion 8M embeddings for vector and
+hybrid search when documents are indexed or queried.
+
+Start local Weaviate before running retrieval or RAG:
+
+```bash
+docker compose -f compose.weaviate.yaml up -d
+```
+
+Set `WEAVIATE_URL` and `WEAVIATE_GRPC_PORT` for that instance. The default
+values in `.env.example` use ports `18080` and `15051`. The Compose file
+starts the local inference container with Weaviate. A remote Weaviate instance
+must also have the `text2vec-model2vec` module configured to index this project.
+`MODEL2VEC_IMAGE_TAG` in `.env` selects the local inference image tag and is
+also used in the collection identity and experiment configuration. Changing it
+creates a new collection so embeddings from different inference images do not
+mix. For a remote instance, set it to the tag of that instance's inference
+image.
 
 ```bash
 uv run python -m evals.run_week2_retrieval
@@ -150,7 +149,8 @@ uv run python -m evals.run_week2_answers --output week2_answer_results.json
 ```
 
 The live comparison calls the configured LLM for each service and question.
-See `experiments/002_retrieval.md` for the measured retrieval result and limits.
+See `experiments/002_retrieval.md` for the historical Week 2 measurement and
+`experiments/007_weaviate_vectorizer_six_way.md` for current Weaviate results.
 
 ---
 
@@ -175,6 +175,40 @@ uv run python -m evals.smoke_tavily
 The Opik comparison uses a fixed web fixture and live model calls. The Tavily
 smoke script makes one live search and requires the API key. See
 `experiments/003_agent_tools.md` for the results and limitations.
+
+---
+
+## Six-way Opik evidence comparison
+
+Compare a prompt-only LLM, Weaviate BM25, Weaviate semantic vector search,
+Weaviate hybrid search, then hybrid search with fixed web evidence and
+read-only SQL evidence. All six configurations use one versioned, 17-case
+Opik dataset and the same answer model and prompt. The extra document cases
+target questions where semantic search or hybrid fusion can supply evidence
+that the preceding search mode misses at top two.
+
+```bash
+./evals/run_six_way_local.sh --retrieval-only
+./evals/run_six_way_local.sh
+```
+
+The script starts local Weaviate, rebuilds the app image, and uses Docker host
+networking so the evaluation can reach Weaviate, the answer provider, and Opik.
+It uses the configured credentials from `.env` without adding them to the image.
+For an already reachable Weaviate instance with `text2vec-model2vec` enabled,
+you can run `uv run python -m evals.run_six_way` directly after setting its
+HTTP and gRPC connection values.
+
+The full command makes paid answer-model calls. Weaviate generates embeddings
+locally through its configured vectorizer. It writes experiment IDs, scores,
+and the Opik compare link to
+`experiments/results/007_weaviate_vectorizer_six_way.json`; the retrieval-only
+preflight goes to `experiments/results/007_weaviate_retrieval.json`. See
+`experiments/007_weaviate_vectorizer_six_way.md` for results and limits. The
+earlier comparisons in `experiments/005_six_way_comparison.md` and
+`experiments/006_weaviate_six_way.md` remain historical. The web stage uses a
+fixed fixture, so it measures evidence access rather than live web search or
+agent tool selection.
 
 ---
 

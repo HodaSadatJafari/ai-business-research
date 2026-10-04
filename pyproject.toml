@@ -10,6 +10,7 @@ dependencies = [
     "opik>=2.2.66",
     "pydantic-settings>=2.15.0",
     "uvicorn>=0.53.0",
+    "weaviate-client>=4.17,<5",
 ]
 
 [dependency-groups]

@@ -1,0 +1,212 @@
+[
+  {
+    "case_id": "doc_signaldesk_price",
+    "category": "document",
+    "input": "How much does SignalDesk Team cost per month?",
+    "document_query": "SignalDesk Team monthly price",
+    "web_fixture": null,
+    "sql_args": null,
+    "relevant_sources": ["company/aster.md"],
+    "expected_facts": [
+      {"phrase": "$480", "source_type": "document", "locator": "company/aster.md"}
+    ]
+  },
+  {
+    "case_id": "doc_signaldesk_integration",
+    "category": "document",
+    "input": "Which ticket system can SignalDesk import from?",
+    "document_query": "SignalDesk ticket imports HelpHarbor",
+    "web_fixture": null,
+    "sql_args": null,
+    "relevant_sources": ["product/signaldesk.md"],
+    "expected_facts": [
+      {"phrase": "HelpHarbor", "source_type": "document", "locator": "product/signaldesk.md"}
+    ]
+  },
+  {
+    "case_id": "doc_signaldesk_retention",
+    "category": "document",
+    "input": "How long does SignalDesk Team keep imported tickets?",
+    "document_query": "SignalDesk Team imported tickets retention",
+    "web_fixture": null,
+    "sql_args": null,
+    "relevant_sources": ["technical/data_policy.md"],
+    "expected_facts": [
+      {"phrase": "90 days", "source_type": "document", "locator": "technical/data_policy.md"}
+    ]
+  },
+  {
+    "case_id": "doc_echomap_coaching",
+    "category": "document",
+    "input": "Which product emphasizes live agent coaching?",
+    "document_query": "live agent coaching product",
+    "web_fixture": null,
+    "sql_args": null,
+    "relevant_sources": ["company/brio.md"],
+    "expected_facts": [
+      {"phrase": "EchoMap", "source_type": "document", "locator": "company/brio.md"}
+    ]
+  },
+  {
+    "case_id": "vector_maildock_import",
+    "category": "document_vector_diagnostic",
+    "input": "Which product imports tickets from MailDock?",
+    "document_query": "MailDock ticket import product",
+    "web_fixture": null,
+    "sql_args": null,
+    "relevant_sources": ["product/signaldesk.md"],
+    "expected_facts": [
+      {"phrase": "SignalDesk", "source_type": "document", "locator": "product/signaldesk.md"}
+    ]
+  },
+  {
+    "case_id": "hybrid_price_queue",
+    "category": "document_hybrid_diagnostic",
+    "input": "What is SignalDesk Team's monthly price, and what EchoMap dashboard monitors the queue in real time?",
+    "document_query": "SignalDesk Team price and real-time queue dashboard",
+    "web_fixture": null,
+    "sql_args": null,
+    "relevant_sources": ["company/aster.md", "product/echomap.md"],
+    "expected_facts": [
+      {"phrase": "$480", "source_type": "document", "locator": "company/aster.md"},
+      {"phrase": "real-time queue dashboard", "source_type": "document", "locator": "product/echomap.md"}
+    ]
+  },
+  {
+    "case_id": "hybrid_price_coaching",
+    "category": "document_hybrid_diagnostic",
+    "input": "How much is SignalDesk Team per month, and which product emphasizes live agent coaching?",
+    "document_query": "monthly price of SignalDesk Team and live agent coaching features",
+    "web_fixture": null,
+    "sql_args": null,
+    "relevant_sources": ["company/aster.md", "company/brio.md"],
+    "expected_facts": [
+      {"phrase": "$480", "source_type": "document", "locator": "company/aster.md"},
+      {"phrase": "EchoMap", "source_type": "document", "locator": "company/brio.md"}
+    ]
+  },
+  {
+    "case_id": "web_aurora_product",
+    "category": "web",
+    "input": "What did Aurora Support announce in September 2026?",
+    "document_query": "Aurora Support September 2026 announcement",
+    "web_fixture": "aurora_pulseboard",
+    "sql_args": null,
+    "relevant_sources": [],
+    "expected_facts": [
+      {"phrase": "PulseBoard", "source_type": "web", "locator": "https://example.com/aurora-pulseboard"}
+    ]
+  },
+  {
+    "case_id": "web_aurora_date",
+    "category": "web",
+    "input": "On what date did Aurora Support announce PulseBoard?",
+    "document_query": "Aurora Support PulseBoard announcement date",
+    "web_fixture": "aurora_pulseboard",
+    "sql_args": null,
+    "relevant_sources": [],
+    "expected_facts": [
+      {"phrase": "2026-09-01", "source_type": "web", "locator": "https://example.com/aurora-pulseboard"}
+    ]
+  },
+  {
+    "case_id": "sql_signaldesk_july_tickets",
+    "category": "sql",
+    "input": "How many support tickets did SignalDesk have in July 2026?",
+    "document_query": "SignalDesk July 2026 support tickets",
+    "web_fixture": null,
+    "sql_args": {"product": "SignalDesk", "month": "2026-07"},
+    "relevant_sources": [],
+    "expected_facts": [
+      {"phrase": "128", "source_type": "sql", "locator": "sql:support_metrics:sd-2026-07"}
+    ]
+  },
+  {
+    "case_id": "sql_echomap_august_response",
+    "category": "sql",
+    "input": "What was EchoMap's average first response time in August 2026?",
+    "document_query": "EchoMap August 2026 average first response time",
+    "web_fixture": null,
+    "sql_args": {"product": "EchoMap", "month": "2026-08"},
+    "relevant_sources": [],
+    "expected_facts": [
+      {"phrase": "1.6", "source_type": "sql", "locator": "sql:support_metrics:em-2026-08"}
+    ]
+  },
+  {
+    "case_id": "doc_sql_signaldesk",
+    "category": "document+sql",
+    "input": "Compare SignalDesk Team's monthly price with its July 2026 ticket count.",
+    "document_query": "SignalDesk Team monthly price",
+    "web_fixture": null,
+    "sql_args": {"product": "SignalDesk", "month": "2026-07"},
+    "relevant_sources": ["company/aster.md"],
+    "expected_facts": [
+      {"phrase": "$480", "source_type": "document", "locator": "company/aster.md"},
+      {"phrase": "128", "source_type": "sql", "locator": "sql:support_metrics:sd-2026-07"}
+    ]
+  },
+  {
+    "case_id": "doc_sql_echomap",
+    "category": "document+sql",
+    "input": "Give EchoMap's starting monthly price and its August 2026 ticket count.",
+    "document_query": "EchoMap starting monthly price",
+    "web_fixture": null,
+    "sql_args": {"product": "EchoMap", "month": "2026-08"},
+    "relevant_sources": ["company/brio.md"],
+    "expected_facts": [
+      {"phrase": "$1,200", "source_type": "document", "locator": "company/brio.md"},
+      {"phrase": "190", "source_type": "sql", "locator": "sql:support_metrics:em-2026-08"}
+    ]
+  },
+  {
+    "case_id": "doc_web_trends",
+    "category": "document+web",
+    "input": "What trends does SignalDesk show, and what did Aurora Support announce?",
+    "document_query": "SignalDesk weekly trend charts",
+    "web_fixture": "aurora_pulseboard",
+    "sql_args": null,
+    "relevant_sources": ["product/signaldesk.md"],
+    "expected_facts": [
+      {"phrase": "weekly trend charts", "source_type": "document", "locator": "product/signaldesk.md"},
+      {"phrase": "PulseBoard", "source_type": "web", "locator": "https://example.com/aurora-pulseboard"}
+    ]
+  },
+  {
+    "case_id": "web_sql_aurora_signaldesk",
+    "category": "web+sql",
+    "input": "What did Aurora Support announce, and how many July 2026 tickets did SignalDesk have?",
+    "document_query": "Aurora Support announcement SignalDesk July tickets",
+    "web_fixture": "aurora_pulseboard",
+    "sql_args": {"product": "SignalDesk", "month": "2026-07"},
+    "relevant_sources": [],
+    "expected_facts": [
+      {"phrase": "PulseBoard", "source_type": "web", "locator": "https://example.com/aurora-pulseboard"},
+      {"phrase": "128", "source_type": "sql", "locator": "sql:support_metrics:sd-2026-07"}
+    ]
+  },
+  {
+    "case_id": "all_three_signaldesk_aurora",
+    "category": "document+web+sql",
+    "input": "Give SignalDesk Team's monthly price, Aurora Support's September announcement, and SignalDesk's July 2026 ticket count.",
+    "document_query": "SignalDesk Team monthly price",
+    "web_fixture": "aurora_pulseboard",
+    "sql_args": {"product": "SignalDesk", "month": "2026-07"},
+    "relevant_sources": ["company/aster.md"],
+    "expected_facts": [
+      {"phrase": "$480", "source_type": "document", "locator": "company/aster.md"},
+      {"phrase": "PulseBoard", "source_type": "web", "locator": "https://example.com/aurora-pulseboard"},
+      {"phrase": "128", "source_type": "sql", "locator": "sql:support_metrics:sd-2026-07"}
+    ]
+  },
+  {
+    "case_id": "insufficient_orion_price",
+    "category": "insufficient",
+    "input": "What is the exact price of Orion Support Enterprise?",
+    "document_query": "Orion Support Enterprise exact price",
+    "web_fixture": null,
+    "sql_args": null,
+    "relevant_sources": [],
+    "expected_facts": []
+  }
+]
