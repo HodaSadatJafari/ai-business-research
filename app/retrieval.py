@@ -11,11 +11,12 @@ import weaviate
 from weaviate.auth import Auth
 from weaviate.classes.config import Configure, DataType, Property
 from weaviate.classes.data import DataObject
-from weaviate.classes.query import HybridFusion, MetadataQuery
+from weaviate.classes.query import HybridFusion, MetadataQuery, Rerank
 
 from app.config import get_settings
 
 HYBRID_ALPHA = 0.5
+DEFAULT_RERANK_CANDIDATES = 8
 
 
 @dataclass(frozen=True)
@@ -84,9 +85,15 @@ def load_chunks(
     return chunks
 
 
-def name_for_corpus(chunks: list[Chunk], model2vec_image_tag: str) -> str:
-    """Name an immutable index from its corpus and inference image tag."""
+def name_for_corpus(
+    chunks: list[Chunk],
+    model2vec_image_tag: str,
+    reranker_model: str | None = None,
+) -> str:
+    """Name an immutable index from corpus and inference model identities."""
     identity = f"weaviate-text2vec-model2vec:{model2vec_image_tag}"
+    if reranker_model:
+        identity += f":reranker-transformers:{reranker_model}"
     digest = hashlib.sha256(identity.encode())
     for chunk in chunks:
         for field in (
@@ -133,7 +140,7 @@ def connect_weaviate():
 
 
 class Retriever:
-    """A Weaviate-backed document index with three native search modes."""
+    """A Weaviate document index with BM25, vector, hybrid, and reranking."""
 
     def __init__(
         self,
@@ -146,8 +153,11 @@ class Retriever:
             raise ValueError("No knowledge base document chunks to index")
         settings = get_settings()
         self.chunks = chunks
+        self.reranker_enabled = settings.reranker_enabled
         self.collection_name = collection_name or name_for_corpus(
-            chunks, settings.model2vec_image_tag
+            chunks,
+            settings.model2vec_image_tag,
+            settings.reranker_model if self.reranker_enabled else None,
         )
         self._owns_client = client is None
         self.client = client or connect_weaviate()
@@ -165,11 +175,17 @@ class Retriever:
             if existing:
                 collection = self.client.collections.get(self.collection_name)
             else:
+                options = (
+                    {"reranker_config": Configure.Reranker.transformers()}
+                    if self.reranker_enabled
+                    else {}
+                )
                 collection = self.client.collections.create(
                     name=self.collection_name,
                     vector_config=Configure.Vectors.text2vec_model2vec(
                         source_properties=["text"], vectorize_collection_name=False
                     ),
+                    **options,
                     properties=[
                         Property(
                             name=name, data_type=DataType.TEXT, index_searchable=False
@@ -226,11 +242,30 @@ class Retriever:
                     )
             raise
 
-    def search(self, query: str, *, k: int = 4, method: str = "hybrid") -> list[Hit]:
-        if method not in {"vector", "bm25", "hybrid"}:
+    def search(
+        self,
+        query: str,
+        *,
+        k: int = 4,
+        method: str = "hybrid",
+        candidate_k: int | None = None,
+    ) -> list[Hit]:
+        if method not in {"vector", "bm25", "hybrid", "hybrid_rerank"}:
             raise ValueError(f"Unknown retrieval method: {method}")
+        if method == "hybrid_rerank" and not self.reranker_enabled:
+            raise RuntimeError("Set RERANKER_ENABLED=true to use hybrid_rerank")
         if not query.strip() or k <= 0:
             return []
+        if method == "hybrid_rerank":
+            candidate_limit = (
+                max(DEFAULT_RERANK_CANDIDATES, k)
+                if candidate_k is None
+                else candidate_k
+            )
+            if candidate_limit < k:
+                raise ValueError("candidate_k must be at least k")
+        else:
+            candidate_limit = k
         if method == "bm25":
             response = self.collection.query.bm25(
                 query=query,
@@ -250,7 +285,12 @@ class Retriever:
                 alpha=HYBRID_ALPHA,
                 fusion_type=HybridFusion.RELATIVE_SCORE,
                 query_properties=["text"],
-                limit=k,
+                limit=candidate_limit,
+                **(
+                    {"rerank": Rerank(prop="text", query=query)}
+                    if method == "hybrid_rerank"
+                    else {}
+                ),
                 return_metadata=MetadataQuery(score=True),
             )
         hits = []
@@ -266,7 +306,7 @@ class Retriever:
                 distance = getattr(item.metadata, "distance", None)
                 score = -float(distance) if distance is not None else 0.0
             hits.append(Hit(chunk=chunk, score=float(score)))
-        return hits
+        return hits[:k]
 
     def close(self) -> None:
         if self._owns_client:

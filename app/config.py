@@ -21,6 +21,8 @@ class Settings(BaseSettings):
     retrieval_k: int = 4
     retrieval_method: str = "bm25"
     model2vec_image_tag: str = "minishlab-potion-base-8M"
+    reranker_model: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    reranker_enabled: bool = False
     weaviate_url: str = "http://localhost:18080"
     weaviate_api_key: str | None = None
     weaviate_grpc_port: int = 15051

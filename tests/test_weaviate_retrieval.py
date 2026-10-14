@@ -46,7 +46,10 @@ def test_retriever_uses_inference_image_tag_for_collection_identity(monkeypatch)
     monkeypatch.setattr(
         "app.retrieval.get_settings",
         lambda: SimpleNamespace(
-            embedding_model="old-label", model2vec_image_tag="image-b"
+            embedding_model="old-label",
+            model2vec_image_tag="image-b",
+            reranker_model="reranker-a",
+            reranker_enabled=True,
         ),
     )
     chunk = one_chunk()
@@ -65,7 +68,9 @@ def test_retriever_uses_inference_image_tag_for_collection_identity(monkeypatch)
     )
 
     retriever = Retriever([chunk], client=client)
-    assert retriever.collection_name == collection_name([chunk], "image-b")
+    assert retriever.collection_name == collection_name(
+        [chunk], "image-b", "reranker-a"
+    )
 
 
 def test_retriever_uses_weaviate_bm25_vector_and_hybrid_queries():
@@ -111,7 +116,66 @@ def test_retriever_uses_weaviate_bm25_vector_and_hybrid_queries():
     assert calls[2][1]["alpha"] == 0.5
 
 
-def test_new_collection_lets_weaviate_vectorize_the_text():
+def test_hybrid_rerank_uses_eight_candidates_but_returns_two_chunks(monkeypatch):
+    monkeypatch.setattr(
+        "app.retrieval.get_settings",
+        lambda: SimpleNamespace(
+            model2vec_image_tag="model2vec-a",
+            reranker_model="reranker-a",
+            reranker_enabled=True,
+        ),
+    )
+    chunks = [
+        Chunk(f"chunk-{i}", "document-1", "doc.md", "Doc", "Info", f"Fact {i}")
+        for i in range(3)
+    ]
+    calls = []
+
+    def hybrid(**kwargs):
+        calls.append(kwargs)
+        return SimpleNamespace(objects=[fake_object(chunk) for chunk in chunks])
+
+    collection = SimpleNamespace(
+        aggregate=SimpleNamespace(
+            over_all=lambda total_count: SimpleNamespace(total_count=3)
+        ),
+        query=SimpleNamespace(
+            fetch_objects=lambda **kwargs: SimpleNamespace(
+                objects=[fake_object(chunk) for chunk in chunks]
+            ),
+            hybrid=hybrid,
+        ),
+    )
+    client = SimpleNamespace(
+        collections=SimpleNamespace(
+            exists=lambda name: True, get=lambda name: collection
+        )
+    )
+    retriever = Retriever(chunks, client=client)
+
+    hits = retriever.search(
+        "Which price applies?", k=2, method="hybrid_rerank", candidate_k=8
+    )
+
+    assert [hit.chunk.chunk_id for hit in hits] == ["chunk-0", "chunk-1"]
+    assert calls[0]["limit"] == 8
+    assert calls[0]["rerank"].prop == "text"
+    assert calls[0]["rerank"].query == "Which price applies?"
+    with pytest.raises(ValueError, match="candidate_k"):
+        retriever.search("price", k=2, method="hybrid_rerank", candidate_k=1)
+    with pytest.raises(ValueError, match="candidate_k"):
+        retriever.search("price", k=2, method="hybrid_rerank", candidate_k=0)
+
+
+def test_new_collection_lets_weaviate_vectorize_the_text(monkeypatch):
+    monkeypatch.setattr(
+        "app.retrieval.get_settings",
+        lambda: SimpleNamespace(
+            model2vec_image_tag="model2vec-a",
+            reranker_model="reranker-a",
+            reranker_enabled=True,
+        ),
+    )
     chunk = one_chunk()
     inserted = []
     collection = SimpleNamespace(
@@ -136,9 +200,43 @@ def test_new_collection_lets_weaviate_vectorize_the_text():
     vector_config = created[0]["vector_config"]
     assert vector_config.properties == ["text"]
     assert vector_config.vectorizer.vectorizer.value == "text2vec-model2vec"
+    assert created[0]["reranker_config"].reranker.value == "reranker-transformers"
     assert len(inserted) == 1
     assert inserted[0].properties["text"] == chunk.text
     assert inserted[0].vector is None
+
+
+def test_new_collection_omits_reranker_when_disabled(monkeypatch):
+    monkeypatch.setattr(
+        "app.retrieval.get_settings",
+        lambda: SimpleNamespace(
+            model2vec_image_tag="model2vec-a",
+            reranker_model="reranker-a",
+            reranker_enabled=False,
+        ),
+    )
+    chunk = one_chunk()
+    collection = SimpleNamespace(
+        data=SimpleNamespace(
+            insert_many=lambda objects: SimpleNamespace(has_errors=False)
+        ),
+        aggregate=SimpleNamespace(
+            over_all=lambda total_count: SimpleNamespace(total_count=1)
+        ),
+    )
+    created = []
+    client = SimpleNamespace(
+        collections=SimpleNamespace(
+            exists=lambda name: False,
+            create=lambda **kwargs: created.append(kwargs) or collection,
+        )
+    )
+
+    retriever = Retriever([chunk], client=client)
+    assert retriever.collection_name == collection_name([chunk], "model2vec-a")
+    assert "reranker_config" not in created[0]
+    with pytest.raises(RuntimeError, match="RERANKER_ENABLED"):
+        retriever.search("price", k=1, method="hybrid_rerank")
 
 
 def test_partial_existing_collection_is_rejected():

@@ -1,0 +1,5 @@
+transformers==4.44.0
+sentence-transformers==3.0.1
+pydantic==2.8.2
+fastapi==0.112.0
+uvicorn==0.30.5

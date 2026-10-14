@@ -6,14 +6,37 @@ from app.agent_tools import SupportMetrics
 from app.retrieval import Chunk, Hit
 from app.schemas.research import ResearchResponse
 from app.services.evidence import Evidence
+from evals.run_reranker import BASELINE_MATCH_FIELDS, validate_baseline_report
 from evals.six_way_runner import (
     VARIANTS,
     aggregate_rows,
+    compare_rows,
     experiment_rows,
     retrieval_diagnostics,
     run_case,
     validate_dataset,
 )
+
+
+def test_reused_baseline_must_match_dataset_model_prompt_and_collection():
+    config = {field: f"same-{field}" for field in BASELINE_MATCH_FIELDS}
+    saved = {
+        "config": config.copy(),
+        "experiments": {"hybrid_web_sql": {"experiment_id": "baseline-1"}},
+    }
+    validate_baseline_report(saved, "baseline-1", config)
+    with pytest.raises(ValueError, match="requested experiment"):
+        validate_baseline_report(saved, "another-run", config)
+    for field in (
+        "dataset_version",
+        "answer_model",
+        "prompt_hash",
+        "weaviate_collection",
+    ):
+        changed = config.copy()
+        changed[field] = "different"
+        with pytest.raises(ValueError, match=field):
+            validate_baseline_report(saved, "baseline-1", changed)
 
 
 def test_each_variant_receives_only_its_enabled_evidence():
@@ -91,6 +114,49 @@ def test_each_variant_receives_only_its_enabled_evidence():
     ]
 
 
+def test_rerank_uses_eight_candidates_and_keeps_the_existing_evidence_mix():
+    chunk = Chunk("one", "doc", "company/aster.md", "Aster", "Pricing", "$480")
+    calls = []
+
+    def search(query, *, k, method, candidate_k):
+        calls.append((query, k, method, candidate_k))
+        return [Hit(chunk, 1.0)]
+
+    case = {
+        "input": "What is the monthly price?",
+        "document_query": "monthly price",
+        "web_fixture": None,
+        "sql_args": None,
+        "relevant_sources": ["company/aster.md"],
+    }
+
+    def answer(question, evidence):
+        return (
+            ResearchResponse(
+                question=question,
+                summary="The price is $480.",
+                findings=[],
+                limitations=[],
+            ),
+            {"prompt_tokens": 12, "completion_tokens": 4},
+        )
+
+    output = run_case(
+        case,
+        "hybrid_web_sql",
+        retriever=SimpleNamespace(search=search),
+        web={},
+        sql=SupportMetrics(),
+        answer=answer,
+        k=2,
+        rerank=True,
+        candidate_k=8,
+    )
+
+    assert calls == [("monthly price", 2, "hybrid_rerank", 8)]
+    assert [item["text"] for item in output["evidence"]] == ["$480"]
+
+
 def test_retrieval_diagnostics_exposes_complementary_document_evidence():
     chunks = [
         Chunk("a", "a", "a.md", "A", "A", "First fact"),
@@ -144,6 +210,53 @@ def test_document_recall_does_not_count_an_unrelated_chunk_as_fact_evidence():
     summary = retrieval_diagnostics([case], retriever, k=2)
     assert summary["hybrid"]["mean_document_recall"] == 1.0
     assert summary["hybrid"]["mean_document_fact_recall"] == 0.0
+
+
+def test_retrieval_diagnostics_compares_hybrid_with_reranked_chunks():
+    wrong = Chunk("wrong", "doc", "doc.md", "Doc", "Overview", "Overview")
+    right = Chunk("right", "doc", "doc.md", "Doc", "Pricing", "Costs $480")
+    calls = []
+
+    def search(query, *, k, method, **kwargs):
+        calls.append((method, kwargs))
+        return [Hit(right if method == "hybrid_rerank" else wrong, 1.0)]
+
+    case = {
+        "case_id": "price",
+        "document_query": "price",
+        "relevant_sources": ["doc.md"],
+        "expected_facts": [
+            {"phrase": "$480", "source_type": "document", "locator": "doc.md"}
+        ],
+    }
+    result = retrieval_diagnostics(
+        [case],
+        SimpleNamespace(search=search),
+        k=1,
+        methods=("hybrid", "hybrid_rerank"),
+        candidate_k=8,
+    )
+
+    assert result["hybrid"]["full_fact_evidence_cases"] == 0
+    assert result["hybrid_rerank"]["full_fact_evidence_cases"] == 1
+    assert calls == [("hybrid", {}), ("hybrid_rerank", {"candidate_k": 8})]
+
+
+def test_compare_rows_names_fixes_and_regressions():
+    baseline = [
+        {"case_id": "fixed", "scores": {"task_success": 0.0}, "latency_seconds": 2.0},
+        {"case_id": "broke", "scores": {"task_success": 1.0}, "latency_seconds": 3.0},
+    ]
+    candidate = [
+        {"case_id": "fixed", "scores": {"task_success": 1.0}, "latency_seconds": 4.0},
+        {"case_id": "broke", "scores": {"task_success": 0.0}, "latency_seconds": 5.0},
+    ]
+
+    comparison = compare_rows(baseline, candidate)
+
+    assert comparison["fixes"] == ["fixed"]
+    assert comparison["regressions"] == ["broke"]
+    assert comparison["mean_latency_seconds"] == {"baseline": 2.5, "candidate": 4.5}
 
 
 def test_existing_dataset_must_match_cases_before_reuse():

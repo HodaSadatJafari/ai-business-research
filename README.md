@@ -115,8 +115,8 @@ ai-business-research/
 
 The project now includes a small fictional knowledge base in `knowledge_base/`.
 `POST /api/v1/research/rag` retrieves evidence and returns structured findings
-with source IDs. The retrieval methods are `bm25` (default), `vector`, and
-`hybrid`. All three search modes run in Weaviate. The local Weaviate
+with source IDs. The retrieval methods are `bm25` (default), `vector`,
+`hybrid`, and `hybrid_rerank`. All four search modes run in Weaviate. Its local
 `text2vec-model2vec` module generates Potion 8M embeddings for vector and
 hybrid search when documents are indexed or queried.
 
@@ -209,6 +209,37 @@ earlier comparisons in `experiments/005_six_way_comparison.md` and
 `experiments/006_weaviate_six_way.md` remain historical. The web stage uses a
 fixed fixture, so it measures evidence access rather than live web search or
 agent tool selection.
+
+### Reranking experiment
+
+The optional `compose.reranker.yaml` override adds Weaviate's
+`reranker-transformers` module to the local Compose stack.
+It builds the published Weaviate inference service with CPU-only PyTorch to
+avoid a multi-gigabyte GPU image download. Set `RERANKER_MODEL` in `.env` to
+change the model and rebuild the service. `hybrid_rerank` first retrieves eight
+hybrid candidates by default, asks Weaviate to rerank their `text`, and returns
+the requested number of top chunks. The evaluation requests two. The regular
+`hybrid` method remains the default search path.
+Set `RERANKER_ENABLED=true` for an app instance that uses the local reranker;
+the reranker evaluation script sets this and applies the Compose override
+automatically. The ordinary six-way script uses the base Compose stack.
+Other Weaviate deployments can keep the reranker disabled and continue using
+BM25, vector, and hybrid search.
+
+```bash
+./evals/run_reranker_local.sh --retrieval-only
+./evals/run_reranker_local.sh
+```
+
+The first command checks retrieval without answer-model calls. The second
+creates paired Opik experiments on the same 17-case dataset and answer prompt:
+top-two hybrid versus eight candidates reranked down to two. It makes 34
+answer-model calls and writes a separate 008 result under
+`experiments/results/`. The local Transformers reranker requires its own
+container; Weaviate Cloud does not host that container integration. The
+[measured comparison](experiments/008_weaviate_reranking.md) found better
+fact-level retrieval but no gain in strict answer success, so reranking is
+available for experiments rather than enabled by default.
 
 ---
 

@@ -1,6 +1,6 @@
 # Project handoff
 
-Last updated: 2026-10-04.
+Last updated: 2026-10-13.
 
 ## Purpose and current state
 
@@ -26,12 +26,23 @@ remains historical in `experiments/006_weaviate_six_way.md`. Use
 `./evals/run_six_way_local.sh --retrieval-only` for a no-LLM retrieval check;
 omit the flag for the full paid Opik evaluation.
 
+An experimental local Weaviate reranker now reorders hybrid candidates before
+selecting two answer chunks. The paired Opik results and retrieval limits are
+in `experiments/008_weaviate_reranking.md`. Eight candidates improved
+fact-level retrieval but held strict answer success at 15/17; an exploratory
+three-candidate run reached 13/17 because citation errors offset the retrieved
+facts. Keep ordinary hybrid as the default. Use
+`./evals/run_reranker_local.sh --retrieval-only` for a no-LLM audit; omit the
+flag for the 34-call paired Opik evaluation.
+
 ## Next task
 
-Continue Week 4 with another small, measured production-engineering slice.
-The roadmap in `docs/project_context.md` prioritizes latency and token/cost
-tracking, error analysis, CI/CD, security, and deployment. Compare each change
-against the prior behavior and record limits in `experiments/`.
+Continue Week 4 with a small, measured citation-validation and error-analysis
+slice. The reranker supplied facts that the answer model sometimes cited with
+wrong source IDs or incomplete claim wording. Compare any fix against the
+15/17 hybrid baseline on held-out cases. The roadmap in
+`docs/project_context.md` also prioritizes latency and token/cost tracking,
+CI/CD, security, and deployment. Record limits in `experiments/`.
 
 ## Working conventions
 

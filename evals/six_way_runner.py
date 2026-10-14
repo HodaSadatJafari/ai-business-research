@@ -23,14 +23,26 @@ VARIANTS = {
 Answer = Callable[[str, list[Evidence]], tuple[ResearchResponse, dict[str, int | None]]]
 
 
-def retrieval_diagnostics(cases: list[dict], retriever: Retriever, *, k: int) -> dict:
+def retrieval_diagnostics(
+    cases: list[dict],
+    retriever: Retriever,
+    *,
+    k: int,
+    methods: tuple[str, ...] = ("bm25", "vector", "hybrid"),
+    candidate_k: int | None = None,
+) -> dict:
     """Measure document-path recall and support for required document facts."""
     document_cases = [case for case in cases if case["relevant_sources"]]
     results = {}
-    for method in ("bm25", "vector", "hybrid"):
+    for method in methods:
         rows = []
         for case in document_cases:
-            hits = retriever.search(case["document_query"], k=k, method=method)
+            started = time.perf_counter()
+            options = {"candidate_k": candidate_k} if method == "hybrid_rerank" else {}
+            hits = retriever.search(
+                case["document_query"], k=k, method=method, **options
+            )
+            retrieval_seconds = round(time.perf_counter() - started, 3)
             sources = [hit.chunk.source for hit in hits]
             relevant = set(case["relevant_sources"])
             recall = len(relevant.intersection(sources)) / len(relevant)
@@ -68,6 +80,7 @@ def retrieval_diagnostics(cases: list[dict], retriever: Retriever, *, k: int) ->
                     "full_evidence": recall == 1.0,
                     "document_fact_recall": fact_recall,
                     "full_fact_evidence": fact_recall == 1.0,
+                    "retrieval_seconds": retrieval_seconds,
                 }
             )
         fact_recalls = [
@@ -88,6 +101,9 @@ def retrieval_diagnostics(cases: list[dict], retriever: Retriever, *, k: int) ->
             ),
             "full_fact_evidence_cases": sum(
                 row["full_fact_evidence"] for row in rows
+            ),
+            "mean_retrieval_seconds": round(
+                sum(row["retrieval_seconds"] for row in rows) / len(rows), 3
             ),
             "cases": rows,
         }
@@ -133,6 +149,12 @@ def aggregate_rows(rows: list[dict]) -> dict:
         scores["mean_document_recall"] = (
             round(sum(recalls) / len(recalls), 3) if recalls else None
         )
+        retrieval_times = [row.get("retrieval_seconds") for row in group]
+        scores["mean_retrieval_seconds"] = (
+            round(sum(retrieval_times) / len(group), 3)
+            if all(value is not None for value in retrieval_times)
+            else None
+        )
         return scores
 
     categories = sorted({row["category"] for row in rows})
@@ -142,6 +164,55 @@ def aggregate_rows(rows: list[dict]) -> dict:
             category: summarize([row for row in rows if row["category"] == category])
             for category in categories
         },
+    }
+
+
+def compare_rows(baseline: list[dict], candidate: list[dict]) -> dict:
+    """Compare paired experiment rows by case ID."""
+    before = {row["case_id"]: row for row in baseline}
+    after = {row["case_id"]: row for row in candidate}
+    if (
+        set(before) != set(after)
+        or len(before) != len(baseline)
+        or len(after) != len(candidate)
+        or not before
+    ):
+        raise ValueError("Experiments do not contain the same unique case IDs")
+    score_names = set(next(iter(before.values()))["scores"])
+    if any(set(row["scores"]) != score_names for row in baseline + candidate):
+        raise ValueError("Experiments have different score metrics")
+    metrics = {}
+    for name in sorted(score_names):
+        base_mean = sum(row["scores"][name] for row in baseline) / len(baseline)
+        candidate_mean = sum(row["scores"][name] for row in candidate) / len(candidate)
+        metrics[name] = {
+            "baseline": round(base_mean, 3),
+            "candidate": round(candidate_mean, 3),
+            "delta": round(candidate_mean - base_mean, 3),
+        }
+    base_latency = sum(row["latency_seconds"] for row in baseline) / len(baseline)
+    candidate_latency = sum(row["latency_seconds"] for row in candidate) / len(
+        candidate
+    )
+    return {
+        "fixes": sorted(
+            case_id
+            for case_id in before
+            if before[case_id]["scores"]["task_success"] == 0
+            and after[case_id]["scores"]["task_success"] == 1
+        ),
+        "regressions": sorted(
+            case_id
+            for case_id in before
+            if before[case_id]["scores"]["task_success"] == 1
+            and after[case_id]["scores"]["task_success"] == 0
+        ),
+        "metrics": metrics,
+        "mean_latency_seconds": {
+            "baseline": round(base_latency, 3),
+            "candidate": round(candidate_latency, 3),
+        },
+        "latency_delta_seconds": round(candidate_latency - base_latency, 3),
     }
 
 
@@ -162,6 +233,7 @@ def experiment_rows(
                 "category": case["category"],
                 "scores": scores,
                 "latency_seconds": output["latency_seconds"],
+                "retrieval_seconds": output.get("retrieval_seconds"),
                 "prompt_tokens": output["prompt_tokens"],
                 "completion_tokens": output["completion_tokens"],
                 "document_recall": output.get("document_recall"),
@@ -185,6 +257,8 @@ def run_case(
     sql: SupportMetrics,
     answer: Answer,
     k: int = 4,
+    rerank: bool = False,
+    candidate_k: int | None = None,
 ) -> dict:
     """Run one question with only the evidence available to its variant."""
     configuration = VARIANTS[variant]
@@ -193,7 +267,15 @@ def run_case(
     retrieved_paths: list[str] = []
     query = case["document_query"]
     method = configuration["retrieval"]
-    hits = retriever.search(query, k=k, method=method) if method else []
+    if rerank:
+        if method != "hybrid":
+            raise ValueError("Reranking requires a hybrid retrieval variant")
+        hits = retriever.search(
+            query, k=k, method="hybrid_rerank", candidate_k=candidate_k
+        )
+    else:
+        hits = retriever.search(query, k=k, method=method) if method else []
+    retrieval_seconds = round(time.perf_counter() - start, 3)
     for hit in hits:
         chunk = hit.chunk
         retrieved_paths.append(chunk.source)
@@ -226,6 +308,7 @@ def run_case(
         "evidence": [item.__dict__ for item in evidence],
         "retrieved_paths": retrieved_paths,
         "latency_seconds": round(time.perf_counter() - start, 3),
+        "retrieval_seconds": retrieval_seconds,
         "prompt_tokens": usage.get("prompt_tokens"),
         "completion_tokens": usage.get("completion_tokens"),
         "document_recall": recall,
